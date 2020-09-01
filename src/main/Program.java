@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.model.*;
+import main.utils.StageManager;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -30,10 +31,8 @@ public class Program extends Application
         Database db1 = Database.getInstance()
                 .load("database.bin");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/login_page.fxml"));
-        stage.setScene(new Scene(loader.load()));
-        stage.setTitle("Covid Market");
-        stage.show();
+        StageManager loginPage = new StageManager();
+        loginPage.setStageLogin(stage);
 
         //Database.getInstance()
         //      .save("database.bin");
