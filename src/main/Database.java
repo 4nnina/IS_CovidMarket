@@ -2,39 +2,74 @@ package main;
 
 import main.model.*;
 
+import java.util.HashSet;
+
 public class Database
 {
-    public final String UTENTI_FILENAME = "utenti.db";
-    public Barile<Utente> utenti = new Barile<>();
+    private HashSet<Utente> utenti = new HashSet<>();;
+    private HashSet<Responsabile> responsabili = new HashSet<>();;
+    private HashSet<Prodotto> prodotti = new HashSet<>();;
+    private HashSet<Spesa> spese = new HashSet<>();
 
-    public final String RESPONSABILI_FILENAME = "../resources/data/responsabili.db";
-    public Barile<Responsabile> responsabili = new Barile<>();
-
-    public Barile<Prodotto> prodotti = new Barile<>();
-    public Barile<Spesa> spese = new Barile<>();
-
-    public void load()
-    {
-        // Carica tutti i dati dalla memoria secondaria
-        utenti.load(UTENTI_FILENAME);
-        //responsabili.load(RESPONSABILI_FILENAME);
-        //prodotti.load("resources/data/prodotti.db");
-        //spese.load("resources/data/spese.db");
+    public HashSet<Utente> getUtenti() {
+        return utenti;
+    }
+    public HashSet<Responsabile> getResponsabili() {
+        return responsabili;
+    }
+    public HashSet<Prodotto> getProdotti() {
+        return prodotti;
+    }
+    public HashSet<Spesa> getSpese() {
+        return spese;
     }
 
-    public void save()
+    /**
+     * Carica da memoria secondaria il database
+     * @param filename Percorso al file binario da caricare
+     * @return Il database, per questioni ergonomiche
+     */
+    public Database load(String filename)
     {
-        utenti.save(UTENTI_FILENAME);
-        //responsabili.save(RESPONSABILI_FILENAME);
-        //prodotti.save("resources/data/prodotti.db");
-        //spese.save("resources/data/spese.db");
+        try(Deserializer ser = new Deserializer(filename))
+        {
+            utenti = (HashSet<Utente>) ser.deserialize();
+            responsabili = (HashSet<Responsabile>) ser.deserialize();
+            prodotti = (HashSet<Prodotto>) ser.deserialize();
+            spese = (HashSet<Spesa>) ser.deserialize();
+        }
+        catch (Exception e)
+        {
+            System.out.println("Impossibile caricata database da " + filename);
+            e.printStackTrace();
+        }
+
+        return this;
     }
 
-    private static Database instance;
-    public static Database getInstance()
+    /**
+     * Salva su memoria secondaria il database
+     * @param filename Percorso al file binario da salvare
+     */
+    public void save(String filename)
     {
-        if (instance == null)
-            instance = new Database();
-        return instance;
+        try(Serializer ser = new Serializer(filename))
+        {
+            ser.serialize(utenti);
+            ser.serialize(responsabili);
+            ser.serialize(prodotti);
+            ser.serialize(spese);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Impossibile salvare database su " + filename);
+            e.printStackTrace();
+        }
+    }
+
+    private static Database INSTANCE;
+    public static Database getInstance() {
+        if (INSTANCE == null) INSTANCE = new Database();
+        return INSTANCE;
     }
 }

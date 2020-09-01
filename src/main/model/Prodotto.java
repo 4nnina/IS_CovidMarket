@@ -12,7 +12,6 @@ public class Prodotto implements Serializable
     private int quantitaPerConfezione;
     private Image image;
     private int quantitaDisponibile;
-
     private EnumSet<Attributo> attributi;
 
     @Override
