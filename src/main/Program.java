@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.controller.Stages;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
+import main.storage.ISerializer;
 import main.utils.StageManager;
 
 public class Program extends Application
@@ -14,25 +16,26 @@ public class Program extends Application
     private static final String PATH_DATABASE = "database.bin";
 
     @Override
-    public void start(Stage stage) throws Exception
+    public void start(Stage primaryStage) throws Exception
     {
+        Database database = Database.getInstance();
+        try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
+            database.load(ser);
+        }
 
-        /*
-        Utente filippo = new Utente("Filippo", "Ziche", "Via Tagliamento 29",
-                "Arzignano", "36071", "filippo.ziche@gmail.com",
-                36071, "ciscocisco".hashCode(), new CartaFedelta("3056817689",
-                Calendar.getInstance().getTime(), 0), MetodoPagamento.PayPal);
-         */
+        StageManager stageManager = new StageManager(primaryStage);
+        stageManager.swap(Stages.Login);
+    }
 
-        StageManager loginPage = new StageManager();
-        loginPage.setStageLogin(stage);
+    @Override
+    public void stop() throws Exception
+    {
+        super.stop();
 
         Database database = Database.getInstance();
-        database.load(new BinaryDeserializer(PATH_DATABASE));
-
-        // FAI COSE
-
-        database.save(new BinarySerializer(PATH_DATABASE));
+        try(BinarySerializer ser = new BinarySerializer(PATH_DATABASE)) {
+            database.save(ser);
+        }
     }
 
     public static void main(String[] args)

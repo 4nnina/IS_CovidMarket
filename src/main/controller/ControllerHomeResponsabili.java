@@ -5,7 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitMenuButton;
 
-public class ControllerHomeResponsabili {
+public class ControllerHomeResponsabili extends Controller
+{
 
     @FXML
     private Button catalogoButton;

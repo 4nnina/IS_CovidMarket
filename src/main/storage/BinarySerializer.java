@@ -5,18 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class BinarySerializer implements ISerializer
+public class BinarySerializer implements ISerializer, AutoCloseable
 {
     private FileOutputStream stream;
-    private BufferedOutputStream bufferedStream;
-    private ObjectOutputStream bufferedObjectStream;
+    private ObjectOutputStream objectStream;
 
-    public BinarySerializer(String filename) {
+    public BinarySerializer(String filename)
+    {
         try
         {
             stream = new FileOutputStream(filename);
-            bufferedStream = new BufferedOutputStream(stream);
-            bufferedObjectStream = new ObjectOutputStream(bufferedStream);
+            objectStream = new ObjectOutputStream(stream);
         }
         catch (IOException e)
         {
@@ -30,12 +29,17 @@ public class BinarySerializer implements ISerializer
     {
         try
         {
-            bufferedObjectStream.writeObject(obj);
+            objectStream.writeObject(obj);
         }
         catch (IOException e)
         {
             System.out.println("Errore salvataggio oggetto");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void close() throws Exception {
+        objectStream.close();
     }
 }

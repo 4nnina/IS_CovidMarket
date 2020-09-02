@@ -2,19 +2,17 @@ package main.storage;
 
 import java.io.*;
 
-public class BinaryDeserializer implements IDeserializer
+public class BinaryDeserializer implements IDeserializer, AutoCloseable
 {
     private FileInputStream stream;
-    private BufferedInputStream bufferedStream;
-    private ObjectInputStream bufferedObjectStream;
+    private ObjectInputStream objectStream;
 
     public BinaryDeserializer(String filename)
     {
         try
         {
             stream = new FileInputStream(filename);
-            bufferedStream = new BufferedInputStream(stream);
-            bufferedObjectStream = new ObjectInputStream(bufferedStream);
+            objectStream = new ObjectInputStream(stream);
         }
         catch (FileNotFoundException e)
         {
@@ -23,7 +21,7 @@ public class BinaryDeserializer implements IDeserializer
         }
         catch (IOException e)
         {
-            System.out.println("Errore scrittura file su" + filename);
+            System.out.println("Errore lettura file su" + filename);
             e.printStackTrace();
         }
     }
@@ -33,7 +31,7 @@ public class BinaryDeserializer implements IDeserializer
     {
         try
         {
-            Object result = bufferedObjectStream.readObject();
+            Object result = objectStream.readObject();
             return result;
         }
         catch (IOException e)
@@ -47,5 +45,10 @@ public class BinaryDeserializer implements IDeserializer
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void close() throws Exception {
+        objectStream.close();
     }
 }

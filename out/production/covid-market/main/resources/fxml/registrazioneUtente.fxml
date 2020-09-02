@@ -64,7 +64,7 @@
             <TextField fx:id="cognomeTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="indirizzoTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="telefonoTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="cittaChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="capLabel" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
@@ -82,7 +82,7 @@
          <children>
             <TextField fx:id="mailTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
             <PasswordField fx:id="pswPasswordField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <PasswordField fx:id="confermaPswPasswordField" editable="false" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="confermaPswPasswordField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="17.0" prefWidth="80.0" text="e-mail">
                <font>
                   <Font size="15.0" />
@@ -103,7 +103,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="pagamentoChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Label layoutX="230.0" layoutY="74.0" prefHeight="34.0" prefWidth="181.0" text="REGISTRAZIONE" textFill="#f27777" AnchorPane.topAnchor="69.0">

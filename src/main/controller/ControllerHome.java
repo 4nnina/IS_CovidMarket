@@ -5,8 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
+import main.model.Utente;
 
-public class ControllerHome {
+public class ControllerHome extends Controller
+{
 
     @FXML
     private ImageView carrelloImageView;
@@ -31,6 +33,13 @@ public class ControllerHome {
 
     @FXML
     private Button filtraButton;
+
+    private Utente utente;
+
+    // Costruttore
+    public void setUser(Utente utente) {
+        this.utente = utente;
+    }
 
     @FXML
     private void initialize(){

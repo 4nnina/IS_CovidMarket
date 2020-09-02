@@ -2,10 +2,7 @@ package main.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.storage.Database;
 import main.model.Responsabile;
@@ -14,7 +11,7 @@ import main.utils.StageManager;
 
 import java.util.ArrayList;
 
-public class ControllerLoginPage {
+public class ControllerLoginPage extends Controller {
 
     @FXML
     private Button loginButton;
@@ -36,21 +33,20 @@ public class ControllerLoginPage {
     private ArrayList<Responsabile> responsabili;
 
     @FXML
-    private void initialize(){
+    private void initialize()
+    {
         utenti = new ArrayList<>(Database.getInstance().getUtenti());
         responsabili = new ArrayList<>(Database.getInstance().getResponsabili());
 
         //handler
         loginButton.setOnAction(this::loginButtonHandler);
         registratiButton.setOnAction((this::registratiButtonHandler));
-
     }
 
     private void registratiButtonHandler(ActionEvent actionEvent) {
         System.out.println("registrati");
 
-        StageManager registratiPage = new StageManager();
-        registratiPage.setStageRegistrazione((Stage) registratiButton.getScene().getWindow());
+        stageManager.swap(Stages.Registrazione);
 
         //TODO: implemetare registrati, cambio
     }
@@ -61,13 +57,12 @@ public class ControllerLoginPage {
 
         if(personaleCheckBox.isSelected()){
             //TODO: implemetare login personale, cambio
-            StageManager homePersonalePage = new StageManager();
-            homePersonalePage.setStageHomePersonale((Stage) loginButton.getScene().getWindow());
+            stageManager.swap(Stages.HomeResponsabile);
         }
         else{
             //TODO: implemetare login utente, cambio
-            StageManager homePage = new StageManager();
-            homePage.setStageHomeUtenti((Stage) loginButton.getScene().getWindow());
+            ControllerHome controllerHome = (ControllerHome) stageManager.swap(Stages.HomeUtente);
+            //controllerHome.setUser(...);
         }
     }
 

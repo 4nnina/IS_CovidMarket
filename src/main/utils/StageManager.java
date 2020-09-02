@@ -5,82 +5,67 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import main.controller.ControllerHome;
-import main.controller.ControllerHomeResponsabili;
-import main.controller.ControllerLoginPage;
-import main.controller.ControllerRegistrazione;
+import main.controller.*;
 
-public class StageManager {
+import java.io.IOException;
+import java.util.ArrayList;
 
-    public void setStageLogin(Stage schermata){
-        Parent root;
+public class StageManager
+{
+    private static final String PATH_FXML = "../resources/fxml/";
 
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/login_page.fxml"));
+    private static class StageBundle
+    {
+        public Scene scene;
+        public IController controller;
+        public String title;
 
-            root = fxmlLoader.load();
-            ControllerLoginPage loginDialog = fxmlLoader.getController();
-            schermata.setScene(new Scene(root));
-            schermata.setTitle("Covid Market");
-            schermata.getIcons().add(new Image(getClass().getResource("../resources/img/logo.png").toExternalForm()));
-            schermata.show();
-
-        }catch(Exception exc){
-            exc.printStackTrace();
+        public StageBundle(Scene scene, IController controller, String title)
+        {
+            this.controller = controller;
+            this.scene = scene;
+            this.title = title;
         }
     }
 
-    public void setStageRegistrazione(Stage window){
-        Parent root;
+    private StageBundle[] stageBundles = new StageBundle[Stages.values().length];
+    private Stage primaryStage;
 
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/registrazioneUtente.fxml"));
+    public StageManager(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
 
-            root = fxmlLoader.load();
-            ControllerRegistrazione controllerRegistrazione = fxmlLoader.getController();
-            window.setScene(new Scene(root));
-            window.setTitle("Covid Market - Registrazione");
-            //schermata.getIcons().add(new Image(getClass().getResource("../resources/img/logo.png").toExternalForm()));
-            window.show();
+        initStage(Stages.Login, "Covid Market - Login", PATH_FXML + "login_page.fxml");
+        initStage(Stages.Registrazione, "Covid Market - Registrazione", PATH_FXML + "registrazioneUtente.fxml");
+        initStage(Stages.HomeResponsabile, "Covid Market - Home", PATH_FXML + "homeResponsanili.fxml");
+        initStage(Stages.HomeUtente, "Covid Market - Home", PATH_FXML + "home.fxml");
+    }
 
-        }catch(Exception exc){
-            exc.printStackTrace();
+    public void initStage(Stages target, String title, String filename)
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filename));
+            Scene scene = new Scene(fxmlLoader.load());
+            IController controller = fxmlLoader.getController();
+            controller.setStageManager(this);
+
+            stageBundles[target.ordinal()] = new StageBundle(scene, controller, title);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Errore caricamento file fxml da " + filename);
+            e.printStackTrace();
         }
     }
 
-    public void setStageHomePersonale(Stage window) {
-        Parent root;
+    public IController swap(Stages target)
+    {
+        StageBundle bundle = stageBundles[target.ordinal()];
+        primaryStage.setScene(bundle.scene);
+        primaryStage.setTitle(bundle.title);
+        primaryStage.show();
 
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/homeResponsanili.fxml"));
-
-            root = fxmlLoader.load();
-            ControllerHomeResponsabili controllerHomeResponsabili = fxmlLoader.getController();
-            window.setScene(new Scene(root));
-            window.setTitle("Covid Market - HomePersonale");
-            //schermata.getIcons().add(new Image(getClass().getResource("../resources/img/logo.png").toExternalForm()));
-            window.show();
-
-        }catch(Exception exc){
-            exc.printStackTrace();
-        }
-    }
-
-    public void setStageHomeUtenti(Stage window) {
-        Parent root;
-
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/home.fxml"));
-
-            root = fxmlLoader.load();
-            ControllerHome controllerHome = fxmlLoader.getController();
-            window.setScene(new Scene(root));
-            window.setTitle("Covid Market - Home");
-            //schermata.getIcons().add(new Image(getClass().getResource("../resources/img/logo.png").toExternalForm()));
-            window.show();
-
-        }catch(Exception exc){
-            exc.printStackTrace();
-        }
+        return bundle.controller;
     }
 }
