@@ -11,11 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import main.Database;
 import main.utils.StageManager;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class ControllerRegistrazione {
 

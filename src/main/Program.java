@@ -4,14 +4,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.model.*;
+import main.storage.BinaryDeserializer;
+import main.storage.BinarySerializer;
+import main.storage.Database;
 import main.utils.StageManager;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class Program extends Application
 {
+    private static final String PATH_DATABASE = "database.bin";
+
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -21,21 +22,17 @@ public class Program extends Application
                 "Arzignano", "36071", "filippo.ziche@gmail.com",
                 36071, "ciscocisco".hashCode(), new CartaFedelta("3056817689",
                 Calendar.getInstance().getTime(), 0), MetodoPagamento.PayPal);
-
-
-        Database db = Database.getInstance();
-        db.getUtenti().add(filippo);
-        db.save("database.bin");
          */
-
-        Database db1 = Database.getInstance()
-                .load("database.bin");
 
         StageManager loginPage = new StageManager();
         loginPage.setStageLogin(stage);
 
-        //Database.getInstance()
-        //      .save("database.bin");
+        Database database = Database.getInstance();
+        database.load(new BinaryDeserializer(PATH_DATABASE));
+
+        // FAI COSE
+
+        database.save(new BinarySerializer(PATH_DATABASE));
     }
 
     public static void main(String[] args)

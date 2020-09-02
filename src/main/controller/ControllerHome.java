@@ -5,9 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
-import main.Database;
-
-import java.util.ArrayList;
 
 public class ControllerHome {
 
