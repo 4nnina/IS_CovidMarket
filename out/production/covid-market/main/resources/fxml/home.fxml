@@ -19,7 +19,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
+            <ImageView fx:id="covidMarketImageView" fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../img/logo.png" />
                </image>
@@ -29,12 +29,17 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.leftAnchor="560.6666666666666" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
                <image>
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="662.0" layoutY="22.0" text="Ciao, NOMEUTENTE" textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="51.0">
+            <Label layoutX="662.0" layoutY="22.0" text="Ciao, " textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="nomeutenteLabel" layoutX="641.0" layoutY="52.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
