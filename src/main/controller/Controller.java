@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.model.Persona;
 import main.utils.StageManager;
 
 public abstract class Controller implements IController
@@ -10,4 +11,5 @@ public abstract class Controller implements IController
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
     }
+    public void onSwap(Persona target) { }
 }

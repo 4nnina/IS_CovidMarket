@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitMenuButton;
+import main.model.Responsabile;
+import main.model.Utente;
 
 public class ControllerHomeResponsabili extends Controller
 {
@@ -37,6 +39,13 @@ public class ControllerHomeResponsabili extends Controller
 
     @FXML
     private Button filtraButton;
+
+    private Responsabile responsabile;
+
+    // Costruttore
+    public void setResponsabile(Responsabile responsabile) {
+        this.responsabile = responsabile;
+    }
 
     @FXML
     private void initialize(){

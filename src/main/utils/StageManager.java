@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.controller.*;
+import main.model.Persona;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class StageManager
 
     private StageBundle[] stageBundles = new StageBundle[Stages.values().length];
     private Stage primaryStage;
+    private Persona currentUser;
 
     public StageManager(Stage primaryStage)
     {
@@ -62,6 +64,10 @@ public class StageManager
         }
     }
 
+    public void setTargetUser(Persona user) {
+        this.currentUser = user;
+    }
+
     public IController swap(Stages target)
     {
         StageBundle bundle = stageBundles[target.ordinal()];
@@ -69,6 +75,7 @@ public class StageManager
         primaryStage.setTitle(bundle.title);
         primaryStage.show();
 
+        bundle.controller.onSwap(currentUser);
         return bundle.controller;
     }
 }

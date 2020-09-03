@@ -23,4 +23,23 @@ public class Responsabile extends Persona implements Serializable
         this.matricola = matricola;
         this.username = username;
     }
+
+    @Override
+    public LoginResult validLogin(String username, String password)
+    {
+        if (this.username.equals(username)) {
+            if (this.passwordHash == password.hashCode()) {
+                return LoginResult.Success;
+            }
+            else {
+                return LoginResult.WrongPassword;
+            }
+        }
+        return LoginResult.Failure;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj) && this.matricola != ((Responsabile)obj).matricola;
+    }
 }

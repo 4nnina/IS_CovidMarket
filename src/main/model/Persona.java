@@ -2,7 +2,7 @@ package main.model;
 
 import java.io.Serializable;
 
-public class Persona implements Serializable
+public abstract class Persona implements Serializable
 {
     protected String nome, cognome, indirizzo, citta, telefono, email;
     protected int CAP, passwordHash;
@@ -35,4 +35,7 @@ public class Persona implements Serializable
     public int hashCode() {
         return nome.hashCode() ^ cognome.hashCode() ^ email.hashCode();
     }
+
+    // Controlla se le credenziali sono corrette per questa persona
+    public abstract LoginResult validLogin(String username, String password);
 }

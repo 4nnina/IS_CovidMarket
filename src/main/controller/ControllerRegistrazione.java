@@ -159,8 +159,8 @@ public class ControllerRegistrazione extends Controller
             if(database.getUtenti().add(newUser))
             {
                 // Ha inserito con successo
-                ControllerHome controllerHome = (ControllerHome) stageManager.swap(Stages.HomeUtente);
-                controllerHome.setUser(newUser);
+                stageManager.setTargetUser(newUser);
+                stageManager.swap(Stages.HomeUtente);
             }
             else {
                 System.out.println("UTENTE ESISTE GIA");

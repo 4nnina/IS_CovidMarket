@@ -9,7 +9,9 @@ import main.model.Responsabile;
 import main.model.Utente;
 import main.utils.StageManager;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class ControllerLoginPage extends Controller {
 
@@ -28,16 +30,9 @@ public class ControllerLoginPage extends Controller {
     @FXML
     private CheckBox personaleCheckBox;
 
-
-    private ArrayList<Utente> utenti;
-    private ArrayList<Responsabile> responsabili;
-
     @FXML
     private void initialize()
     {
-        utenti = new ArrayList<>(Database.getInstance().getUtenti());
-        responsabili = new ArrayList<>(Database.getInstance().getResponsabili());
-
         //handler
         loginButton.setOnAction(this::loginButtonHandler);
         registratiButton.setOnAction((this::registratiButtonHandler));
@@ -51,18 +46,70 @@ public class ControllerLoginPage extends Controller {
         //TODO: implemetare registrati, cambio
     }
 
-    private void loginButtonHandler(ActionEvent actionEvent) {
+    private void loginButtonHandler(ActionEvent actionEvent)
+    {
+        Database database = Database.getInstance();
         System.out.println("login");
 
 
-        if(personaleCheckBox.isSelected()){
-            //TODO: implemetare login personale, cambio
-            stageManager.swap(Stages.HomeResponsabile);
+        if(personaleCheckBox.isSelected())
+        {
+            boolean anyFound = false;
+            for (Responsabile user : database.getResponsabili()) {
+                switch (user.validLogin(nomeUtenteTextField.getText(), pswPasswordField.getText()))
+                {
+                    // Cambia schermata
+                    case Success: {
+                        stageManager.setTargetUser(user);
+                        stageManager.swap(Stages.HomeResponsabile);
+                        anyFound = true;
+                    } break;
+
+                    case WrongPassword:
+                        // TODO: Indica nella UI
+                        System.out.println("Password errata per " + nomeUtenteTextField.getText());
+                        anyFound = true;
+                        break;
+
+                    case Failure:
+                        break;
+                }
+            }
+
+            if (!anyFound) {
+                // TODO: Indica nella UI
+                System.out.println("Non esistono responsabili col nome "+  nomeUtenteTextField.getText());
+            }
+
         }
-        else{
-            //TODO: implemetare login utente, cambio
-            ControllerHome controllerHome = (ControllerHome) stageManager.swap(Stages.HomeUtente);
-            //controllerHome.setUser(...);
+        else {
+
+            boolean anyFound = false;
+            for (Utente user : database.getUtenti()) {
+                switch (user.validLogin(nomeUtenteTextField.getText(), pswPasswordField.getText()))
+                {
+                    // Cambia schermata
+                    case Success: {
+                        stageManager.setTargetUser(user);
+                        stageManager.swap(Stages.HomeUtente);
+                        anyFound = true;
+                    } break;
+
+                    case WrongPassword:
+                        // TODO: Indica nella UI
+                        System.out.println("Password errata per " + nomeUtenteTextField.getText());
+                        anyFound = true;
+                        break;
+
+                    case Failure:
+                        break;
+                }
+            }
+
+            if (!anyFound) {
+                // TODO: Indica nella UI
+                System.out.println("Non esistono utenti col nome "+  nomeUtenteTextField.getText());
+            }
         }
     }
 
