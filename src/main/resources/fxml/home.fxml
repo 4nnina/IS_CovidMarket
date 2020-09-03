@@ -125,20 +125,16 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="662.0" style="-fx-background-color: #ddfaf7;">
                      <children>
-                        <ListView fx:id="itemListView" layoutX="4.0" layoutY="4.0" prefHeight="462.0" prefWidth="495.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Spinner fx:id="quantitySpinner" editable="true" layoutX="528.0" layoutY="48.0" />
-                        <Label layoutX="528.0" layoutY="86.0" text="Prezzo totale" />
-                        <Label layoutX="649.0" layoutY="86.0" text="Label" />
-                        <Label layoutX="569.0" layoutY="14.0" text="QUANTITA" textFill="#f27777">
+                        <ListView fx:id="itemListView" layoutX="4.0" layoutY="4.0" prefHeight="470.0" prefWidth="517.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Spinner fx:id="quantitySpinner" editable="true" layoutX="614.0" layoutY="58.0" prefHeight="25.0" prefWidth="60.0" />
+                        <Label layoutX="526.0" layoutY="94.0" text="Prezzo totale:" />
+                        <Label layoutX="637.0" layoutY="93.0" text="Label" />
+                        <Label layoutX="527.0" layoutY="63.0" text="QUANTITA'" textFill="#f27777">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="compraButton" layoutX="558.0" layoutY="137.0" mnemonicParsing="false" onAction="#onCompraButton" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f27777;" text="Compra">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
+                        <Button fx:id="compraButton" layoutX="578.0" layoutY="140.0" mnemonicParsing="false" onAction="#onCompraButton" prefHeight="47.0" prefWidth="72.0" style="-fx-background-color: #f27777;" text="Aggiungi &#10;al carrello" />
                      </children>
                   </AnchorPane>
               </items>

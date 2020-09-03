@@ -47,7 +47,7 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
             nomeLabel.setText(prodotto.nome);
             prezzoLabel.setText(String.valueOf(prodotto.prezzo));
 
-            setPrefWidth(495);
+            setPrefWidth(515);
             setPrefHeight(180);
 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
