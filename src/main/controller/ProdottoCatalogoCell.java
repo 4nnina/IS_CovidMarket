@@ -1,4 +1,4 @@
-package main.view;
+package main.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +15,11 @@ import java.io.IOException;
 public class ProdottoCatalogoCell extends ListCell<Prodotto>
 {
     @FXML private Pane pane;
+
     @FXML private Label nomeLabel;
     @FXML private Label prezzoLabel;
+    @FXML private Label marcaLabel;
+    @FXML private Label quantitaLabel;
 
     // Carica stile fxml
     public ProdottoCatalogoCell()
@@ -44,8 +47,10 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
 
         } else {
             // Setta informazioni sull'item
-            nomeLabel.setText(prodotto.nome);
+            nomeLabel.setText(prodotto.getNome());
             prezzoLabel.setText(String.valueOf(prodotto.prezzo));
+            marcaLabel.setText(prodotto.getMarca());
+            quantitaLabel.setText(String.valueOf(prodotto.getQuantitaDisponibile()));
 
             setPrefWidth(515);
             setPrefHeight(180);
@@ -54,5 +59,4 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
             setGraphic(pane);
         }
     }
-
 }

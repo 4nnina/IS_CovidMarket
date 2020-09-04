@@ -24,11 +24,13 @@ public class Program extends Application
     {
         Database database = Database.getInstance();
 
+        /*
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
 
-/*
+         */
+
         database.getUtenti().add(new Utente("sis", "sis", "sis sis 29", "sis",
                 "3779927407", "sis@gmail.com", 36071, "sis".hashCode(), null, MetodoPagamento.Nessuno));
 
@@ -36,11 +38,18 @@ public class Program extends Application
                 "asm", "377992704", "asm", 0, "asm".hashCode(), Calendar.getInstance().getTime(), "asm",
                 EnumSet.of(Reparto.Carne, Reparto.Alimentari), 0, "asm"));
 
-        database.getProdotti().add(new Prodotto(Reparto.Alimentari, "banana", "oreo",
-                76, 6, null, 1, EnumSet.of(Attributo.Vegetariano)));
-        database.getProdotti().add(new Prodotto(Reparto.Biscotti, "elicottero", "oreo",
-                76, 6, null, 1, EnumSet.of(Attributo.Vegetariano)));
- */
+        database.getProdotti().add(new Prodotto.Builder()
+                .setNome("Banana")
+                .setMarca("dwad")
+                .setAttributi(EnumSet.noneOf(Attributo.class))
+                .setImage(null)
+                .setPrezzo(5)
+                .setReparto(Reparto.Alimentari)
+                .setQuantitaDisponibile(4)
+                .setQuantitaPerConfezione(4)
+                .build()
+        );
+
         StageManager stageManager = new StageManager(primaryStage);
         stageManager.swap(Stages.Login);
     }
