@@ -12,12 +12,11 @@ public class Utente extends Persona implements Serializable
     // Items che non sono ancora stati confermati (prodotto, quantita)
     public HashMap<Prodotto, Integer> carrelloCorrente = new HashMap<>();
 
-    public Utente(String nome, String cognome, String indirizzo, String citta, String telefono, String email,
-                  int CAP, int passwordHash, CartaFedelta cartaFedelta, MetodoPagamento metodoPagamento)
+    private Utente(Builder builder)
     {
-        super(nome, cognome, indirizzo, citta, telefono, email, CAP, passwordHash);
-        this.cartaFedelta = cartaFedelta;
-        this.metodoPagamento = metodoPagamento;
+        super(builder);
+        this.cartaFedelta = builder.cartaFedelta;
+        this.metodoPagamento = builder.metodoPagamento;
     }
 
     @Override
@@ -32,5 +31,34 @@ public class Utente extends Persona implements Serializable
             }
         }
         return LoginResult.Failure;
+    }
+
+    /**
+     * Builder pattern per l'utente
+     */
+    public static class Builder extends Persona.Builder<Builder>
+    {
+        private CartaFedelta cartaFedelta;
+        private MetodoPagamento metodoPagamento;
+
+        @Override
+        public Utente build() {
+            return new Utente(this);
+        }
+
+        @Override
+        protected Builder self() {
+            return this;
+        }
+
+        public Builder setCartaFedelta(CartaFedelta cartaFedelta) {
+            this.cartaFedelta = cartaFedelta;
+            return this;
+        }
+
+        public Builder setMetodoPagamento(MetodoPagamento metodoPagamento) {
+            this.metodoPagamento = metodoPagamento;
+            return this;
+        }
     }
 }

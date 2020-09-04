@@ -142,24 +142,21 @@ public class ControllerRegistrazione extends Controller
 
         if (validateUserData())
         {
-            Utente newUser = new Utente(
-                    nomeTextField.getText(),
-                    cognomeTextField.getText(),
-                    indirizzoTextField.getText(),
-                    "ciao",
-                    telefonoTextField.getText(),
-                    mailTextField.getText(),
-                    /*Integer.valueOf(capLabel.getText())*/ 0,
-                    pswPasswordField.getText().hashCode(),
-                    null,
-                    MetodoPagamento.Nessuno
-            );
+            Utente user = new Utente.Builder()
+                    .setNominativo(nomeTextField.getText(), cognomeTextField.getText())
+                    .setIndirizzo(indirizzoTextField.getText(), "arzignano", 0)
+                    .setTelefono(telefonoTextField.getText())
+                    .setEmail(mailTextField.getText())
+                    .setPassword(pswPasswordField.getText())
+                    .setCartaFedelta(null)
+                    .setMetodoPagamento(MetodoPagamento.Nessuno)
+                    .build();
 
             Database database = Database.getInstance();
-            if(database.getUtenti().add(newUser))
+            if(database.getUtenti().add(user))
             {
                 // Ha inserito con successo
-                stageManager.setTargetUser(newUser);
+                stageManager.setTargetUser(user);
                 stageManager.swap(Stages.HomeUtente);
             }
             else {

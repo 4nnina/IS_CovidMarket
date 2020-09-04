@@ -31,31 +31,24 @@ public class Prodotto implements Serializable
     public Reparto getReparto() {
         return reparto;
     }
-
     public String getNome() {
         return nome;
     }
-
     public String getMarca() {
         return marca;
     }
-
     public int getQuantitaPerConfezione() {
         return quantitaPerConfezione;
     }
-
     public Image getImage() {
         return image;
     }
-
     public int getQuantitaDisponibile() {
         return quantitaDisponibile;
     }
-
     public EnumSet<Attributo> getAttributi() {
         return attributi;
     }
-
     public int getPrezzo() {
         return prezzo;
     }
@@ -81,15 +74,20 @@ public class Prodotto implements Serializable
         return super.equals(obj); //TODO
     }
 
+    /**
+     * Esplicita la creazione di un prodotto
+     */
     public static class Builder
     {
-        private Reparto reparto;
-        private String nome, marca;
-        private int quantitaPerConfezione;
-        private Image image;
-        private int quantitaDisponibile;
-        private EnumSet<Attributo> attributi;
-        private int prezzo;
+        // Valori di default
+        private Reparto reparto = Reparto.Tutto;
+        private String nome = "NULL";
+        private String marca = "NULL";
+        private int quantitaPerConfezione = 0;
+        private Image image = null;
+        private int quantitaDisponibile = 0;
+        private EnumSet<Attributo> attributi = EnumSet.noneOf(Attributo.class);
+        private int prezzo = 0;
 
         public Builder setReparto(Reparto reparto) {
             this.reparto = reparto;
@@ -126,13 +124,27 @@ public class Prodotto implements Serializable
             return this;
         }
 
+        public Builder addAttributo(Attributo attrib) {
+            this.attributi.add(attrib);
+            return this;
+        }
+
         public Builder setPrezzo(int prezzo) {
             this.prezzo = prezzo;
             return this;
         }
 
         public Prodotto build() {
-            return new Prodotto(reparto, nome, marca, prezzo, quantitaPerConfezione, image, quantitaDisponibile, attributi);
+            return new Prodotto(
+                    reparto,
+                    nome,
+                    marca,
+                    prezzo,
+                    quantitaPerConfezione,
+                    image,
+                    quantitaDisponibile,
+                    attributi
+            );
         }
     }
 }

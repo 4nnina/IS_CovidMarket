@@ -31,17 +31,23 @@ public class Program extends Application
 
          */
 
-        database.getUtenti().add(new Utente("sis", "sis", "sis sis 29", "sis",
-                "3779927407", "sis@gmail.com", 36071, "sis".hashCode(), null, MetodoPagamento.Nessuno));
+        Utente sis = new Utente.Builder()
+                .setNominativo("sis", "sis")
+                .setIndirizzo("sis sis 29", "sis", 36071)
+                .setEmail("sis@gmail.com")
+                .setTelefono("3779927407")
+                .setCartaFedelta(null)
+                .setMetodoPagamento(MetodoPagamento.PayPal)
+                .setPassword("sis")
+                .build();
 
-        database.getResponsabili().add(new Responsabile("asm", "asm", "asm asm 29",
-                "asm", "377992704", "asm", 0, "asm".hashCode(), Calendar.getInstance().getTime(), "asm",
-                EnumSet.of(Reparto.Carne, Reparto.Alimentari), 0, "asm"));
+        database.getUtenti().add(sis);
 
         database.getProdotti().add(new Prodotto.Builder()
                 .setNome("Banana")
                 .setMarca("dwad")
-                .setAttributi(EnumSet.noneOf(Attributo.class))
+                .addAttributo(Attributo.SenzaLatte)
+                .addAttributo(Attributo.Vegetariano)
                 .setImage(null)
                 .setPrezzo(5)
                 .setReparto(Reparto.Alimentari)

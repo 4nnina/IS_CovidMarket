@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.EnumSet;
 
+
 public class Responsabile extends Persona implements Serializable
 {
     private Date dataDiNascita;
@@ -12,6 +13,11 @@ public class Responsabile extends Persona implements Serializable
     private int matricola;
     private String username;
 
+    protected Responsabile(Builder<?> builder) {
+        super(builder);
+    }
+
+    /*
     public Responsabile(String nome, String cognome, String indirizzo, String citta, String telefono,
                         String email, int CAP, int passwordHash, Date dataDiNascita, String luogoDiNascita,
                         EnumSet<Reparto> repartiGestiti, int matricola, String username)
@@ -23,6 +29,8 @@ public class Responsabile extends Persona implements Serializable
         this.matricola = matricola;
         this.username = username;
     }
+
+     */
 
     @Override
     public LoginResult validLogin(String username, String password)
