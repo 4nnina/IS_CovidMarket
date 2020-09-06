@@ -18,12 +18,12 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="898.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <ImageView fx:id="covidMarketImageView" fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
+            <ImageView fx:id="covidMarketImageView" fitHeight="116.0" fitWidth="181.0" layoutX="26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../img/logo.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="carrelloImageView" fitHeight="70.0" fitWidth="70.0" layoutX="480.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
+            <ImageView fx:id="carrelloImageView" fitHeight="70.0" fitWidth="70.0" layoutX="480.0" layoutY="10.0" onMousePressed="#carrelloButtonHandler" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
                <image>
                   <Image url="@../img/carrello.jpg" />
                </image>
@@ -84,7 +84,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0" style="-fx-background-color: #ddfaf7;">
                      <children>
-                        <ListView fx:id="itemListView" layoutX="7.0" prefHeight="470.0" prefWidth="489.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0" />
+                        <ListView fx:id="itemListView" layoutX="7.0" prefHeight="470.0" prefWidth="489.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
                         <Spinner fx:id="quantitySpinner" editable="true" layoutX="596.0" layoutY="318.0" prefHeight="25.0" prefWidth="60.0" />
                         <Label layoutX="507.0" layoutY="354.0" text="Prezzo totale:" />
                         <Label layoutX="618.0" layoutY="353.0" text="Label" />

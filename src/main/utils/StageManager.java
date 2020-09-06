@@ -44,6 +44,7 @@ public class StageManager
         initStage(Stages.ModificaUtente, "Covid Market - Modifica", PATH_FXML + "modificaUtente.fxml");
         initStage(Stages.Profilo, "Covid Market - Profilo", PATH_FXML + "profilo.fxml");
         initStage(Stages.Tessera, "Covid Market - Carta Fedeltà", PATH_FXML + "saldoPunti_tessera.fxml");
+        initStage(Stages.Carrello, "Covid Market - Carrello", PATH_FXML + "carrello.fxml");
     }
 
     public void initStage(Stages target, String title, String filename)

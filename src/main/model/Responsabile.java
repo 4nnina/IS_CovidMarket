@@ -13,24 +13,15 @@ public class Responsabile extends Persona implements Serializable
     private int matricola;
     private String username;
 
-    protected Responsabile(Builder<?> builder) {
-        super(builder);
-    }
-
-    /*
-    public Responsabile(String nome, String cognome, String indirizzo, String citta, String telefono,
-                        String email, int CAP, int passwordHash, Date dataDiNascita, String luogoDiNascita,
-                        EnumSet<Reparto> repartiGestiti, int matricola, String username)
+    protected Responsabile(Builder builder)
     {
-        super(nome, cognome, indirizzo, citta, telefono, email, CAP, passwordHash);
-        this.luogoDiNascita = luogoDiNascita;
-        this.repartiGestiti = repartiGestiti;
-        this.dataDiNascita = dataDiNascita;
-        this.matricola = matricola;
-        this.username = username;
+        super(builder);
+        this.dataDiNascita = builder.dataDiNascita;
+        this.luogoDiNascita = builder.luogoDiNascita;
+        this.repartiGestiti = builder.repartiGestiti.clone();
+        this.matricola = builder.matricola;
+        this.username = builder.username;
     }
-
-     */
 
     @Override
     public LoginResult validLogin(String username, String password)
@@ -49,5 +40,52 @@ public class Responsabile extends Persona implements Serializable
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj) && this.matricola != ((Responsabile)obj).matricola;
+    }
+
+    /**
+     * Builder pattern per il responsabile
+     */
+    public static class Builder extends Persona.Builder<Responsabile.Builder>
+    {
+        private Date dataDiNascita;
+        private String luogoDiNascita;
+        private EnumSet<Reparto> repartiGestiti;
+        private int matricola;
+        private String username;
+
+        @Override
+        public Responsabile build() {
+            return new Responsabile(this);
+        }
+
+        @Override
+        protected Responsabile.Builder self() {
+            return this;
+        }
+
+        public Builder setDataDiNascita(Date dataDiNascita) {
+            this.dataDiNascita = dataDiNascita;
+            return this;
+        }
+
+        public Builder setLuogoDiNascita(String luogoDiNascita) {
+            this.luogoDiNascita = luogoDiNascita;
+            return this;
+        }
+
+        public Builder setRepartiGestiti(EnumSet<Reparto> repartiGestiti) {
+            this.repartiGestiti = repartiGestiti;
+            return this;
+        }
+
+        public Builder setMatricola(int matricola) {
+            this.matricola = matricola;
+            return this;
+        }
+
+        public Builder setUsername(String username) {
+            this.username = username;
+            return this;
+        }
     }
 }

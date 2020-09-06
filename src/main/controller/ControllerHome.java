@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.model.*;
 import main.storage.Database;
@@ -72,7 +73,9 @@ public class ControllerHome extends Controller
         ordinaComboBox.getItems().addAll(Ordinamento.values());
         ordinaComboBox.getSelectionModel().select(0);
 
+        // Aggiunge eventi
         filtraButton.addEventHandler(ActionEvent.ACTION, this::filtraButtonHandler);
+        carrelloImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, this::carrelloButtonHandler);
     }
 
     /**
@@ -133,7 +136,7 @@ public class ControllerHome extends Controller
             return true;
         });
 
-        //Ordina in base al filtro
+        //Riordina in base all'ordinamento
         SortedList<Prodotto> prodottiOrdinati = prodottiFiltrati.sorted((o1, o2) ->
         {
             switch (ordinaComboBox.getSelectionModel().getSelectedItem())
@@ -150,5 +153,14 @@ public class ControllerHome extends Controller
         });
 
         itemListView.setItems(prodottiOrdinati);
+    }
+
+    /**
+     * Passa alla schermata del carrello
+     */
+    @FXML
+    private void carrelloButtonHandler(MouseEvent e)
+    {
+        stageManager.swap(Stages.Carrello);
     }
 }
