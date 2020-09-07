@@ -20,6 +20,38 @@ public abstract class Persona implements Serializable
         this.passwordHash = builder.passwordHash;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getCAP() {
+        return CAP;
+    }
+
+    public int getPasswordHash() {
+        return passwordHash;
+    }
+
     @Override
     public boolean equals(Object obj)
     {

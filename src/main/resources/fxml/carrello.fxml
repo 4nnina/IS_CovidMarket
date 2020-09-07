@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.20603015075376885" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerCarrello">
+<SplitPane dividerPositions="0.18421052631578946" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerCarrello">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="898.0" style="-fx-background-color: #ddfaf7;">
          <children>
@@ -24,17 +24,12 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.leftAnchor="560.6666666666666" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="127.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="1104.0" AnchorPane.topAnchor="81.0">
                <image>
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="662.0" layoutY="22.0" text="Ciao, " textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="nomeutenteLabel" layoutX="641.0" layoutY="52.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="usernameLabel" layoutX="174.0" layoutY="111.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="174.0" AnchorPane.topAnchor="111.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -42,12 +37,12 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <ListView fx:id="carrelloListView" layoutX="-1.0" prefHeight="472.0" prefWidth="661.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <Button fx:id="confermaOrdinaButton" layoutX="698.0" layoutY="414.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #f27777;" text="Conferma Ordine" />
-            <DatePicker fx:id="datePicker" layoutX="693.0" layoutY="50.0" prefHeight="25.0" prefWidth="174.0" />
-            <Label layoutX="698.0" layoutY="25.0" text="Data di consegna" />
-            <Label layoutX="698.0" layoutY="388.0" text="Costo totale" />
-            <Label fx:id="costoTotaleLabel" layoutX="783.0" layoutY="388.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" />
+            <ListView fx:id="carrelloListView" layoutX="-1.0" prefHeight="638.0" prefWidth="1035.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="confermaOrdinaButton" layoutX="1063.0" layoutY="586.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="195.0" style="-fx-background-color: #f27777;" text="Conferma Ordine" />
+            <DatePicker fx:id="datePicker" layoutX="1063.0" layoutY="59.0" prefHeight="25.0" prefWidth="195.0" />
+            <Label layoutX="1063.0" layoutY="35.0" text="Data di consegna" />
+            <Label layoutX="1063.0" layoutY="561.0" text="Costo totale" />
+            <Label fx:id="costoTotaleLabel" layoutX="1148.0" layoutY="561.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" />
          </children></AnchorPane>
   </items>
 </SplitPane>

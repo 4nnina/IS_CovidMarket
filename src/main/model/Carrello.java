@@ -2,13 +2,14 @@ package main.model;
 
 import javafx.util.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
 // Permette di collezionare prodotti
-public class Carrello
+public class Carrello implements Serializable
 {
     // Prodotti presenti al momento
     private HashMap<Prodotto, Pair<Prodotto, Integer>> prodotti = new HashMap<>();

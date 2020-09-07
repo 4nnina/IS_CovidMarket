@@ -1,5 +1,7 @@
 package main.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -37,6 +39,8 @@ public class ControllerHome extends Controller implements Initializable
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private ListView<Prodotto> itemListView;
     @FXML private Label carrelloCountLabel;
+    @FXML private Label usernameLabel;
+    @FXML private Label costoQuantitaLabel;
 
     // Contiene gli elementi attuali da visualizzare del database
     private ObservableList<Prodotto> prodottoObservableList;
@@ -47,6 +51,7 @@ public class ControllerHome extends Controller implements Initializable
     public void onSwap(Persona target)
     {
         this.currentUser = (Utente)target;
+        usernameLabel.setText(currentUser.getNome());
 
         Database database = Database.getInstance();
 
@@ -61,11 +66,33 @@ public class ControllerHome extends Controller implements Initializable
         carrelloCountLabel.setText(String.valueOf(count));
     }
 
+    // Aggiorna costoQuantitaLabel
+    private void updateQuantityCostLabel(int newValue)
+    {
+        // Cambia costo della quantità
+        Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
+        if (prodotto != null)
+        {
+            int cost = newValue * prodotto.getPrezzo();
+            costoQuantitaLabel.setText(cost + " EUR");
+        }
+        else
+            costoQuantitaLabel.setText("");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         prodottoObservableList = FXCollections.observableArrayList();
+
+        // Spinner quantita
         quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
+        quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue)
+                -> updateQuantityCostLabel(newValue));
+
+        // Quando cambia l'elemento selezionato aggiorna il costo per quantita
+        itemListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1)
+                -> updateQuantityCostLabel(quantitySpinner.getValue()));
 
         // Carica tutti i reparti
         repartoComboBox.getItems();
@@ -167,8 +194,7 @@ public class ControllerHome extends Controller implements Initializable
      * Passa alla schermata del carrello
      */
     @FXML
-    private void carrelloButtonHandler(MouseEvent e)
-    {
+    private void carrelloButtonHandler(MouseEvent e) {
         stageManager.swap(Stages.Carrello);
     }
 }

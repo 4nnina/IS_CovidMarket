@@ -28,6 +28,7 @@ public class ControllerCarrello extends Controller implements Initializable
     @FXML private ListView<Pair<Prodotto, Integer>> carrelloListView;
     @FXML private Button confermaOrdinaButton;
     @FXML private DatePicker datePicker;
+    @FXML private Label usernameLabel;
 
     //Contiene gli items del carrello corrente
     ObservableList<Pair<Prodotto, Integer>> bundles;
@@ -41,6 +42,7 @@ public class ControllerCarrello extends Controller implements Initializable
     public void onSwap(Persona target)
     {
         Utente user = (Utente)target;
+        usernameLabel.setText(user.getNome());
 
         bundles = FXCollections.observableArrayList(user.getCarrello().getProdotti());
         carrelloListView.setItems(bundles);
