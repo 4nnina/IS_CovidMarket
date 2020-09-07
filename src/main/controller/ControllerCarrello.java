@@ -28,6 +28,7 @@ public class ControllerCarrello extends Controller implements Initializable
     @FXML private Label puntiSpesaLabel;
     @FXML private Label saldoPuntiLabel;
     @FXML private Button eliminaButton;
+    @FXML private ComboBox<String> nomeutenteCombobox;
 
     //Contiene gli items del carrello corrente
     ObservableList<Carrello.Coppia> bundles;
@@ -51,6 +52,10 @@ public class ControllerCarrello extends Controller implements Initializable
         confermaOrdinaButton.setOnMouseClicked(foo -> confermaSpesaHandler());
 
         saldoPuntiLabel.setText("");
+
+       //nomeutenteCombobox.setPromptText(currentUser.getNome());
+        //nomeutenteCombobox.getItems().addAll("Profilo","Modifica Profilo", "Tessera Fedeltà");
+
     }
 
     private void updateInfoSpesa()

@@ -57,8 +57,8 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
             quantitaLabel.setText(String.valueOf(prodotto.getQuantitaDisponibile()));
             prodottoImageView.setImage(prodotto.getImage());
 
-            setPrefWidth(515);
-            setPrefHeight(180);
+            setPrefWidth(485);
+            setPrefHeight(100);
 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             setGraphic(pane);
