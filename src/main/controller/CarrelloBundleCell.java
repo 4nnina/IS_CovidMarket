@@ -2,34 +2,34 @@ package main.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Pair;
+import main.model.Carrello;
 import main.model.Prodotto;
-import main.model.Utente;
 
 import java.io.IOException;
 
-public class ProdottoCatalogoCell extends ListCell<Prodotto>
+public class CarrelloBundleCell extends ListCell<Pair<Prodotto, Integer>>
 {
-    @FXML private Pane pane;
+    @FXML private AnchorPane pane;
 
     @FXML private Label nomeLabel;
-    @FXML private Label prezzoLabel;
     @FXML private Label marcaLabel;
+    @FXML private Label prezzoLabel;
     @FXML private Label quantitaLabel;
 
     @FXML private ImageView prodottoImageView;
 
     // Carica stile fxml
-    public ProdottoCatalogoCell()
+    public CarrelloBundleCell()
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/prodottoCatalogo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/prodottoBundle.fxml"));
             loader.setController(this);
             loader.load();
         }
@@ -41,24 +41,29 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
     }
 
     @Override
-    protected void updateItem(Prodotto prodotto, boolean empty)
+    protected void updateItem(Pair<Prodotto, Integer> bundle, boolean empty)
     {
-        super.updateItem(prodotto, empty);
+        super.updateItem(bundle, empty);
         if(empty)
         {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
 
         } else {
+
             // Setta informazioni sull'item
-            nomeLabel.setText(prodotto.getNome());
-            prezzoLabel.setText(String.valueOf(prodotto.prezzo));
-            marcaLabel.setText(prodotto.getMarca());
-            quantitaLabel.setText(String.valueOf(prodotto.getQuantitaDisponibile()));
-            prodottoImageView.setImage(prodotto.getImage());
+            nomeLabel.setText(bundle.getKey().getNome());
+            marcaLabel.setText(bundle.getKey().getMarca());
+            quantitaLabel.setText(String.valueOf(bundle.getValue()));
+
+            int prezzoTotale = bundle.getKey().getPrezzo() * bundle.getValue();
+            prezzoLabel.setText(String.valueOf(prezzoTotale));
+
+            prodottoImageView.setPreserveRatio(true);
+            prodottoImageView.setImage(bundle.getKey().getImage());
 
             setPrefWidth(515);
-            setPrefHeight(180);
+            setPrefHeight(96);
 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             setGraphic(pane);

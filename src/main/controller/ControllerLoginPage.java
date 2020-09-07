@@ -10,7 +10,9 @@ import main.model.Utente;
 import main.utils.StageManager;
 
 import javax.xml.crypto.Data;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 public class ControllerLoginPage extends Controller {
@@ -112,6 +114,4 @@ public class ControllerLoginPage extends Controller {
             }
         }
     }
-
-
 }

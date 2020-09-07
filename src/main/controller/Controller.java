@@ -1,5 +1,6 @@
 package main.controller;
 
+import javafx.fxml.Initializable;
 import main.model.Persona;
 import main.utils.StageManager;
 

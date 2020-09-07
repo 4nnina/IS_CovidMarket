@@ -10,7 +10,7 @@ public class Utente extends Persona implements Serializable
     private MetodoPagamento metodoPagamento;
 
     // Items che non sono ancora stati confermati (prodotto, quantita)
-    public HashMap<Prodotto, Integer> carrelloCorrente = new HashMap<>();
+    private Carrello carrelloCorrente = new Carrello();
 
     private Utente(Builder builder)
     {
@@ -31,6 +31,10 @@ public class Utente extends Persona implements Serializable
             }
         }
         return LoginResult.Failure;
+    }
+
+    public Carrello getCarrello() {
+        return this.carrelloCorrente;
     }
 
     /**

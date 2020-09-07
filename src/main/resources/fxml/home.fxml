@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.20603015075376885" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerHome">
+<SplitPane dividerPositions="0.20603015075376885" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerHome">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="898.0" style="-fx-background-color: #ddfaf7;">
          <children>
@@ -28,29 +28,25 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.leftAnchor="560.6666666666666" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="156.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="1075.0" AnchorPane.topAnchor="66.0">
                <image>
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="662.0" layoutY="22.0" text="Ciao, " textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="nomeutenteLabel" layoutX="126.0" layoutY="118.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textAlignment="CENTER" textFill="#f27777" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="118.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="nomeutenteLabel" layoutX="641.0" layoutY="52.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label fx:id="carrelloCountLabel" layoutX="1245.0" layoutY="72.0" text="0" textAlignment="RIGHT" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <SplitPane dividerPositions="0.25" layoutX="21.0" layoutY="33.0" prefHeight="410.0" prefWidth="868.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.17398119122257052" layoutX="21.0" layoutY="33.0" prefHeight="410.0" prefWidth="868.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="240.0" style="-fx-background-color: #ddfaf7;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="629.0" prefWidth="293.0" style="-fx-background-color: #ddfaf7;">
                      <children>
-                        <ComboBox fx:id="repartoComboBox" layoutX="68.0" layoutY="48.0" prefHeight="25.0" prefWidth="101.0" AnchorPane.bottomAnchor="397.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="48.0" />
+                        <ComboBox fx:id="repartoComboBox" layoutX="68.0" layoutY="48.0" prefHeight="25.0" prefWidth="134.0" AnchorPane.bottomAnchor="556.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="48.0" />
                         <Label layoutX="93.0" layoutY="14.0" prefHeight="19.0" prefWidth="42.0" text="FILTRI" textFill="#f27777">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
@@ -84,16 +80,16 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0" style="-fx-background-color: #ddfaf7;">
                      <children>
-                        <ListView fx:id="itemListView" layoutX="7.0" prefHeight="470.0" prefWidth="489.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                        <Spinner fx:id="quantitySpinner" editable="true" layoutX="596.0" layoutY="318.0" prefHeight="25.0" prefWidth="60.0" />
-                        <Label layoutX="507.0" layoutY="354.0" text="Prezzo totale:" />
-                        <Label layoutX="618.0" layoutY="353.0" text="Label" />
-                        <Label layoutX="505.0" layoutY="321.0" text="QUANTITA'" textFill="#f27777">
+                        <ListView fx:id="itemListView" layoutX="-78.0" prefHeight="619.0" prefWidth="843.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                        <Spinner fx:id="quantitySpinner" editable="true" layoutX="956.0" layoutY="462.0" prefHeight="25.0" prefWidth="60.0" />
+                        <Label layoutX="867.0" layoutY="498.0" text="Prezzo totale:" />
+                        <Label layoutX="978.0" layoutY="497.0" text="Label" />
+                        <Label layoutX="865.0" layoutY="465.0" text="QUANTITA'" textFill="#f27777">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="compraButton" layoutX="559.0" layoutY="400.0" mnemonicParsing="false" onAction="#onCompraButton" prefHeight="47.0" prefWidth="72.0" style="-fx-background-color: #f27777;" text="Aggiungi &#10;al carrello" />
+                        <Button fx:id="compraButton" layoutX="866.0" layoutY="544.0" mnemonicParsing="false" onAction="#onCompraButton" prefHeight="47.0" prefWidth="161.0" style="-fx-background-color: #f27777;" text="Aggiungi &#10;al carrello" />
                      </children>
                   </AnchorPane>
               </items>

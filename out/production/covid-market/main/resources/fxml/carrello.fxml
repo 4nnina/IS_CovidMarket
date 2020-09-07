@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -42,10 +42,12 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <ListView layoutX="-1.0" prefHeight="472.0" prefWidth="661.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <Button layoutX="693.0" layoutY="410.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="185.0" style="-fx-background-color: #f27777;" text="Conferma Ordine" />
-            <Spinner layoutX="693.0" layoutY="53.0" prefHeight="25.0" prefWidth="185.0" />
-            <Label layoutX="693.0" layoutY="30.0" text="Modifica la quantità" />
+            <ListView fx:id="carrelloListView" layoutX="-1.0" prefHeight="472.0" prefWidth="661.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="confermaOrdinaButton" layoutX="698.0" layoutY="414.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #f27777;" text="Conferma Ordine" />
+            <DatePicker fx:id="datePicker" layoutX="693.0" layoutY="50.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="698.0" layoutY="25.0" text="Data di consegna" />
+            <Label layoutX="698.0" layoutY="388.0" text="Costo totale" />
+            <Label fx:id="costoTotaleLabel" layoutX="783.0" layoutY="388.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" />
          </children></AnchorPane>
   </items>
 </SplitPane>

@@ -10,22 +10,23 @@ public class Prodotto implements Serializable
     private Reparto reparto;
     public String nome, marca;
     private int quantitaPerConfezione;
-    private Image image;
     private int quantitaDisponibile;
     private EnumSet<Attributo> attributi;
     public int prezzo;
 
-    private Prodotto(Reparto reparto, String nome, String marca, int prezzo,
-                    int quantitaPerConfezione, Image image, int quantitaDisponibile, EnumSet<Attributo> attributi)
+    private transient Image image = null;
+    private String imagePath;
+
+    public Prodotto(Builder builder)
     {
-        this.reparto = reparto;
-        this.nome = nome;
-        this.marca = marca;
-        this.quantitaPerConfezione = quantitaPerConfezione;
-        this.image = image;
-        this.quantitaDisponibile = quantitaDisponibile;
-        this.attributi = attributi;
-        this.prezzo = prezzo;
+        this.reparto = builder.reparto;
+        this.nome = builder.nome;
+        this.marca = builder.marca;
+        this.quantitaDisponibile = builder.quantitaDisponibile;
+        this.quantitaPerConfezione = builder.quantitaPerConfezione;
+        this.attributi = builder.attributi.clone();
+        this.prezzo = builder.prezzo;
+        this.imagePath = builder.imagePath;
     }
 
     public Reparto getReparto() {
@@ -40,9 +41,6 @@ public class Prodotto implements Serializable
     public int getQuantitaPerConfezione() {
         return quantitaPerConfezione;
     }
-    public Image getImage() {
-        return image;
-    }
     public int getQuantitaDisponibile() {
         return quantitaDisponibile;
     }
@@ -51,6 +49,27 @@ public class Prodotto implements Serializable
     }
     public int getPrezzo() {
         return prezzo;
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    // Carica immagine se necessario
+    public Image getImage()
+    {
+        if (image == null)
+        {
+            try
+            {
+                image = new Image(imagePath, true);
+            }
+            catch (Exception e)
+            {
+                System.out.println("Errore caricamento immagine da " + imagePath);
+                e.printStackTrace();
+            }
+        }
+        return image;
     }
 
     /**
@@ -84,7 +103,7 @@ public class Prodotto implements Serializable
         private String nome = "NULL";
         private String marca = "NULL";
         private int quantitaPerConfezione = 0;
-        private Image image = null;
+        private String imagePath = "";
         private int quantitaDisponibile = 0;
         private EnumSet<Attributo> attributi = EnumSet.noneOf(Attributo.class);
         private int prezzo = 0;
@@ -109,8 +128,8 @@ public class Prodotto implements Serializable
             return this;
         }
 
-        public Builder setImage(Image image) {
-            this.image = image;
+        public Builder setImagePath(String imagePath) {
+            this.imagePath = imagePath;
             return this;
         }
 
@@ -135,16 +154,7 @@ public class Prodotto implements Serializable
         }
 
         public Prodotto build() {
-            return new Prodotto(
-                    reparto,
-                    nome,
-                    marca,
-                    prezzo,
-                    quantitaPerConfezione,
-                    image,
-                    quantitaDisponibile,
-                    attributi
-            );
+            return new Prodotto(this);
         }
     }
 }

@@ -3,6 +3,7 @@ package main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.controller.Stages;
 import main.model.*;
@@ -44,17 +45,30 @@ public class Program extends Application
         database.getUtenti().add(sis);
 
         database.getProdotti().add(new Prodotto.Builder()
-                .setNome("Banana")
-                .setMarca("dwad")
+                .setNome("Banane")
+                .setMarca("Chiquila")
                 .addAttributo(Attributo.SenzaLatte)
+                .addAttributo(Attributo.Vegano)
+                .addAttributo(Attributo.Biologico)
                 .addAttributo(Attributo.Vegetariano)
-                .setImage(null)
+                .setImagePath("main/resources/images/banane.png")
                 .setPrezzo(5)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Frutta)
                 .setQuantitaDisponibile(4)
                 .setQuantitaPerConfezione(4)
-                .build()
-        );
+                .build());
+
+        database.getProdotti().add(new Prodotto.Builder()
+                .setNome("Gocciole")
+                .setMarca("Pavesi")
+                .addAttributo(Attributo.Vegetariano)
+                .addAttributo(Attributo.Vegano)
+                .setImagePath("main/resources/images/gocciole.png")
+                .setPrezzo(2)
+                .setReparto(Reparto.Biscotti)
+                .setQuantitaDisponibile(999)
+                .setQuantitaPerConfezione(30)
+                .build());
 
         StageManager stageManager = new StageManager(primaryStage);
         stageManager.swap(Stages.Login);

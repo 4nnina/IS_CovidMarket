@@ -6,6 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,9 +14,11 @@ import javafx.scene.layout.VBox;
 import main.model.*;
 import main.storage.Database;
 
+import java.net.URL;
 import java.util.EnumSet;
+import java.util.ResourceBundle;
 
-public class ControllerHome extends Controller
+public class ControllerHome extends Controller implements Initializable
 {
     private enum Ordinamento
     {
@@ -33,6 +36,7 @@ public class ControllerHome extends Controller
     @FXML private Button compraButton;
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private ListView<Prodotto> itemListView;
+    @FXML private Label carrelloCountLabel;
 
     // Contiene gli elementi attuali da visualizzare del database
     private ObservableList<Prodotto> prodottoObservableList;
@@ -51,10 +55,14 @@ public class ControllerHome extends Controller
 
         itemListView.getItems().setAll(prodottoObservableList);
         itemListView.setCellFactory(__list -> new ProdottoCatalogoCell());
+
+        // Setta numero di elementi nel carrello
+        int count = currentUser.getCarrello().getProdotti().size();
+        carrelloCountLabel.setText(String.valueOf(count));
     }
 
-    @FXML
-    private void initialize()
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
     {
         prodottoObservableList = FXCollections.observableArrayList();
         quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
@@ -87,12 +95,12 @@ public class ControllerHome extends Controller
         Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
         if (prodotto != null)
         {
-            if(!currentUser.carrelloCorrente.containsKey(prodotto))
-                currentUser.carrelloCorrente.put(prodotto, 0);
-
-            Integer oldValue = currentUser.carrelloCorrente.get(prodotto);
             Integer buyValue = quantitySpinner.getValue().intValue();
-            currentUser.carrelloCorrente.replace(prodotto, oldValue + buyValue);
+            currentUser.getCarrello().addProdotto(prodotto, buyValue);
+
+            // Setta numero di elementi nel carrello
+            int count = currentUser.getCarrello().getProdotti().size();
+            carrelloCountLabel.setText(String.valueOf(count));
         }
     }
 
