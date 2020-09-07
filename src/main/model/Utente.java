@@ -37,12 +37,23 @@ public class Utente extends Persona implements Serializable
         return this.carrelloCorrente;
     }
 
+    public Carrello resetCarrello()
+    {
+        var result = carrelloCorrente;
+        carrelloCorrente = new Carrello();
+        return result;
+    }
+
+    public CartaFedelta getCartaFedelta() {
+        return this.cartaFedelta;
+    }
+
     /**
      * Builder pattern per l'utente
      */
     public static class Builder extends Persona.Builder<Builder>
     {
-        private CartaFedelta cartaFedelta;
+        private CartaFedelta cartaFedelta = null;
         private MetodoPagamento metodoPagamento;
 
         @Override

@@ -7,11 +7,10 @@ public class CartaFedelta implements Serializable
 {
     public String ID;
     public Date dataEmissione;
-    public int punti;
+    public int punti = 0;
 
-    public CartaFedelta(String ID, Date dataEmissione, int punti){
+    public CartaFedelta(String ID, Date dataEmissione) {
         this.ID = ID;
         this.dataEmissione = dataEmissione;
-        this.punti = punti;
     }
 }

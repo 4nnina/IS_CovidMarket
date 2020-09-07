@@ -13,13 +13,14 @@ import main.model.Prodotto;
 
 import java.io.IOException;
 
-public class CarrelloBundleCell extends ListCell<Pair<Prodotto, Integer>>
+public class CarrelloBundleCell extends ListCell<Carrello.Coppia>
 {
     @FXML private AnchorPane pane;
 
     @FXML private Label nomeLabel;
     @FXML private Label marcaLabel;
     @FXML private Label prezzoLabel;
+    @FXML private Label prezzoTotaleLabel;
     @FXML private Label quantitaLabel;
 
     @FXML private ImageView prodottoImageView;
@@ -41,7 +42,7 @@ public class CarrelloBundleCell extends ListCell<Pair<Prodotto, Integer>>
     }
 
     @Override
-    protected void updateItem(Pair<Prodotto, Integer> bundle, boolean empty)
+    protected void updateItem(Carrello.Coppia bundle, boolean empty)
     {
         super.updateItem(bundle, empty);
         if(empty)
@@ -52,15 +53,16 @@ public class CarrelloBundleCell extends ListCell<Pair<Prodotto, Integer>>
         } else {
 
             // Setta informazioni sull'item
-            nomeLabel.setText(bundle.getKey().getNome());
-            marcaLabel.setText(bundle.getKey().getMarca());
-            quantitaLabel.setText(String.valueOf(bundle.getValue()));
+            nomeLabel.setText(bundle.prodotto.getNome());
+            marcaLabel.setText(bundle.prodotto.getMarca());
+            quantitaLabel.setText(String.valueOf(bundle.quantita));
 
-            int prezzoTotale = bundle.getKey().getPrezzo() * bundle.getValue();
-            prezzoLabel.setText(String.valueOf(prezzoTotale));
+            prezzoLabel.setText(String.valueOf(bundle.prodotto.prezzo) + " €");
+            int prezzoTotale = bundle.prodotto.getPrezzo() * bundle.quantita;
+            prezzoTotaleLabel.setText(String.valueOf(prezzoTotale) + " €");
 
             prodottoImageView.setPreserveRatio(true);
-            prodottoImageView.setImage(bundle.getKey().getImage());
+            prodottoImageView.setImage(bundle.prodotto.getImage());
 
             setPrefWidth(515);
             setPrefHeight(96);

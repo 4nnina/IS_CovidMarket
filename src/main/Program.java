@@ -37,7 +37,7 @@ public class Program extends Application
                 .setIndirizzo("sis sis 29", "sis", 36071)
                 .setEmail("sis@gmail.com")
                 .setTelefono("3779927407")
-                .setCartaFedelta(null)
+                .setCartaFedelta(new CartaFedelta("", Calendar.getInstance().getTime()))
                 .setMetodoPagamento(MetodoPagamento.PayPal)
                 .setPassword("sis")
                 .build();
@@ -71,7 +71,9 @@ public class Program extends Application
                 .build());
 
         StageManager stageManager = new StageManager(primaryStage);
-        stageManager.swap(Stages.Login);
+
+        stageManager.setTargetUser(sis);
+        stageManager.swap(Stages.HomeUtente);
     }
 
     @Override
