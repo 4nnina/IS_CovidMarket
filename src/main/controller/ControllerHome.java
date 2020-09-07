@@ -55,7 +55,7 @@ public class ControllerHome extends Controller implements Initializable
 
         Database database = Database.getInstance();
 
-        prodottoObservableList.clear();
+        prodottoObservableList = FXCollections.observableArrayList();
         prodottoObservableList.setAll(database.getProdotti());
 
         itemListView.getItems().setAll(prodottoObservableList);
