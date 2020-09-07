@@ -1,4 +1,0 @@
-verdino #ddfaf7
-verdino chiaro chiaro #ecfbfa
-rosso  #f27777
-bottoni pigiati #f1a9a9
