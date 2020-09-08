@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.206" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerCarrello">
+<SplitPane dividerPositions="0.206" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserCart">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="898.0" style="-fx-background-color: #ddfaf7;">
          <children>
@@ -57,11 +57,11 @@
                   <Font size="14.0" />
                </font></Button>
             <Label layoutX="717.0" layoutY="330.0" text="Costo totale" />
-            <Label fx:id="costoTotaleLabel" layoutX="801.0" layoutY="330.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" wrapText="true" />
             <Button fx:id="eliminaButton" layoutX="734.0" layoutY="62.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: #f27777;" text="Elimina" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="62.0">
                <font>
                   <Font size="14.0" />
                </font></Button>
+            <Label fx:id="costoTotaleLabel" layoutX="801.0" layoutY="330.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" wrapText="true" />
             <Label layoutX="719.0" layoutY="351.0" text="Punti spesa" AnchorPane.leftAnchor="719.0" AnchorPane.topAnchor="351.0" />
             <Label fx:id="puntiSpesaLabel" layoutX="796.0" layoutY="349.0" prefHeight="17.0" prefWidth="84.0" text="puntispesa" textAlignment="RIGHT" wrapText="true" AnchorPane.topAnchor="351.0" />
             <Label layoutX="719.0" layoutY="372.0" text="Saldo punti" />

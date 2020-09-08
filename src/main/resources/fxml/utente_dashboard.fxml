@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserDashboard">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserDashboard">
    <children>
-      <SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ddfaf7;">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Dashboard" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                  <ImageView fitHeight="116.0" fitWidth="181.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="818.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/utente.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="usernameLabel" layoutX="797.0" layoutY="68.0" prefHeight="17.0" prefWidth="90.0" text="sis" textFill="#f27777" wrapText="true">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="profileBtn" layoutX="524.0" layoutY="17.0" mnemonicParsing="false" onAction="#profileBtnHandle" text="Profilo" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="17.0" />
-                  <Button fx:id="homeBtn" layoutX="466.0" layoutY="17.0" mnemonicParsing="false" onAction="#homeBtnHandle" text="Home" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="17.0" />
+                  <ChoiceBox fx:id="sectionChoiceBox" layoutX="9.0" layoutY="16.0" prefHeight="87.0" prefWidth="146.0" style="-fx-background-color: transparent;" />
                </children>
             </AnchorPane>
             <Pane fx:id="gatePane" prefHeight="200.0" prefWidth="200.0" />

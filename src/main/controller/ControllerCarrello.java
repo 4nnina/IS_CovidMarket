@@ -1,8 +1,5 @@
 package main.controller;
 
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import main.model.*;
 import main.storage.Database;
 
@@ -154,8 +150,8 @@ public class ControllerCarrello extends Controller implements Initializable
             return;
         }
 
-        PopupCarrello popupCarrello = new PopupCarrello(currentUser);
-        Optional<DatiConsegna> datiConsegna = popupCarrello.show();
+        PopupConsegna popupConsegna = new PopupConsegna(currentUser);
+        Optional<DatiConsegna> datiConsegna = popupConsegna.show();
         if (datiConsegna.isPresent())
         {
             // Aggiorna saldo punti

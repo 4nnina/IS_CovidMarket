@@ -17,25 +17,20 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
+public class PopupConsegna extends Popup<DatiConsegna> implements Initializable
 {
-    @FXML
-    private DatePicker datePicked;
+    @FXML private DatePicker datePicked;
+    @FXML private ChoiceBox<String> orarioChoiceBox;
+    @FXML private ChoiceBox<String> pagamentoChoiceBox;
 
-    @FXML
-    private ChoiceBox<String> orarioChoiceBox;
-
-    @FXML
-    private ChoiceBox<String> pagamentoChoiceBox;
-
-    @FXML
-    private Button confermaButton;
+    @FXML private Button confermaButton;
 
     private Utente currentUser;
-    public PopupCarrello(Utente currentUser)
+
+    public PopupConsegna(Utente currentUser)
     {
+        super("../resources/fxml/consegna.fxml");
         this.currentUser = currentUser;
-        loadFXML(this, "../resources/fxml/consegna.fxml");
     }
 
     @Override
@@ -53,7 +48,11 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
                         || date.getDayOfWeek() == DayOfWeek.SUNDAY);
             }
         });
+    }
 
+    @Override
+    protected void showEvent()
+    {
         // Metodo di pagamento normale (esclude 'Nessuno')
         for(int i = 1; i < MetodoPagamento.values().length; ++i) {
             MetodoPagamento metodoPagamento = MetodoPagamento.values()[i];
@@ -77,7 +76,7 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
 
     // Ritorna risultato
     @FXML
-    void confermaButtonHandler(ActionEvent event) {
+    private void confermaButtonPress(ActionEvent event) {
 
         // Una data deve essere selezionata
         LocalDate localDate = datePicked.getValue();
@@ -90,7 +89,7 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
                     [orarioChoiceBox.getSelectionModel().getSelectedIndex()];
 
             DatiConsegna datiConsegna = new DatiConsegna(localDate, metodoPagamento, fasciaOraria);
-            returnResult(datiConsegna);
+            close(datiConsegna);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Selezionare data di consegna");
@@ -98,5 +97,8 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
         }
     }
 
-
+    @Override
+    protected Popup<DatiConsegna> self() {
+        return this;
+    }
 }

@@ -13,19 +13,14 @@ public abstract class Popup<T> implements IPopup<T>
     private Stage dialog;
     private Optional<T> result;
 
-    public Popup()
+    public Popup(String filename)
     {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
+        loader.setController(self());
+
         dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
-
-        result = Optional.empty();
-    }
-
-    protected void loadFXML(Object controller, String filename)
-    {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
-        loader.setController(controller);
 
         try { dialog.setScene(new Scene(loader.load())); }
         catch (Exception e)
@@ -33,18 +28,27 @@ public abstract class Popup<T> implements IPopup<T>
             System.err.println("Impossibile caricare FXML");
             e.printStackTrace();
         }
+
+        result = Optional.empty();
     }
 
     // Setta il risultato di questo popup
-    protected void returnResult(T value)
+    protected void close(T value)
     {
         result = Optional.of(value);
         dialog.close();
     }
 
+    // Ritorna 'this' nella classe derivata
+    protected abstract Popup<T> self();
+
+    // Evento quando visualiziamo
+    protected void showEvent() { }
+
     @Override
     public Optional<T> show()
     {
+        showEvent();
         dialog.showAndWait();
         return result;
     }

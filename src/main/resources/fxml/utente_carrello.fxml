@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="gatePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserCart">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="900.0" style="-fx-background-color: #ddfaf7;">
+         <children>
+            <Spinner fx:id="quantitySpinner" editable="true" layoutX="797.0" layoutY="17.0" prefHeight="14.0" prefWidth="97.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="17.0" />
+            <Label layoutX="714.0" layoutY="21.0" text="QUANTITA'" textFill="#f27777" AnchorPane.rightAnchor="112.66666666666663" AnchorPane.topAnchor="21.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ListView fx:id="cartListView" layoutX="-1.0" prefHeight="641.0" prefWidth="1044.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="confirmButton" layoutX="709.0" layoutY="417.0" mnemonicParsing="false" onAction="#confirmButtonPress" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: #f27777;" text="Conferma Ordine" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="7.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="717.0" layoutY="330.0" text="Costo totale" />
+            <Label fx:id="totalCostLabel" layoutX="801.0" layoutY="330.0" prefHeight="17.0" prefWidth="84.0" text="Label" textAlignment="RIGHT" wrapText="true" />
+            <Button fx:id="deleteButton" layoutX="734.0" layoutY="62.0" mnemonicParsing="false" onAction="#deleteButtonPress" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: #f27777;" text="Elimina" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="719.0" layoutY="351.0" text="Punti spesa" AnchorPane.leftAnchor="719.0" AnchorPane.topAnchor="351.0" />
+            <Label fx:id="cartPointsLabel" layoutX="796.0" layoutY="349.0" prefHeight="17.0" prefWidth="84.0" text="puntispesa" textAlignment="RIGHT" wrapText="true" AnchorPane.topAnchor="351.0" />
+            <Label layoutX="719.0" layoutY="372.0" text="Saldo punti" />
+            <Label fx:id="pointsLabel" layoutX="799.0" layoutY="372.0" prefHeight="17.0" prefWidth="84.0" text="saldopunti" textAlignment="RIGHT" wrapText="true" />
+            <Separator layoutX="712.0" layoutY="112.0" prefHeight="4.0" prefWidth="180.0" AnchorPane.rightAnchor="8.0" />
+            <Separator layoutX="712.0" layoutY="315.0" prefHeight="4.0" prefWidth="180.0" AnchorPane.rightAnchor="8.0" />
+            <Separator layoutX="702.0" layoutY="402.0" prefHeight="4.0" prefWidth="180.0" AnchorPane.rightAnchor="8.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

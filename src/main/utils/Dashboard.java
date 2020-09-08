@@ -59,7 +59,9 @@ public class Dashboard<T extends Enum<T>>
 
         // Controller principale
         primaryStage.setScene(new Scene(dashboardStageData.pane));
-        dashboardStageData.controller.onSwapPane(null);
+        primaryStage.setTitle("Covid Market");
+
+        dashboardStageData.controller.onSwapPane(data);
         primaryStage.show();
     }
 

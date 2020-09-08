@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import main.controller.PopupLogin;
+import main.controller.SectionUser;
 import main.controller.Stages;
 import main.model.*;
 import main.storage.BinaryDeserializer;
@@ -16,33 +18,24 @@ import main.utils.StageManager;
 
 import java.util.Calendar;
 import java.util.EnumSet;
+import java.util.Optional;
 
 public class Program extends Application
 {
     private static final String PATH_DATABASE = "database.bin";
     private static final String PATH_FXML = "../resources/fxml/";
 
-    public enum SectionUtente
-    {
-        Home, Profilo
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        // Dashboard specifica per l'utente
-        Dashboard<SectionUtente> userDashboard = new Dashboard.Builder<SectionUtente>(primaryStage)
-                .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
-                .controllerSection(SectionUtente.Home, PATH_FXML + "utente_home.fxml")
-                .controllerSection(SectionUtente.Profilo, PATH_FXML + "utente_profilo.fxml")
-                .launch(null);
 
-        /*
         Database database = Database.getInstance();
+
         /*
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
+        */
 
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
@@ -97,14 +90,17 @@ public class Program extends Application
                 .setQuantitaPerConfezione(30)
                 .build());
 
-        StageManager stageManager = new StageManager(primaryStage);
-
-        //stageManager.setTargetUser(sis);
-        //stageManager.swap(Stages.HomeUtente);
-
-        stageManager.swap(Stages.Login);
-
-        */
+        PopupLogin popupLogin = new PopupLogin();
+        Optional<Utente> optionUser = popupLogin.show();
+        if (optionUser.isPresent())
+        {
+            // Dashboard specifica per l'utente
+            Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
+                    .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
+                    .controllerSection(SectionUser.Home, PATH_FXML + "utente_home.fxml")
+                    .controllerSection(SectionUser.Carrello, PATH_FXML + "utente_carrello.fxml")
+                    .launch(sis);
+        }
     }
 
     @Override
