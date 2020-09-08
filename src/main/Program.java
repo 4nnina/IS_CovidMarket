@@ -11,6 +11,7 @@ import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
 import main.storage.ISerializer;
+import main.utils.Dashboard;
 import main.utils.StageManager;
 
 import java.util.Calendar;
@@ -19,16 +20,29 @@ import java.util.EnumSet;
 public class Program extends Application
 {
     private static final String PATH_DATABASE = "database.bin";
+    private static final String PATH_FXML = "../resources/fxml/";
+
+    public enum SectionUtente
+    {
+        Home, Profilo
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        // Dashboard specifica per l'utente
+        Dashboard<SectionUtente> userDashboard = new Dashboard.Builder<SectionUtente>(primaryStage)
+                .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
+                .controllerSection(SectionUtente.Home, PATH_FXML + "utente_home.fxml")
+                .controllerSection(SectionUtente.Profilo, PATH_FXML + "utente_profilo.fxml")
+                .launch(null);
+
+        /*
         Database database = Database.getInstance();
         /*
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
-        */
 
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
@@ -89,6 +103,8 @@ public class Program extends Application
         //stageManager.swap(Stages.HomeUtente);
 
         stageManager.swap(Stages.Login);
+
+        */
     }
 
     @Override

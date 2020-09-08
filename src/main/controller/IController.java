@@ -1,5 +1,6 @@
 package main.controller;
 
+import javafx.scene.layout.Pane;
 import main.model.Persona;
 import main.utils.StageManager;
 

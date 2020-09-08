@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserDashboard">
+   <children>
+      <SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Dashboard" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="profileBtn" layoutX="524.0" layoutY="17.0" mnemonicParsing="false" onAction="#profileBtnHandle" text="Profilo" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="17.0" />
+                  <Button fx:id="homeBtn" layoutX="466.0" layoutY="17.0" mnemonicParsing="false" onAction="#homeBtnHandle" text="Home" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="17.0" />
+               </children>
+            </AnchorPane>
+            <Pane fx:id="gatePane" prefHeight="200.0" prefWidth="200.0" />
+         </items>
+      </SplitPane>
+   </children>
+</Pane>
