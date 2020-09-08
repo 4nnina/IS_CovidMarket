@@ -32,7 +32,7 @@ public class Program extends Application
 
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
-                .setIndirizzo("sis sis 29", "sis", 36071)
+                .setIndirizzo("sis sis 29", "sis", "36071")
                 .setEmail("sis@gmail.com")
                 .setTelefono("3779927407")
                 .setCartaFedelta(new CartaFedelta("", Calendar.getInstance().getTime()))
@@ -48,7 +48,7 @@ public class Program extends Application
                 .setMatricola(5236437)
                 .setRepartiGestiti(EnumSet.allOf(Reparto.class))
                 .setEmail("resp@gmail.com")
-                .setIndirizzo("", "", 0)
+                .setIndirizzo("", "", "0")
                 .setUsername("resp")
                 .setNominativo("resp", "resp")
                 .setPassword("resp")

@@ -20,7 +20,7 @@ public class ControllerProfilo extends Controller {
     private ImageView carrelloImageView;
 
     @FXML
-    private Label nomeutenteLabel;
+    private Label usernameLabel;
 
     @FXML
     private Label nomeLabel;
@@ -54,44 +54,59 @@ public class ControllerProfilo extends Controller {
 
     @FXML private ChoiceBox sezioneChoicebox;
 
-    private Utente utente;
+    private Utente currentUser;
 
-    /*
-    // Costruttore
-    
-    public void setUser(Utente utente) {
-        this.utente = utente;
-    }
-*/
+
     @FXML
-    private void initialize(){
-
-        //nomeutenteLabel.setText(utente.getNome());
+    private void initialize() {
 
         //handler
-        covidMarketImageView.setOnMouseClicked(this::loginHandler);
+        covidMarketImageView.setOnMouseClicked(this::homeHandler);
         //TODO
 
         // Cambia schermata in base alla scelta
         sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
         sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
             switch (t1.intValue()) {
-                case 0: stageManager.swap(Stages.Profilo);     break;
-                case 1: stageManager.swap(Stages.Tessera);     break;
-                case 2: stageManager.swap(Stages.SpesaUtente); break;
-                case 3: stageManager.swap(Stages.Login);       break;
+                case 0:
+                    stageManager.swap(Stages.Profilo);
+                    break;
+                case 1:
+                    stageManager.swap(Stages.Tessera);
+                    break;
+                case 2:
+                    stageManager.swap(Stages.SpesaUtente);
+                    break;
+                case 3:
+                    stageManager.swap(Stages.Login);
+                    break;
             }
         });
+
     }
 
     @Override
     public void onSwap(Persona target)
     {
+        this.currentUser = (Utente)target;
+        usernameLabel.setText(currentUser.getNome());
+
+        nomeLabel.setText(currentUser.getNome());
+        cognomeLabel.setText(currentUser.getCognome());
+        indirizzoLabel.setText(currentUser.getIndirizzo());
+        cittaLabel.setText(currentUser.getCitta());
+        capLabel.setText(String.valueOf(currentUser.getCAP()));
+        telefonoLabel.setText(currentUser.getTelefono());
+        mailLabel.setText(currentUser.getEmail());
+        pagamentoLabel.setText(currentUser.getMetodoPagamento().toString());
+        tesseraLabel.setText(currentUser.getCartaFedelta().ID);
+        puntiLabel.setText(String.valueOf(currentUser.getCartaFedelta().punti));
+
         // Deseleziona menu
         sezioneChoicebox.getSelectionModel().select(null);
     }
 
-    private void loginHandler(MouseEvent mouseEvent) {
+    private void homeHandler(MouseEvent mouseEvent) {
         stageManager.swap(Stages.HomeUtente);
     }
 

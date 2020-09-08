@@ -39,12 +39,12 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="620.0" layoutY="50.0" text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
+            <Label text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="nomeUtenteLabel" layoutX="620.0" layoutY="50.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="90.0" text="sis" textFill="#f27777" wrapText="true" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -99,7 +99,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="indirizzoTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="telefonoLabel" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="telefonoTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label fx:id="nomeLabel" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
                   <Label fx:id="cognomeLabel" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="capLabel" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />

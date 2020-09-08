@@ -144,7 +144,7 @@ public class ControllerRegistrazione extends Controller
         {
             Utente user = new Utente.Builder()
                     .setNominativo(nomeTextField.getText(), cognomeTextField.getText())
-                    .setIndirizzo(indirizzoTextField.getText(), "arzignano", 0)
+                    .setIndirizzo(indirizzoTextField.getText(), "arzignano", "0")
                     .setTelefono(telefonoTextField.getText())
                     .setEmail(mailTextField.getText())
                     .setPassword(pswPasswordField.getText())

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public abstract class Persona implements Serializable
 {
-    protected String nome, cognome, indirizzo, citta, telefono, email;
-    protected int CAP, passwordHash;
+    protected String nome, cognome, indirizzo, citta, telefono, email, CAP;
+    protected int passwordHash;
 
     // Crea oggetto dal builder
     protected Persona(Builder<?> builder)
@@ -44,7 +44,7 @@ public abstract class Persona implements Serializable
         return email;
     }
 
-    public int getCAP() {
+    public String getCAP() {
         return CAP;
     }
 
@@ -77,8 +77,8 @@ public abstract class Persona implements Serializable
      */
     protected abstract static class Builder<T extends Builder>
     {
-        protected String nome, cognome, indirizzo, citta, telefono, email;
-        protected int CAP, passwordHash;
+        protected String nome, cognome, indirizzo, citta, telefono, email, CAP;
+        protected int passwordHash;
 
         // Crea l'oggetto finale
         abstract Persona build();
@@ -95,7 +95,7 @@ public abstract class Persona implements Serializable
             return self();
         }
 
-        public T setIndirizzo(String indirizzo, String citta, int CAP) {
+        public T setIndirizzo(String indirizzo, String citta, String CAP) {
             this.indirizzo = indirizzo;
             this.citta = citta;
             this.CAP = CAP;
@@ -116,5 +116,27 @@ public abstract class Persona implements Serializable
             this.passwordHash = password.hashCode();
             return self();
         }
+    }
+
+    public void setIndirizzo(String indirizzo){
+        this.indirizzo = indirizzo;
+    }
+
+    public void setIndirizzo(String indirizzo, String citta, String CAP) {
+        this.indirizzo = indirizzo;
+        this.citta = citta;
+        this.CAP = CAP;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setTelefono(String telefono){
+        this.telefono = telefono;
+    }
+
+    public void setPassword(String password) {
+        this.passwordHash = password.hashCode();
     }
 }
