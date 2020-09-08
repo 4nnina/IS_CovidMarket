@@ -87,6 +87,7 @@ public class ControllerSpesaUtente extends Controller implements Initializable {
     {
         Database database = Database.getInstance();
         this.currentUser = (Utente)target;
+        usernameLabel.setText(currentUser.getNome());
 
         // Carica spese che ha questo utente
         spese.clear();
