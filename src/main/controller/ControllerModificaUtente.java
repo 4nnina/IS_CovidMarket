@@ -1,13 +1,10 @@
 package main.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import main.model.Persona;
 import main.model.Utente;
 
 public class ControllerModificaUtente extends Controller{
@@ -51,6 +48,8 @@ public class ControllerModificaUtente extends Controller{
     @FXML
     private ComboBox<?> pagamentoComboBox;
 
+    @FXML private ChoiceBox sezioneChoicebox;
+
     @FXML
     private Button modificaButton;
 
@@ -70,6 +69,24 @@ public class ControllerModificaUtente extends Controller{
         covidMarketImageView.setOnMouseClicked(this::loginHandler);
         //TODO
 
+        // Cambia schermata in base alla scelta
+        sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.Profilo);     break;
+                case 1: stageManager.swap(Stages.Tessera);     break;
+                case 2: stageManager.swap(Stages.SpesaUtente); break;
+                case 3: stageManager.swap(Stages.Login);       break;
+            }
+        });
+
+    }
+
+    @Override
+    public void onSwap(Persona target)
+    {
+        // Deseleziona menu
+        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     private void loginHandler(MouseEvent mouseEvent) {

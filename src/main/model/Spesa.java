@@ -15,11 +15,27 @@ public class Spesa implements Serializable
         this.utente = utente;
         this.carrello = carrello;
         this.datiConsegna = datiConsegna;
-        this.statoConsegna = StatoConsegna.Preparazione;
+        this.statoConsegna = StatoConsegna.Confermata;
     }
 
     @Override
     public int hashCode() {
         return utente.hashCode() ^ carrello.getProdotti().hashCode() ^ datiConsegna.date.hashCode();
+    }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public Carrello getCarrello() {
+        return carrello;
+    }
+
+    public DatiConsegna getDatiConsegna() {
+        return datiConsegna;
+    }
+
+    public StatoConsegna getStatoConsegna() {
+        return statoConsegna;
     }
 }

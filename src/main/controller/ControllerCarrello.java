@@ -1,5 +1,8 @@
 package main.controller;
 
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,10 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import main.model.*;
 import main.storage.Database;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -28,7 +31,8 @@ public class ControllerCarrello extends Controller implements Initializable
     @FXML private Label puntiSpesaLabel;
     @FXML private Label saldoPuntiLabel;
     @FXML private Button eliminaButton;
-    @FXML private ComboBox<String> nomeutenteCombobox;
+
+    @FXML private ChoiceBox sezioneChoicebox;
 
     //Contiene gli items del carrello corrente
     ObservableList<Carrello.Coppia> bundles;
@@ -50,26 +54,43 @@ public class ControllerCarrello extends Controller implements Initializable
         covidMarketImageView.setOnMouseClicked(this::homeButtonHandler);
         eliminaButton.setOnMouseClicked(foo -> onQuantityChangeHandler(0, 0));
         confermaOrdinaButton.setOnMouseClicked(foo -> confermaSpesaHandler());
+        carrelloImageView.setOnMouseClicked(foo -> stageManager.swap(Stages.SpesaUtente));
 
         saldoPuntiLabel.setText("");
 
-       //nomeutenteCombobox.setPromptText(currentUser.getNome());
-        //nomeutenteCombobox.getItems().addAll("Profilo","Modifica Profilo", "Tessera Fedeltà");
-
+        // Cambia schermata in base alla scelta
+        sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.Profilo);     break;
+                case 1: stageManager.swap(Stages.Tessera);     break;
+                case 2: stageManager.swap(Stages.SpesaUtente); break;
+                case 3: stageManager.swap(Stages.Login);       break;
+            }
+        });
     }
 
     private void updateInfoSpesa()
     {
-        int totalCost = 0;
-        for (Carrello.Coppia pair : bundles)
-            totalCost += pair.quantita * pair.prodotto.getPrezzo();
-
-        costoTotaleLabel.setText(totalCost + " €");
-        puntiSpesaLabel.setText(totalCost + " p");
-
         CartaFedelta cartaFedelta = currentUser.getCartaFedelta();
-        if(cartaFedelta != null) {
-            saldoPuntiLabel.setText(cartaFedelta.punti + totalCost + " p");
+        if(!bundles.isEmpty())
+        {
+            int totalCost = 0;
+            for (Carrello.Coppia pair : bundles)
+                totalCost += pair.quantita * pair.prodotto.getPrezzo();
+
+            costoTotaleLabel.setText(totalCost + " €");
+            puntiSpesaLabel.setText(totalCost + " p");
+
+            if (cartaFedelta != null)
+                saldoPuntiLabel.setText(cartaFedelta.punti + totalCost + " p");
+        }
+        else {
+            costoTotaleLabel.setText("0 €");
+            puntiSpesaLabel.setText("0 p");
+
+            if (cartaFedelta != null)
+                saldoPuntiLabel.setText(cartaFedelta.punti + " p");
         }
     }
 
@@ -83,6 +104,9 @@ public class ControllerCarrello extends Controller implements Initializable
 
         carrelloListView.setItems(bundles);
         carrelloListView.setCellFactory(__list -> new CarrelloBundleCell());
+
+        // Deseleziona menu
+        sezioneChoicebox.getSelectionModel().select(null);
 
         updateInfoSpesa();
     }
@@ -123,7 +147,14 @@ public class ControllerCarrello extends Controller implements Initializable
 
     private void confermaSpesaHandler()
     {
-        PopupCarrello popupCarrello = new PopupCarrello();
+        // Non ha senso se non ci sono elementi
+        if (bundles.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Nessun elemento nel carrello");
+            alert.showAndWait();
+            return;
+        }
+
+        PopupCarrello popupCarrello = new PopupCarrello(currentUser);
         Optional<DatiConsegna> datiConsegna = popupCarrello.show();
         if (datiConsegna.isPresent())
         {
@@ -138,7 +169,8 @@ public class ControllerCarrello extends Controller implements Initializable
             database.getSpese().add(new Spesa(currentUser, carrello, datiConsegna.get()));
 
             // Aggiorna la vista
-            bundles.clear();
+            try { bundles.clear(); }
+            catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
             updateInfoSpesa();
         }
     }

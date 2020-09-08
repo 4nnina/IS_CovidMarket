@@ -8,6 +8,8 @@ public enum Stages
     HomeResponsabile,
     HomeUtente,
 
+    SpesaUtente,
+
     ModificaUtente,
     Profilo,
     Tessera,

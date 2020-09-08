@@ -25,7 +25,7 @@ public abstract class Popup<T> implements IPopup<T>
     protected void loadFXML(Object controller, String filename)
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
-        loader.setController(this);
+        loader.setController(controller);
 
         try { dialog.setScene(new Scene(loader.load())); }
         catch (Exception e)

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="257.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="statoLabel" layoutX="376.0" layoutY="8.0" text="STATO" AnchorPane.rightAnchor="14.0" />
+      <Separator layoutX="153.0" layoutY="5.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="11.0" AnchorPane.rightAnchor="93.0" />
+      <Label layoutX="8.0" layoutY="6.0" text="ID:" AnchorPane.leftAnchor="8.0" />
+      <Label fx:id="idLabel" layoutX="30.0" layoutY="6.0" text="ID" AnchorPane.leftAnchor="30.0" />
+   </children>
+</AnchorPane>

@@ -1,12 +1,17 @@
 package main.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import main.model.Persona;
 import main.model.Utente;
 
-public class ControllerProfilo extends Controller{
+import javax.swing.*;
+
+public class ControllerProfilo extends Controller {
 
     @FXML
     private ImageView covidMarketImageView;
@@ -47,6 +52,8 @@ public class ControllerProfilo extends Controller{
     @FXML
     private Label puntiLabel;
 
+    @FXML private ChoiceBox sezioneChoicebox;
+
     private Utente utente;
 
     /*
@@ -65,10 +72,31 @@ public class ControllerProfilo extends Controller{
         covidMarketImageView.setOnMouseClicked(this::loginHandler);
         //TODO
 
+        // Cambia schermata in base alla scelta
+        sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.Profilo);     break;
+                case 1: stageManager.swap(Stages.Tessera);     break;
+                case 2: stageManager.swap(Stages.SpesaUtente); break;
+                case 3: stageManager.swap(Stages.Login);       break;
+            }
+        });
+    }
+
+    @Override
+    public void onSwap(Persona target)
+    {
+        // Deseleziona menu
+        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     private void loginHandler(MouseEvent mouseEvent) {
         stageManager.swap(Stages.HomeUtente);
     }
 
+    @FXML
+    private void modificaButtonHandler(ActionEvent event) {
+        stageManager.swap(Stages.ModificaUtente);
+    }
 }

@@ -47,6 +47,7 @@ public class Utente extends Persona implements Serializable
     public CartaFedelta getCartaFedelta() {
         return this.cartaFedelta;
     }
+    public MetodoPagamento getMetodoPagamento() { return this.metodoPagamento; }
 
     /**
      * Builder pattern per l'utente

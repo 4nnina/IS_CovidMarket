@@ -2,5 +2,5 @@ package main.model;
 
 public enum StatoConsegna
 {
-    Preparazione, Confermata, Consegnata
+    Confermata, Preparazione, Consegnata
 }

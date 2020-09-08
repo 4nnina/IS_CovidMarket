@@ -1,46 +1,87 @@
 package main.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SplitMenuButton;
-import main.model.Responsabile;
-import main.model.Utente;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import main.model.Persona;
+import main.model.Prodotto;
+import main.storage.Database;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerHomeResponsabili extends Controller
+public class ControllerHomeResponsabili extends Controller implements Initializable
 {
-
-    @FXML
-    private Button catalogoButton;
-
-    @FXML
-    private Button inscerisciProdButton;
-
     @FXML
     private Button speseButton;
 
     @FXML
-    private ComboBox<?> repartoComboBox;
+    private Button filtraButton1;
 
     @FXML
-    private ComboBox<?> tipoComboBox;
+    private TextField marcaTextField;
 
     @FXML
-    private ComboBox<?> marcaComboBox;
+    private VBox caratteristicheVBox;
 
     @FXML
-    private ComboBox<?> allergeniComboBox;
+    private ComboBox<?> ordinaComboBox;
 
     @FXML
-    private ComboBox<?> altroComboBox;
+    private ComboBox<?> repartoComboBox1;
 
     @FXML
-    private SplitMenuButton ordinaSpliMenuButton;
+    private ListView<Prodotto> itemListView;
 
     @FXML
-    private Button filtraButton;
+    private Spinner<?> quantitySpinner;
 
+    @FXML
+    private Button modificaButton;
+
+    @FXML
+    private Button inserisciButton;
+
+    // Contiene gli elementi attuali da visualizzare del database
+    private ObservableList<Prodotto> prodottoObservableList;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        prodottoObservableList = FXCollections.observableArrayList();
+        prodottoObservableList.setAll(Database.getInstance().getProdotti());
+
+        itemListView.setItems(prodottoObservableList);
+        itemListView.setCellFactory(factory -> new ProdottoCatalogoCell());
+    }
+
+    @Override
+    public void onSwap(Persona target)
+    {
+
+    }
+
+    @FXML
+    void filtraButtonHandler(ActionEvent event) {
+
+    }
+
+    @FXML
+    void inserisciButtonHandler(ActionEvent event) {
+
+    }
+
+    @FXML
+    void modificaButtonHandler(ActionEvent event) {
+
+    }
+
+    @FXML
+    void speseButtonHandler(ActionEvent event) {
+
+    }
 }

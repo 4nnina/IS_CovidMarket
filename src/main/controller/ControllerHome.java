@@ -41,6 +41,7 @@ public class ControllerHome extends Controller implements Initializable
     @FXML private Label carrelloCountLabel;
     @FXML private Label usernameLabel;
     @FXML private Label costoQuantitaLabel;
+    @FXML private ChoiceBox sezioneChoicebox;
 
     // Contiene gli elementi attuali da visualizzare del database
     private ObservableList<Prodotto> prodottoObservableList;
@@ -58,12 +59,15 @@ public class ControllerHome extends Controller implements Initializable
         prodottoObservableList = FXCollections.observableArrayList();
         prodottoObservableList.setAll(database.getProdotti());
 
-        itemListView.getItems().setAll(prodottoObservableList);
+        itemListView.setItems(prodottoObservableList);
         itemListView.setCellFactory(__list -> new ProdottoCatalogoCell());
 
         // Setta numero di elementi nel carrello
         int count = currentUser.getCarrello().getProdotti().size();
         carrelloCountLabel.setText(String.valueOf(count));
+
+        // Deseleziona menu
+        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     // Aggiorna costoQuantitaLabel
@@ -111,6 +115,17 @@ public class ControllerHome extends Controller implements Initializable
         // Aggiunge eventi
         filtraButton.addEventHandler(ActionEvent.ACTION, this::filtraButtonHandler);
         carrelloImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, this::carrelloButtonHandler);
+
+        // Cambia schermata in base alla scelta
+        sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.Profilo);     break;
+                case 1: stageManager.swap(Stages.Tessera);     break;
+                case 2: stageManager.swap(Stages.SpesaUtente); break;
+                case 3: stageManager.swap(Stages.Login);       break;
+            }
+        });
     }
 
     /**

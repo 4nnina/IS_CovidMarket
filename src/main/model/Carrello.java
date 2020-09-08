@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 // Permette di collezionare prodotti
 public class Carrello implements Serializable
 {
-    public static class Coppia
+    public static class Coppia implements Serializable
     {
         public int quantita;
         public Prodotto prodotto;

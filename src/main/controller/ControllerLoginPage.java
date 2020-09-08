@@ -68,8 +68,8 @@ public class ControllerLoginPage extends Controller {
                     } break;
 
                     case WrongPassword:
-                        // TODO: Indica nella UI
-                        System.out.println("Password errata per " + nomeUtenteTextField.getText());
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Password errata per " + nomeUtenteTextField.getText());
+                        alert.showAndWait();
                         anyFound = true;
                         break;
 
@@ -79,8 +79,8 @@ public class ControllerLoginPage extends Controller {
             }
 
             if (!anyFound) {
-                // TODO: Indica nella UI
-                System.out.println("Non esistono responsabili col nome "+  nomeUtenteTextField.getText());
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Non esistono responsabili con username " + nomeUtenteTextField.getText());
+                alert.showAndWait();
             }
 
         }
@@ -98,8 +98,8 @@ public class ControllerLoginPage extends Controller {
                     } break;
 
                     case WrongPassword:
-                        // TODO: Indica nella UI
-                        System.out.println("Password errata per " + nomeUtenteTextField.getText());
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Password errata per " + nomeUtenteTextField.getText());
+                        alert.showAndWait();
                         anyFound = true;
                         break;
 
@@ -109,8 +109,8 @@ public class ControllerLoginPage extends Controller {
             }
 
             if (!anyFound) {
-                // TODO: Indica nella UI
-                System.out.println("Non esistono utenti col nome "+  nomeUtenteTextField.getText());
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Non esistono utenti con email " + nomeUtenteTextField.getText());
+                alert.showAndWait();
             }
         }
     }

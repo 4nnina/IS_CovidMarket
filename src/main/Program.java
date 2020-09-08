@@ -24,13 +24,11 @@ public class Program extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Database database = Database.getInstance();
-
         /*
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
-
-         */
+        */
 
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
@@ -43,6 +41,21 @@ public class Program extends Application
                 .build();
 
         database.getUtenti().add(sis);
+
+        Responsabile resp = new Responsabile.Builder()
+                .setDataDiNascita(Calendar.getInstance().getTime())
+                .setLuogoDiNascita("To mare")
+                .setMatricola(5236437)
+                .setRepartiGestiti(EnumSet.allOf(Reparto.class))
+                .setEmail("resp@gmail.com")
+                .setIndirizzo("", "", 0)
+                .setUsername("resp")
+                .setNominativo("resp", "resp")
+                .setPassword("resp")
+                .setTelefono("3779927407")
+                .build();
+
+        database.getResponsabili().add(resp);
 
         database.getProdotti().add(new Prodotto.Builder()
                 .setNome("Banane")
@@ -72,8 +85,10 @@ public class Program extends Application
 
         StageManager stageManager = new StageManager(primaryStage);
 
-        stageManager.setTargetUser(sis);
-        stageManager.swap(Stages.HomeUtente);
+        //stageManager.setTargetUser(sis);
+        //stageManager.swap(Stages.HomeUtente);
+
+        stageManager.swap(Stages.Login);
     }
 
     @Override
