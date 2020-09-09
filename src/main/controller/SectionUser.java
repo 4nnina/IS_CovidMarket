@@ -2,5 +2,6 @@ package main.controller;
 
 public enum SectionUser
 {
-    Home, Carrello
+    Home, Carrello, Spesa, Profilo, Tessera,
+    ModificaProfilo
 }

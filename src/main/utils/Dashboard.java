@@ -8,22 +8,29 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import main.controller.Controller;
 import main.controller.IController;
 import main.controller.IController2;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 // Manager dell'interfaccia, questa è descritta da una enumerazione
 // dei pannelli e dal controller principale
 public class Dashboard<T extends Enum<T>>
 {
     // Nodo e Controller di uno stage
-    private static class StageData<T extends Enum<T>>
+    public static class StageData<T extends Enum<T>>
     {
         public Pane pane;
         public IController2<T> controller;
+
+        // Indica se questa schermata può essere raggiunta tramite menu principale
+        // Utile per schermate secondarie dipendenti da altre, tipo "modifica profilo"
+        public boolean menuLink = true;
 
         public StageData(Pane pane, IController2<T> controller)
         {
@@ -69,7 +76,7 @@ public class Dashboard<T extends Enum<T>>
     // a dati aggiuntivi utili
     public IController2<T> swap(T target, Object data)
     {
-        StageData stageData = stageDataHashMap.get(target);
+        StageData<T> stageData = stageDataHashMap.get(target);
         if (stageData != null)
         {
             // Cambia visuale
@@ -82,6 +89,16 @@ public class Dashboard<T extends Enum<T>>
 
         AlertPopup.warning("La sezione " + target.name() + " non è stata caricata!");
         return null;
+    }
+
+    // Ottiene lista degli stage caricati
+    public ArrayList<Pair<T, StageData<T>>> getStages()
+    {
+        var result = new ArrayList<Pair<T, StageData<T>>>();
+        for(var entry : stageDataHashMap.entrySet())
+            result.add(new Pair<>(entry.getKey(), entry.getValue()));
+
+        return result;
     }
 
     // Costruisce una nuova Dashboard customizzata
@@ -122,11 +139,14 @@ public class Dashboard<T extends Enum<T>>
         }
 
         // Indica il file fxml di ogni sezione
-        public Builder<T> controllerSection(T section, String filename)
+        public Builder<T> controllerSection(T section, boolean menuLink, String filename)
         {
             StageData<T> stageData = loadFXML(filename);
             if (stageData != null)
+            {
+                stageData.menuLink = menuLink;
                 stageDataHashMap.put(section, stageData);
+            }
 
             return this;
         }

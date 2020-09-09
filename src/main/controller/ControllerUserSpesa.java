@@ -1,59 +1,41 @@
 package main.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
-import main.model.*;
+import javafx.scene.layout.Pane;
+import main.model.Carrello;
+import main.model.DatiConsegna;
+import main.model.Spesa;
+import main.model.Utente;
 import main.storage.Database;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerSpesaUtente extends Controller implements Initializable {
+public class ControllerUserSpesa extends Controller2<SectionUser> implements Initializable
+{
+    @FXML private Pane gatePane;
 
-    @FXML
-    private ImageView covidMarketImageView;
+    @FXML private ListView<Spesa> speseListView;
+    @FXML private ListView<Carrello.Coppia> elementiListView;
 
-    @FXML
-    private ImageView carrelloImageView;
+    @FXML private Label statoLabel;
+    @FXML private Label pagamentoLabel;
+    @FXML private Label dataLabel;
+    @FXML private Label orarioLabel;
+    @FXML private Label costoLabel;
 
-    @FXML
-    private Label usernameLabel;
-
-    @FXML
-    private ListView<Spesa> speseListView;
-
-    @FXML
-    private ListView<Carrello.Coppia> elementiListView;
-
-    @FXML
-    private Label statoLabel;
-
-    @FXML
-    private Label pagamentoLabel;
-
-    @FXML
-    private Label dataLabel;
-
-    @FXML
-    private Label orarioLabel;
-
-    @FXML
-    private Label costoLabel;
-
-    @FXML private ChoiceBox sezioneChoicebox;
+    private ObservableList<Spesa> spese;
+    private ObservableList<Carrello.Coppia> elementi;
+    private Utente currentUser;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
         spese = FXCollections.observableArrayList();
         elementi = FXCollections.observableArrayList();
 
@@ -63,31 +45,13 @@ public class ControllerSpesaUtente extends Controller implements Initializable {
         // Quando modifichiamo la spesa selezionata allora cambiano gli elementi
         speseListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1)
                 -> changeSpesaHandle(t1.intValue()));
-
-        covidMarketImageView.setOnMouseClicked(foo -> stageManager.swap(Stages.HomeUtente));
-
-        // Cambia schermata in base alla scelta
-        sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
-        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
-            switch (t1.intValue()) {
-                case 0: stageManager.swap(Stages.Profilo);     break;
-                case 1: stageManager.swap(Stages.Tessera);     break;
-                case 2: stageManager.swap(Stages.SpesaUtente); break;
-                case 3: stageManager.swap(Stages.Login);       break;
-            }
-        });
     }
 
-    private Utente currentUser;
-    private ObservableList<Spesa> spese;
-    private ObservableList<Carrello.Coppia> elementi;
-
     @Override
-    public void onSwap(Persona target)
+    public void onSwapPane(Object data)
     {
         Database database = Database.getInstance();
-        this.currentUser = (Utente)target;
-        usernameLabel.setText(currentUser.getNome());
+        this.currentUser = (Utente) data;
 
         // Carica spese che ha questo utente
         spese.clear();
@@ -107,9 +71,6 @@ public class ControllerSpesaUtente extends Controller implements Initializable {
         }
 
         elementiListView.setItems(elementi);
-
-        // Deseleziona menu
-        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     private void updateSpesa(int spesaIndex)
@@ -131,10 +92,9 @@ public class ControllerSpesaUtente extends Controller implements Initializable {
     {
         elementi.clear();
 
+        // TODO: Risolvi IndexOutOfBoundsException che avviene qui
         Carrello carrello = spese.get(selectedSpesa).getCarrello();
-        for(Carrello.Coppia coppia : carrello.getProdotti()) {
-            elementi.add(coppia);
-        }
+        elementi.addAll(carrello.getProdotti());
 
         elementiListView.setItems(elementi);
     }
@@ -143,5 +103,10 @@ public class ControllerSpesaUtente extends Controller implements Initializable {
     {
         updateElements(spesaIndex);
         updateSpesa(spesaIndex);
+    }
+
+    @Override
+    public Pane getGatePane() {
+        return null;
     }
 }

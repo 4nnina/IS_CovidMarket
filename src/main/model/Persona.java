@@ -1,5 +1,7 @@
 package main.model;
 
+import main.utils.Validator;
+
 import java.io.Serializable;
 
 public abstract class Persona implements Serializable
@@ -71,6 +73,28 @@ public abstract class Persona implements Serializable
     // Controlla se le credenziali sono corrette per questa persona
     public abstract LoginResult validLogin(String username, String password);
 
+    public void setIndirizzo(String indirizzo, String citta, String CAP)
+    {
+        this.indirizzo = indirizzo;
+        this.citta = citta;
+        this.CAP = CAP;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public void setTelefono(String telefono)
+    {
+        this.telefono = telefono;
+    }
+
+    public void setPassword(String password)
+    {
+        this.passwordHash = password.hashCode();
+    }
+
     /**
      * Builder pattern per classi derivanti
      * @param <T> Classe del builder derivato
@@ -89,54 +113,49 @@ public abstract class Persona implements Serializable
         // ===========================================================================
         // CAMPI
 
-        public T setNominativo(String nome, String cognome) {
+        public T setNominativo(String nome, String cognome)
+        {
             this.cognome = cognome;
             this.nome = nome;
             return self();
         }
 
-        public T setIndirizzo(String indirizzo, String citta, String CAP) {
+        public T setIndirizzo(String indirizzo, String citta, String CAP) throws BuilderException
+        {
+            // TODO: Controlla tramite file che questi 3 valori siano corretti
+
             this.indirizzo = indirizzo;
             this.citta = citta;
             this.CAP = CAP;
             return self();
         }
 
-        public T setTelefono(String telefono) {
-            this.telefono = telefono;
-            return self();
+        public T setTelefono(String telefono) throws BuilderException
+        {
+            if (Validator.isTelephoneNumber(telefono))
+            {
+                this.telefono = telefono;
+                return self();
+            }
+
+            throw new BuilderException("Valore telefono errato");
         }
 
-        public T setEmail(String email) {
-            this.email = email;
-            return self();
+        public T setEmail(String email) throws BuilderException
+        {
+            if(Validator.isEmail(email))
+            {
+                this.email = email;
+                return self();
+            }
+
+            throw new BuilderException("Valore email errato");
         }
 
-        public T setPassword(String password) {
+        public T setPassword(String password)
+        {
             this.passwordHash = password.hashCode();
             return self();
         }
-    }
-
-    public void setIndirizzo(String indirizzo){
-        this.indirizzo = indirizzo;
-    }
-
-    public void setIndirizzo(String indirizzo, String citta, String CAP) {
-        this.indirizzo = indirizzo;
-        this.citta = citta;
-        this.CAP = CAP;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public void setTelefono(String telefono){
-        this.telefono = telefono;
-    }
-
-    public void setPassword(String password) {
-        this.passwordHash = password.hashCode();
     }
 }

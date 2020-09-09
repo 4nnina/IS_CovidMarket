@@ -97,9 +97,13 @@ public class Program extends Application
         {
             // Dashboard specifica per l'utente
             Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
+                    .controllerSection(SectionUser.Home,            true, PATH_FXML + "utente_home.fxml")
+                    .controllerSection(SectionUser.Carrello,        true, PATH_FXML + "utente_carrello.fxml")
+                    .controllerSection(SectionUser.Spesa,           true, PATH_FXML + "utente_spesa.fxml")
+                    .controllerSection(SectionUser.Profilo,         true, PATH_FXML + "utente_profilo.fxml")
+                    .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
+                    .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
                     .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
-                    .controllerSection(SectionUser.Home, PATH_FXML + "utente_home.fxml")
-                    .controllerSection(SectionUser.Carrello, PATH_FXML + "utente_carrello.fxml")
                     .launch(sis);
         }
     }

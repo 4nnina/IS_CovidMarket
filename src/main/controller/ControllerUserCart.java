@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class ControllerUserCart extends Controller2<SectionUser> implements Initializable
 {
+    @FXML private Pane gatePane;
+
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private ListView<Carrello.Coppia> cartListView;
 
@@ -25,8 +27,6 @@ public class ControllerUserCart extends Controller2<SectionUser> implements Init
     @FXML private Label totalCostLabel;
     @FXML private Label cartPointsLabel;
     @FXML private Label pointsLabel;
-
-    @FXML private Pane gatePane;
 
     //Contiene gli items del carrello corrente
     private ObservableList<Carrello.Coppia> elements;

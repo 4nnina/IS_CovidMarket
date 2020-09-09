@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="gatePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserSpesa">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="900.0" style="-fx-background-color: #ddfaf7;">
+         <children>
+            <Label layoutX="23.0" layoutY="14.0" prefHeight="17.0" prefWidth="108.0" text="SPESE" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ListView fx:id="speseListView" layoutX="14.0" layoutY="43.0" prefHeight="424.0" prefWidth="257.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="627.0" AnchorPane.topAnchor="43.0" />
+            <ListView fx:id="elementiListView" layoutX="277.0" layoutY="42.0" prefHeight="424.0" prefWidth="443.0" />
+            <Label layoutX="277.0" layoutY="14.0" prefHeight="17.0" prefWidth="108.0" text="ELEMENTI" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="742.0" layoutY="42.0" prefHeight="17.0" prefWidth="47.0" text="STATO:" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="statoLabel" layoutX="789.0" layoutY="59.0" text="stato" />
+            <Label layoutX="742.0" layoutY="94.0" prefHeight="17.0" prefWidth="123.0" text="Metodo pagamento:" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="pagamentoLabel" layoutX="789.0" layoutY="118.0" text="stato" />
+            <Label layoutX="742.0" layoutY="141.0" prefHeight="17.0" prefWidth="123.0" text="Data di consegna:" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="dataLabel" layoutX="789.0" layoutY="166.0" text="stato" />
+            <Label layoutX="742.0" layoutY="190.0" prefHeight="17.0" prefWidth="123.0" text="Fascia oraria:" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="742.0" layoutY="237.0" prefHeight="17.0" prefWidth="123.0" text="Costo totale:" textFill="#f27777">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="orarioLabel" layoutX="789.0" layoutY="207.0" text="stato" />
+            <Label fx:id="costoLabel" layoutX="789.0" layoutY="254.0" text="stato" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
