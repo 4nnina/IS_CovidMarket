@@ -56,7 +56,7 @@ public class ControllerHomeResponsabili extends Controller implements Initializa
         prodottoObservableList.setAll(Database.getInstance().getProdotti());
 
         itemListView.setItems(prodottoObservableList);
-        itemListView.setCellFactory(factory -> new ProdottoCatalogoCell());
+        itemListView.setCellFactory(factory -> new CellProdotto());
     }
 
     @Override

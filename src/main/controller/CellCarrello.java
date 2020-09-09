@@ -13,7 +13,7 @@ import main.model.Prodotto;
 
 import java.io.IOException;
 
-public class CarrelloBundleCell extends ListCell<Carrello.Coppia>
+public class CellCarrello extends ListCell<Carrello.Coppia>
 {
     @FXML private AnchorPane pane;
 
@@ -26,7 +26,7 @@ public class CarrelloBundleCell extends ListCell<Carrello.Coppia>
     @FXML private ImageView prodottoImageView;
 
     // Carica stile fxml
-    public CarrelloBundleCell()
+    public CellCarrello()
     {
         try
         {

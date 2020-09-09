@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.controller.PopupLogin;
+import main.controller.SectionResp;
 import main.controller.SectionUser;
 import main.controller.Stages;
 import main.model.*;
@@ -95,16 +96,30 @@ public class Program extends Application
         Optional<Utente> optionUser = popupLogin.show();
         if (optionUser.isPresent())
         {
-            // Dashboard specifica per l'utente
-            Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
-                    .controllerSection(SectionUser.Home,            true, PATH_FXML + "utente_home.fxml")
-                    .controllerSection(SectionUser.Carrello,        true, PATH_FXML + "utente_carrello.fxml")
-                    .controllerSection(SectionUser.Spesa,           true, PATH_FXML + "utente_spesa.fxml")
-                    .controllerSection(SectionUser.Profilo,         true, PATH_FXML + "utente_profilo.fxml")
-                    .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
-                    .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
-                    .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
-                    .launch(sis);
+            Persona persona = optionUser.get();
+
+            // UTENTE
+            if (persona instanceof Utente)
+            {
+                // Dashboard specifica per l'utente
+                Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
+                        .controllerSection(SectionUser.Home,            true, PATH_FXML + "utente_home.fxml")
+                        .controllerSection(SectionUser.Carrello,        true, PATH_FXML + "utente_carrello.fxml")
+                        .controllerSection(SectionUser.Spesa,           true, PATH_FXML + "utente_spesa.fxml")
+                        .controllerSection(SectionUser.Profilo,         true, PATH_FXML + "utente_profilo.fxml")
+                        .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
+                        .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
+                        .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
+                        .launch(sis);
+            }
+            // PERSONALE
+            else
+            {
+                Dashboard<SectionResp> respDashboard = new Dashboard.Builder<SectionResp>(primaryStage)
+                        .controllerSection(SectionResp.Home, true, PATH_FXML + "resp_home.fxml")
+                        .controllerDashboard(PATH_FXML + "resp_dashboard.fxml")
+                        .launch(persona);
+            }
         }
     }
 

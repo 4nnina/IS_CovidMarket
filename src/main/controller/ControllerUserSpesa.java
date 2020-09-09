@@ -39,7 +39,7 @@ public class ControllerUserSpesa extends Controller2<SectionUser> implements Ini
         spese = FXCollections.observableArrayList();
         elementi = FXCollections.observableArrayList();
 
-        elementiListView.setCellFactory(factory -> new CarrelloBundleCell());
+        elementiListView.setCellFactory(factory -> new CellCarrello());
         speseListView.setCellFactory(factory-> new SpesaCell());
 
         // Quando modifichiamo la spesa selezionata allora cambiano gli elementi

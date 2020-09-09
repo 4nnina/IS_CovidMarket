@@ -52,7 +52,7 @@ public class ControllerUserCart extends Controller2<SectionUser> implements Init
         elements.setAll(currentUser.getCarrello().getProdotti());
 
         cartListView.setItems(elements);
-        cartListView.setCellFactory(__list -> new CarrelloBundleCell());
+        cartListView.setCellFactory(__list -> new CellCarrello());
 
         updateInfoSpesa();
     }

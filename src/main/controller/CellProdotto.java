@@ -13,7 +13,7 @@ import main.model.Utente;
 
 import java.io.IOException;
 
-public class ProdottoCatalogoCell extends ListCell<Prodotto>
+public class CellProdotto extends ListCell<Prodotto>
 {
     @FXML private Pane pane;
 
@@ -25,7 +25,7 @@ public class ProdottoCatalogoCell extends ListCell<Prodotto>
     @FXML private ImageView prodottoImageView;
 
     // Carica stile fxml
-    public ProdottoCatalogoCell()
+    public CellProdotto()
     {
         try
         {

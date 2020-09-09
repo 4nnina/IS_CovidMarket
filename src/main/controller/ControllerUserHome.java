@@ -88,7 +88,7 @@ public class ControllerUserHome extends Controller2<SectionUser> implements Init
         productList.setAll(database.getProdotti());
 
         itemListView.setItems(productList);
-        itemListView.setCellFactory(__list -> new ProdottoCatalogoCell());
+        itemListView.setCellFactory(__list -> new CellProdotto());
     }
 
     // Aggiorna costoQuantitaLabel
