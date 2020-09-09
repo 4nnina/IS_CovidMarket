@@ -9,13 +9,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import main.model.Prodotto;
-import main.model.Responsabile;
 import main.storage.Database;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerRespHome extends Controller2<SectionResp> implements Initializable
+public class ControllerRespHome extends Controller<SectionResp> implements Initializable
 {
     @FXML private Pane gatePane;
 

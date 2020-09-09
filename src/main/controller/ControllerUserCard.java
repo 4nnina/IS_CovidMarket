@@ -1,17 +1,12 @@
 package main.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import main.model.CartaFedelta;
 import main.model.Utente;
 
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
-public class ControllerUserCard extends Controller2<SectionUser>
+public class ControllerUserCard extends Controller<SectionUser>
 {
     @FXML private Pane gatePane;
 

@@ -1,11 +1,15 @@
 package main.controller;
 
 import javafx.scene.layout.Pane;
-import main.model.Persona;
-import main.utils.StageManager;
+import main.utils.Dashboard;
 
-public interface IController
+public interface IController<T extends Enum<T>>
 {
-    void setStageManager(StageManager stageManager);
-    void onSwap(Persona persona);
+    void setDashboard(Dashboard<T> stageManager);
+
+    // Evento invocato al cambio di pannello
+    void onSwapPane(Object data);
+
+    // Ritorna il nodo principale usato per i collegamenti
+    Pane getGatePane();
 }

@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ControllerUserCart extends Controller2<SectionUser> implements Initializable
+public class ControllerUserCart extends Controller<SectionUser> implements Initializable
 {
     @FXML private Pane gatePane;
 

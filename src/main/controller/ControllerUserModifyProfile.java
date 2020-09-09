@@ -15,7 +15,7 @@ import main.utils.Validator;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerUserModifyProfile extends Controller2<SectionUser> implements Initializable
+public class ControllerUserModifyProfile extends Controller<SectionUser> implements Initializable
 {
     @FXML private Pane gatePane;
 

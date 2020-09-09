@@ -16,7 +16,7 @@ import main.storage.Database;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerUserSpesa extends Controller2<SectionUser> implements Initializable
+public class ControllerUserSpesa extends Controller<SectionUser> implements Initializable
 {
     @FXML private Pane gatePane;
 

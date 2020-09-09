@@ -1,16 +1,13 @@
 package main.controller;
 
-import javafx.fxml.Initializable;
-import main.model.Persona;
-import main.utils.StageManager;
+import main.utils.Dashboard;
 
-public abstract class Controller implements IController
+public abstract class Controller<T extends Enum<T>> implements IController<T>
 {
-    protected StageManager stageManager;
+    protected Dashboard<T> dashboard;
 
     @Override
-    public void setStageManager(StageManager stageManager) {
-        this.stageManager = stageManager;
+    public void setDashboard(Dashboard<T> dashboard) {
+        this.dashboard = dashboard;
     }
-    public void onSwap(Persona target) { }
 }

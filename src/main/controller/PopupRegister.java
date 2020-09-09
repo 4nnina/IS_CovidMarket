@@ -2,82 +2,43 @@ package main.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 import main.model.MetodoPagamento;
 import main.model.Utente;
 import main.storage.Database;
-import main.utils.StageManager;
 import main.utils.Validator;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ControllerRegistrazione extends Controller
+public class PopupRegister extends Popup<Utente>
 {
+    @FXML private TextField nomeTextField;
+    @FXML private TextField cognomeTextField;
+    @FXML private TextField indirizzoTextField;
+    @FXML private TextField telefonoTextField;
+    @FXML private TextField mailTextField;
 
-    @FXML
-    private TextField nomeTextField;
+    @FXML private Label capLabel;
+    @FXML private Label tesseraFedeltàLabel;
 
-    @FXML
-    private TextField cognomeTextField;
+    @FXML private PasswordField pswPasswordField;
+    @FXML private PasswordField confermaPswPasswordField;
 
-    @FXML
-    private TextField indirizzoTextField;
+    @FXML private ImageView covidMarketImageView;
 
-    @FXML
-    private TextField telefonoTextField;
+    @FXML private RadioButton siRadioButton;
+    @FXML private RadioButton noRadioButton;
 
-    @FXML
-    private Label capLabel;
+    @FXML private ChoiceBox<?> cittaChoiceBox;
+    @FXML private ChoiceBox<?> pagamentoChoiceBox;
 
-    @FXML
-    private TextField mailTextField;
-
-    @FXML
-    private PasswordField pswPasswordField;
-
-    @FXML
-    private PasswordField confermaPswPasswordField;
-
-    @FXML
-    private ImageView covidMarketImageView;
-
-    @FXML
-    private RadioButton siRadioButton;
-
-    @FXML
-    private RadioButton noRadioButton;
-
-    @FXML
-    private Label tesseraFedeltàLabel;
-
-    @FXML
-    private Button salvaButton;
-
-    @FXML
-    private ChoiceBox<?> cittaChoiceBox;
-
-    @FXML
-    private ChoiceBox<?> pagamentoChoiceBox;
-
-    @FXML
-    private void initialize(){
-        //handler
-        salvaButton.setOnAction(this::salvaButtonHandler);
-        covidMarketImageView.setOnMouseClicked(this::loginHandler);
-        //TODO
-    }
-
-    private void loginHandler(MouseEvent mouseEvent) {
-        stageManager.swap(Stages.Login);
+    public PopupRegister() {
+        super("../resources/fxml/popup_registrazione.fxml");
     }
 
     // Controlla se i parametri inseriti vanno bene
@@ -135,7 +96,7 @@ public class ControllerRegistrazione extends Controller
     }
 
     @FXML
-    private void salvaButtonHandler(ActionEvent actionEvent)
+    private void salvaButtonPress(ActionEvent actionEvent)
     {
         //TODO
         System.out.println("premuto salva");
@@ -152,16 +113,12 @@ public class ControllerRegistrazione extends Controller
                     .setMetodoPagamento(MetodoPagamento.Nessuno)
                     .build();
 
-            Database database = Database.getInstance();
-            if(database.getUtenti().add(user))
-            {
-                // Ha inserito con successo
-                stageManager.setTargetUser(user);
-                stageManager.swap(Stages.HomeUtente);
-            }
-            else {
-                System.out.println("UTENTE ESISTE GIA");
-            }
+            close(user);
         }
+    }
+
+    @Override
+    protected Popup<Utente> self() {
+        return this;
     }
 }

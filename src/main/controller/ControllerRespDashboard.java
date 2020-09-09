@@ -12,7 +12,7 @@ import main.model.Responsabile;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerRespDashboard extends Controller2<SectionResp> implements Initializable
+public class ControllerRespDashboard extends Controller<SectionResp> implements Initializable
 {
     @FXML private Pane gatePane;
 

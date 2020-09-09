@@ -1,21 +1,14 @@
 package main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.controller.PopupLogin;
 import main.controller.SectionResp;
 import main.controller.SectionUser;
-import main.controller.Stages;
 import main.model.*;
-import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
-import main.storage.ISerializer;
 import main.utils.Dashboard;
-import main.utils.StageManager;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -26,6 +19,39 @@ public class Program extends Application
 {
     private static final String PATH_DATABASE = "database.bin";
     private static final String PATH_FXML = "../resources/fxml/";
+
+    public static void login(Stage primaryStage)
+    {
+        PopupLogin popupLogin = new PopupLogin();
+        Optional<Persona> optionUser = popupLogin.show();
+        if (optionUser.isPresent())
+        {
+            Persona persona = optionUser.get();
+
+            // UTENTE
+            if (persona instanceof Utente)
+            {
+                // Dashboard specifica per l'utente
+                Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
+                        .controllerSection(SectionUser.Home,            true, PATH_FXML + "utente_home.fxml")
+                        .controllerSection(SectionUser.Carrello,        true, PATH_FXML + "utente_carrello.fxml")
+                        .controllerSection(SectionUser.Spesa,           true, PATH_FXML + "utente_spesa.fxml")
+                        .controllerSection(SectionUser.Profilo,         true, PATH_FXML + "utente_profilo.fxml")
+                        .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
+                        .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
+                        .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
+                        .launch(persona);
+            }
+            // PERSONALE
+            else
+            {
+                Dashboard<SectionResp> respDashboard = new Dashboard.Builder<SectionResp>(primaryStage)
+                        .controllerSection(SectionResp.Home, true, PATH_FXML + "responsabile_home.fxml")
+                        .controllerDashboard(PATH_FXML + "responsabile_dashboard.fxml")
+                        .launch(persona);
+            }
+        }
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -92,35 +118,7 @@ public class Program extends Application
                 .setQuantitaPerConfezione(30)
                 .build());
 
-        PopupLogin popupLogin = new PopupLogin();
-        Optional<Persona> optionUser = popupLogin.show();
-        if (optionUser.isPresent())
-        {
-            Persona persona = optionUser.get();
-
-            // UTENTE
-            if (persona instanceof Utente)
-            {
-                // Dashboard specifica per l'utente
-                Dashboard<SectionUser> userDashboard = new Dashboard.Builder<SectionUser>(primaryStage)
-                        .controllerSection(SectionUser.Home,            true, PATH_FXML + "utente_home.fxml")
-                        .controllerSection(SectionUser.Carrello,        true, PATH_FXML + "utente_carrello.fxml")
-                        .controllerSection(SectionUser.Spesa,           true, PATH_FXML + "utente_spesa.fxml")
-                        .controllerSection(SectionUser.Profilo,         true, PATH_FXML + "utente_profilo.fxml")
-                        .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
-                        .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
-                        .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
-                        .launch(persona);
-            }
-            // PERSONALE
-            else
-            {
-                Dashboard<SectionResp> respDashboard = new Dashboard.Builder<SectionResp>(primaryStage)
-                        .controllerSection(SectionResp.Home, true, PATH_FXML + "responsabile_home.fxml")
-                        .controllerDashboard(PATH_FXML + "responsabile_dashboard.fxml")
-                        .launch(persona);
-            }
-        }
+        login(primaryStage);
     }
 
     @Override

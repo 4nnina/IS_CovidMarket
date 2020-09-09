@@ -1,22 +1,15 @@
 package main.utils;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import main.controller.Controller;
 import main.controller.IController;
-import main.controller.IController2;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 // Manager dell'interfaccia, questa è descritta da una enumerazione
 // dei pannelli e dal controller principale
@@ -26,13 +19,13 @@ public class Dashboard<T extends Enum<T>>
     public static class StageData<T extends Enum<T>>
     {
         public Pane pane;
-        public IController2<T> controller;
+        public IController<T> controller;
 
         // Indica se questa schermata può essere raggiunta tramite menu principale
         // Utile per schermate secondarie dipendenti da altre, tipo "modifica profilo"
         public boolean menuLink = true;
 
-        public StageData(Pane pane, IController2<T> controller)
+        public StageData(Pane pane, IController<T> controller)
         {
             this.pane = pane;
             this.controller = controller;
@@ -74,7 +67,7 @@ public class Dashboard<T extends Enum<T>>
 
     // Passa ad un nuovo pannello dinamico fornendo anche un puntatore
     // a dati aggiuntivi utili
-    public IController2<T> swap(T target, Object data)
+    public IController<T> swap(T target, Object data)
     {
         StageData<T> stageData = stageDataHashMap.get(target);
         if (stageData != null)
@@ -100,6 +93,11 @@ public class Dashboard<T extends Enum<T>>
             result.add(new Pair<>(entry.getKey(), entry.getValue()));
 
         return result;
+    }
+
+    // Ottiene stage primario
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     // Costruisce una nuova Dashboard customizzata
@@ -132,7 +130,7 @@ public class Dashboard<T extends Enum<T>>
                 this.dashboardStageData = stageData;
 
                 // Trova gatePane
-                IController2<T> controller = dashboardStageData.controller;
+                IController<T> controller = dashboardStageData.controller;
                 this.gatePane = controller.getGatePane();
             }
 
@@ -160,8 +158,8 @@ public class Dashboard<T extends Enum<T>>
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filename));
                 Pane pane = fxmlLoader.load();
 
-                IController2<T> controller = fxmlLoader.getController();
-                assert controller instanceof IController2;
+                IController<T> controller = fxmlLoader.getController();
+                assert controller instanceof IController;
 
                 return new StageData<>(pane, controller);
             }

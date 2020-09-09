@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.EnumSet;
 import java.util.ResourceBundle;
 
-public class ControllerUserHome extends Controller2<SectionUser> implements Initializable
+public class ControllerUserHome extends Controller<SectionUser> implements Initializable
 {
     private enum Ordinamento
     {

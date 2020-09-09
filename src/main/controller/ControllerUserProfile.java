@@ -2,19 +2,13 @@ package main.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import main.Program;
 import main.model.CartaFedelta;
 import main.model.Utente;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ControllerUserProfile extends Controller2<SectionUser>
+public class ControllerUserProfile extends Controller<SectionUser>
 {
     @FXML private Pane gatePanel;
 

@@ -12,6 +12,8 @@ import main.model.Utente;
 import main.storage.Database;
 import main.utils.AlertPopup;
 
+import java.util.Optional;
+
 public class PopupLogin extends Popup<Persona>
 {
     @FXML private Button loginButton;
@@ -83,7 +85,18 @@ public class PopupLogin extends Popup<Persona>
     @FXML
     void registerButtonPress(ActionEvent event)
     {
-        // TODO: Crea l'utente
-        close(null);
+        PopupRegister popupRegister = new PopupRegister();
+        Optional<Utente> optUtente = popupRegister.show();
+        if (optUtente.isPresent())
+        {
+            // Aggiunge al database
+            Database database = Database.getInstance();
+            if(!database.getUtenti().add(optUtente.get()))
+            {
+                System.out.println("UTENTE ESISTE GIA");
+            }
+
+            close(optUtente.get());
+        }
     }
 }

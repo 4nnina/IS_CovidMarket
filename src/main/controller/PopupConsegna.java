@@ -29,7 +29,7 @@ public class PopupConsegna extends Popup<DatiConsegna> implements Initializable
 
     public PopupConsegna(Utente currentUser)
     {
-        super("../resources/fxml/consegna.fxml");
+        super("../resources/fxml/popup_consegna.fxml");
         this.currentUser = currentUser;
     }
 
