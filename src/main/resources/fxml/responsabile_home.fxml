@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="gatePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerRespHome">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="900.0">
+         <children>
+            <SplitPane dividerPositions="0.22544642857142858" layoutX="21.0" layoutY="33.0" prefHeight="410.0" prefWidth="868.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="629.0" prefWidth="293.0" style="-fx-background-color: #ddfaf7;">
+                     <children>
+                        <Label layoutX="79.0" layoutY="14.0" prefHeight="19.0" prefWidth="42.0" text="FILTRI" textFill="#f27777">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="filtraButton1" layoutX="29.0" layoutY="413.0" mnemonicParsing="false" onAction="#filtraButtonHandler" prefHeight="35.0" prefWidth="142.0" style="-fx-background-color: #f27777;" text="Filtra" AnchorPane.topAnchor="413.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="10.0" layoutY="82.0" text="Marca" />
+                        <TextField fx:id="marcaTextField" layoutX="59.0" layoutY="78.0" prefHeight="25.0" prefWidth="125.0" />
+                        <Label layoutX="55.0" layoutY="110.0" text="Caratteristiche" textFill="#f27777">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane fitToWidth="true" layoutX="15.0" layoutY="147.0" prefHeight="217.0" prefWidth="169.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0">
+                           <content>
+                              <VBox fx:id="caratteristicheVBox" prefHeight="156.0" prefWidth="179.0" spacing="3.0" />
+                           </content>
+                        </ScrollPane>
+                        <ComboBox fx:id="ordinaComboBox" layoutX="58.0" layoutY="366.0" prefHeight="25.0" prefWidth="125.0" AnchorPane.topAnchor="366.0" />
+                        <Label layoutX="10.0" layoutY="369.0" text="Ordine" textFill="#f27777" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="369.0">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="48.0" text="Reparto" />
+                        <ComboBox fx:id="repartoComboBox1" layoutX="59.0" layoutY="44.0" prefHeight="25.0" prefWidth="125.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="800.0" style="-fx-background-color: #ddfaf7;">
+                     <children>
+                        <ListView fx:id="itemListView" layoutX="-78.0" prefHeight="460.0" prefWidth="438.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0" />
+                        <Spinner fx:id="quantitySpinner" editable="true" layoutX="608.0" layoutY="22.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.rightAnchor="23.33333333333337" AnchorPane.topAnchor="22.0" />
+                        <Label layoutX="521.0" layoutY="25.0" text="QUANTITA'" textFill="#f27777" AnchorPane.rightAnchor="99.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="modificaButton" layoutX="542.0" layoutY="68.0" mnemonicParsing="false" onAction="#modificaButtonHandler" prefHeight="35.0" prefWidth="151.0" style="-fx-background-color: #f27777;" text="Modifica" AnchorPane.rightAnchor="24.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="inserisciButton" layoutX="516.0" layoutY="116.0" mnemonicParsing="false" onAction="#inserisciButtonHandler" prefHeight="35.0" prefWidth="151.0" style="-fx-background-color: #f27777;" text="Inserisci">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

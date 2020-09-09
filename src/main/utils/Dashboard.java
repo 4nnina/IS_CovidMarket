@@ -84,6 +84,7 @@ public class Dashboard<T extends Enum<T>>
             gatePane.getChildren().add(stageData.pane);
             stageData.controller.onSwapPane(data);
 
+            primaryStage.setTitle("Covid Market - " + target.name());
             return stageData.controller;
         }
 

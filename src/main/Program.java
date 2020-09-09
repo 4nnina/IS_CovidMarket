@@ -93,7 +93,7 @@ public class Program extends Application
                 .build());
 
         PopupLogin popupLogin = new PopupLogin();
-        Optional<Utente> optionUser = popupLogin.show();
+        Optional<Persona> optionUser = popupLogin.show();
         if (optionUser.isPresent())
         {
             Persona persona = optionUser.get();
@@ -110,14 +110,14 @@ public class Program extends Application
                         .controllerSection(SectionUser.ModificaProfilo, false,PATH_FXML + "utente_modifica_profilo.fxml")
                         .controllerSection(SectionUser.Tessera,         true, PATH_FXML + "utente_tessera.fxml")
                         .controllerDashboard(PATH_FXML + "utente_dashboard.fxml")
-                        .launch(sis);
+                        .launch(persona);
             }
             // PERSONALE
             else
             {
                 Dashboard<SectionResp> respDashboard = new Dashboard.Builder<SectionResp>(primaryStage)
-                        .controllerSection(SectionResp.Home, true, PATH_FXML + "resp_home.fxml")
-                        .controllerDashboard(PATH_FXML + "resp_dashboard.fxml")
+                        .controllerSection(SectionResp.Home, true, PATH_FXML + "responsabile_home.fxml")
+                        .controllerDashboard(PATH_FXML + "responsabile_dashboard.fxml")
                         .launch(persona);
             }
         }

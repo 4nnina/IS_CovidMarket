@@ -6,9 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import main.model.Persona;
+import main.model.Responsabile;
 import main.model.Utente;
+import main.storage.Database;
+import main.utils.AlertPopup;
 
-public class PopupLogin extends Popup<Utente>
+public class PopupLogin extends Popup<Persona>
 {
     @FXML private Button loginButton;
     @FXML private Button registerButton;
@@ -23,15 +27,57 @@ public class PopupLogin extends Popup<Utente>
     }
 
     @Override
-    protected Popup<Utente> self() {
+    protected Popup<Persona> self() {
         return this;
     }
 
     @FXML
     void loginButtonPress(ActionEvent event)
     {
-        // TODO: Valida l'utente
-        close(new Utente.Builder().build());
+        Database database = Database.getInstance();
+
+        String username = nomeUtenteTextField.getText();
+        String password = passwordField.getText();
+
+        // Se amministratore
+        if (adminCheckBox.isSelected())
+        {
+            for(Responsabile resp : database.getResponsabili())
+                switch (resp.validLogin(username, password))
+                {
+                    case Success:
+                        close(resp);
+                        break;
+
+                    case WrongPassword:
+                        AlertPopup.warning("Password sbagliata per " + username);
+                        break;
+
+                    case Failure:
+                        AlertPopup.warning("Responsabile " + username + " non esiste");
+                        break;
+                }
+
+        }
+        // Se utente
+        else
+        {
+            for(Utente user : database.getUtenti())
+                switch (user.validLogin(username, password))
+                {
+                    case Success:
+                        close(user);
+                        break;
+
+                    case WrongPassword:
+                        AlertPopup.warning("Password sbagliata per " + username);
+                        break;
+
+                    case Failure:
+                        AlertPopup.warning("Utente " + username + " non esiste");
+                        break;
+                }
+        }
     }
 
     @FXML
