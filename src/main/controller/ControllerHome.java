@@ -19,6 +19,7 @@ import main.storage.Database;
 import java.net.URL;
 import java.util.EnumSet;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class ControllerHome extends Controller implements Initializable
 {
@@ -54,12 +55,7 @@ public class ControllerHome extends Controller implements Initializable
         this.currentUser = (Utente)target;
         usernameLabel.setText(currentUser.getNome());
 
-        Database database = Database.getInstance();
-
-        prodottoObservableList = FXCollections.observableArrayList();
-        prodottoObservableList.setAll(database.getProdotti());
-
-        itemListView.setItems(prodottoObservableList);
+        updateProductList();
         itemListView.setCellFactory(__list -> new ProdottoCatalogoCell());
 
         // Setta numero di elementi nel carrello
@@ -68,6 +64,15 @@ public class ControllerHome extends Controller implements Initializable
 
         // Deseleziona menu
         sezioneChoicebox.getSelectionModel().select(null);
+    }
+
+    private void updateProductList()
+    {
+        Database database = Database.getInstance();
+        prodottoObservableList = FXCollections.observableArrayList(database.getProdotti());
+        prodottoObservableList = prodottoObservableList.filtered(prodotto -> prodotto.getQuantitaDisponibile() > 0);
+
+        itemListView.setItems(prodottoObservableList);
     }
 
     // Aggiorna costoQuantitaLabel
@@ -91,8 +96,9 @@ public class ControllerHome extends Controller implements Initializable
 
         // Spinner quantita
         quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
-        quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue)
-                -> updateQuantityCostLabel(newValue));
+        quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            updateQuantityCostLabel(newValue);
+        });
 
         // Quando cambia l'elemento selezionato aggiorna il costo per quantita
         itemListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1)

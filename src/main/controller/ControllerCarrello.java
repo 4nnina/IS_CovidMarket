@@ -154,24 +154,57 @@ public class ControllerCarrello extends Controller implements Initializable
             return;
         }
 
-        PopupConsegna popupCarrello = new PopupConsegna(currentUser);
-        Optional<DatiConsegna> datiConsegna = popupCarrello.show();
-        if (datiConsegna.isPresent())
+        // Blocca se non ci sono abbastanza items nel database per soddisfare la richiesta
+        boolean success = true;
+        for(Carrello.Coppia coppia : currentUser.getCarrello().getProdotti())
         {
-            // Aggiorna saldo punti
-            Carrello carrello = currentUser.resetCarrello();
-            CartaFedelta cartaFedelta = currentUser.getCartaFedelta();
-            if (cartaFedelta != null)
-                cartaFedelta.punti += carrello.getPunti();
 
-            // Aggiorna database
-            Database database = Database.getInstance();
-            database.getSpese().add(new Spesa(currentUser, carrello, datiConsegna.get()));
+            int quantitaDisponibile = coppia.prodotto.getQuantitaDisponibile();
+            if (coppia.quantita > quantitaDisponibile) {
+                success = false;
 
-            // Aggiorna la vista
-            try { bundles.clear(); }
-            catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
-            updateInfoSpesa();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Il prodotto " + coppia.prodotto.getNome()
+                        + "non è più disponibile nella quantità richiesta ("+ coppia.quantita +"/"+ quantitaDisponibile + ")."
+                        + "L'elemento verrà rimosso dal carrello.");
+
+                alert.show();
+
+                // Elimina dal carrello
+                currentUser.getCarrello().removeProdotto(coppia.prodotto);
+            }
+        }
+
+        if(success)
+        {
+            PopupConsegna popupCarrello = new PopupConsegna(currentUser);
+            Optional<DatiConsegna> datiConsegna = popupCarrello.show();
+            if (datiConsegna.isPresent())
+            {
+                // Aggiorna saldo punti
+                Carrello carrello = currentUser.resetCarrello();
+                CartaFedelta cartaFedelta = currentUser.getCartaFedelta();
+                if (cartaFedelta != null)
+                    cartaFedelta.punti += carrello.getPunti();
+
+                // Aggiorna database
+                Database database = Database.getInstance();
+                database.getSpese().add(new Spesa(currentUser, carrello, datiConsegna.get()));
+
+                // Rimuove occorrente di quell'item dal database
+                for(Carrello.Coppia coppia : carrello.getProdotti()) {
+                    int newQuantita = coppia.prodotto.getQuantitaDisponibile() - coppia.quantita;
+                    coppia.prodotto.setQuantitaDisponibile(newQuantita);
+                }
+
+                // Aggiorna la vista
+                try { bundles.clear(); }
+                catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
+                updateInfoSpesa();
+            }
+        }
+        else{
+            carrelloListView.getItems().setAll(currentUser.getCarrello().getProdotti());
+            carrelloListView.refresh();
         }
     }
 }
