@@ -99,7 +99,6 @@ public class ControllerHome extends Controller implements Initializable
                 -> updateQuantityCostLabel(quantitySpinner.getValue()));
 
         // Carica tutti i reparti
-        repartoComboBox.getItems();
         for (Reparto rep: Reparto.values())
             repartoComboBox.getItems().add(rep);
         repartoComboBox.getSelectionModel().select(0);

@@ -93,6 +93,10 @@ public class Prodotto implements Serializable
         return super.equals(obj); //TODO
     }
 
+    public void setQuantitaDisponibile(Integer newValue) {
+        this.quantitaDisponibile = newValue;
+    }
+
     /**
      * Esplicita la creazione di un prodotto
      */

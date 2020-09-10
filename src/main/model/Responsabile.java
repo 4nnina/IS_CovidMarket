@@ -37,6 +37,10 @@ public class Responsabile extends Persona implements Serializable
         return LoginResult.Failure;
     }
 
+    public EnumSet<Reparto> getRepartiGestiti() {
+        return repartiGestiti;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj) && this.matricola != ((Responsabile)obj).matricola;

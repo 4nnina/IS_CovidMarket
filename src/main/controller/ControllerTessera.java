@@ -8,41 +8,24 @@ import javafx.scene.input.MouseEvent;
 import main.model.Persona;
 import main.model.Utente;
 
+import java.time.LocalDate;
+
+
 public class ControllerTessera extends Controller{
 
-    @FXML
-    private ImageView covidMarketImageView;
+    @FXML    private ImageView covidMarketImageView;
+    @FXML    private ImageView carrelloImageView;
+    @FXML    private Label nomeutenteLabel;
+    @FXML    private Label nomeLabel;
+    @FXML    private Label cognomeLabel;
+    @FXML    private Label tesseraLabel;
+    @FXML    private Label dataEmissioneLabel;
+    @FXML    private ChoiceBox sezioneChoicebox;
+    @FXML    private Label puntiLabel;
 
-    @FXML
-    private ImageView carrelloImageView;
+    private Utente currentUser;
 
-    @FXML
-    private Label nomeutenteLabel;
 
-    @FXML
-    private Label nomeLabel;
-
-    @FXML
-    private Label cognomeLabel;
-
-    @FXML
-    private Label tesseraLabel;
-
-    @FXML
-    private Label dataEmissioneLabel;
-
-    @FXML private ChoiceBox sezioneChoicebox;
-
-    @FXML
-    private Label puntiLabel;
-
-    private Utente utente;
-
-    /*// Costruttore
-    public void setUser(Utente utente) {
-        this.utente = utente;
-    }
-*/
     @FXML
     private void initialize(){
 
@@ -65,10 +48,20 @@ public class ControllerTessera extends Controller{
     }
 
     @Override
+
     public void onSwap(Persona target)
     {
         // Deseleziona menu
         sezioneChoicebox.getSelectionModel().select(null);
+
+        this.currentUser = (Utente)target;
+        nomeutenteLabel.setText(currentUser.getNome());
+
+        nomeLabel.setText(currentUser.getNome());
+        cognomeLabel.setText(currentUser.getCognome());
+        tesseraLabel.setText(currentUser.getCartaFedelta().ID);
+        dataEmissioneLabel.setText(((LocalDate)currentUser.getCartaFedelta().dataEmissione).toString());
+        puntiLabel.setText(String.valueOf(currentUser.getCartaFedelta().punti));
     }
 
     private void loginHandler(MouseEvent mouseEvent) {

@@ -46,6 +46,7 @@ public class StageManager
         initStage(Stages.Tessera, "Covid Market - Carta Fedeltà", PATH_FXML + "saldoPunti_tessera.fxml");
         initStage(Stages.Carrello, "Covid Market - Carrello", PATH_FXML + "carrello.fxml");
         initStage(Stages.SpesaUtente, "Codiv Market - Storico Spesa", PATH_FXML + "speseUtente.fxml");
+        initStage(Stages.SpesaResponsabile, "Codiv Market - Spese", PATH_FXML + "spesaResponsabile2.fxml");
     }
 
     public void initStage(Stages target, String title, String filename)

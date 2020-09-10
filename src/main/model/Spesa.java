@@ -38,4 +38,8 @@ public class Spesa implements Serializable
     public StatoConsegna getStatoConsegna() {
         return statoConsegna;
     }
+
+    public void setStatoConsegna(StatoConsegna statoConsegna) {
+        this.statoConsegna = statoConsegna;
+    }
 }

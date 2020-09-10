@@ -58,7 +58,7 @@ public abstract class Persona implements Serializable
         if (obj.getClass() == this.getClass())
         {
             Persona other = (Persona)obj;
-            return other.nome == this.nome && other.cognome == this.cognome && other.email == this.email;
+            return other.email == this.email;
         }
         return false;
     }

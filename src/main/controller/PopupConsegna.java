@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.model.DatiConsegna;
 import com.sun.glass.ui.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +18,8 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
+
+public class PopupConsegna extends Popup<DatiConsegna> implements Initializable
 {
     @FXML
     private DatePicker datePicked;
@@ -32,10 +34,9 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
     private Button confermaButton;
 
     private Utente currentUser;
-    public PopupCarrello(Utente currentUser)
-    {
+    public PopupConsegna(Utente currentUser) {
+        super("../resources/fxml/consegna.fxml");
         this.currentUser = currentUser;
-        loadFXML(this, "../resources/fxml/consegna.fxml");
     }
 
     @Override
@@ -60,6 +61,15 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
             pagamentoChoiceBox.getItems().add(metodoPagamento.name());
         }
 
+        // Tempo di consegna preferito
+        for(FasciaOraria fasciaOraria : FasciaOraria.values())
+            orarioChoiceBox.getItems().add(fasciaOraria.name());
+        orarioChoiceBox.getSelectionModel().select(0);
+    }
+
+    @Override
+    protected void onShow()
+    {
         // Setta il metodo predefinito
         MetodoPagamento metodoPredefinito = currentUser.getMetodoPagamento();
         if (metodoPredefinito != MetodoPagamento.Nessuno) {
@@ -68,11 +78,6 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
         }
         else
             pagamentoChoiceBox.getSelectionModel().select(0);
-
-        // Tempo di consegna preferito
-        for(FasciaOraria fasciaOraria : FasciaOraria.values())
-            orarioChoiceBox.getItems().add(fasciaOraria.name());
-        orarioChoiceBox.getSelectionModel().select(0);
     }
 
     // Ritorna risultato
@@ -90,7 +95,7 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
                     [orarioChoiceBox.getSelectionModel().getSelectedIndex()];
 
             DatiConsegna datiConsegna = new DatiConsegna(localDate, metodoPagamento, fasciaOraria);
-            returnResult(datiConsegna);
+            close(datiConsegna);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Selezionare data di consegna");
@@ -99,4 +104,9 @@ public class PopupCarrello extends Popup<DatiConsegna> implements Initializable
     }
 
 
+    @Override
+    public Object self() {
+        return this;
+    }
 }
+

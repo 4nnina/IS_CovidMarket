@@ -13,6 +13,7 @@ import main.storage.Database;
 import main.storage.ISerializer;
 import main.utils.StageManager;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.EnumSet;
 
@@ -35,7 +36,7 @@ public class Program extends Application
                 .setIndirizzo("sis sis 29", "sis", "36071")
                 .setEmail("sis@gmail.com")
                 .setTelefono("3779927407")
-                .setCartaFedelta(new CartaFedelta("", Calendar.getInstance().getTime()))
+                .setCartaFedelta(new CartaFedelta("", LocalDate.now()))
                 .setMetodoPagamento(MetodoPagamento.PayPal)
                 .setPassword("sis")
                 .build();
@@ -46,7 +47,7 @@ public class Program extends Application
                 .setDataDiNascita(Calendar.getInstance().getTime())
                 .setLuogoDiNascita("To mare")
                 .setMatricola(5236437)
-                .setRepartiGestiti(EnumSet.allOf(Reparto.class))
+                .setRepartiGestiti(EnumSet.of(Reparto.Biscotti))
                 .setEmail("resp@gmail.com")
                 .setIndirizzo("", "", "0")
                 .setUsername("resp")

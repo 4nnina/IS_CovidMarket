@@ -9,6 +9,7 @@ public enum Stages
     HomeUtente,
 
     SpesaUtente,
+    SpesaResponsabile,
 
     ModificaUtente,
     Profilo,

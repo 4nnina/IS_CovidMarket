@@ -154,7 +154,7 @@ public class ControllerCarrello extends Controller implements Initializable
             return;
         }
 
-        PopupCarrello popupCarrello = new PopupCarrello(currentUser);
+        PopupConsegna popupCarrello = new PopupConsegna(currentUser);
         Optional<DatiConsegna> datiConsegna = popupCarrello.show();
         if (datiConsegna.isPresent())
         {

@@ -1,153 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.206" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <items>
-    <AnchorPane fx:id="speseButton" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="426.0" prefWidth="901.0" style="-fx-background-color: #ddfaf7;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="80.0" layoutY="41.0" prefHeight="317.0" prefWidth="281.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="41.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="122.22224426269531" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="295.5555750528971" minWidth="97.77776082356769" prefWidth="159.111089070638" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="35.777801513671875" prefHeight="35.777801513671875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="64.22219848632812" minHeight="50.0" prefHeight="64.22219848632812" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="35.777801513671875" prefHeight="35.777801513671875" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <ImageView fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
-               <image>
-                  <Image url="@../img/logo.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="36.5">
-               <image>
-                  <Image url="@../img/utente.jpg" />
-               </image>
-            </ImageView>
-            <Button fx:id="catalogoButton" layoutX="184.0" layoutY="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #f27777;" text="Catalogo" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="45.0">
+            <Label prefHeight="17.0" prefWidth="80.0" text="Nome" GridPane.rowIndex="1">
                <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="inserisciProdButton" layoutX="309.0" layoutY="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: f1a9a9;" text="Inserisci Prodotto" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="460.0" AnchorPane.topAnchor="45.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="speseButton" layoutX="485.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #f27777;" text="Stato spese" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="45.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="672.0" layoutY="32.0" text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="51.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="nomeutenteLabel" layoutX="776.0" layoutY="58.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">
+            <Label prefHeight="17.0" prefWidth="80.0" text="Marca" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-         </children></AnchorPane>
-      <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
-         <children>
-            <GridPane layoutX="80.0" layoutY="41.0" prefHeight="317.0" prefWidth="281.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="41.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="122.22224426269531" />
-                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="295.5555750528971" minWidth="97.77776082356769" prefWidth="159.111089070638" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="64.22219848632812" minHeight="50.0" prefHeight="64.22219848632812" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="35.777801513671875" prefHeight="35.777801513671875" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label prefHeight="17.0" prefWidth="80.0" text="Nome" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="17.0" prefWidth="80.0" text="Marca" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="nomeTextField" layoutX="150.0" layoutY="150.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label prefHeight="50.0" prefWidth="97.0" text="Quantità nella&#10;confezione" textAlignment="CENTER" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="21.0" prefWidth="118.0" text="Prezzo" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="prezzoTextField" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label layoutX="10.0" layoutY="75.0" prefHeight="17.0" prefWidth="80.0" text="Reparto" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Spinner fx:id="qtSpinner" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="€" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="90.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="75.0" prefHeight="17.0" prefWidth="80.0" text="Tipo">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="tipoComboBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                  <ComboBox fx:id="repartoComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="marcaComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-               </children>
-            </GridPane>
-            <GridPane layoutX="463.0" layoutY="23.0" prefHeight="284.0" prefWidth="282.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="41.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="117.33333333333333" />
-                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="295.5555750528971" minWidth="97.77776082356769" prefWidth="164.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="237.77771504720053" minHeight="50.0" prefHeight="237.77771504720053" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="5.5556182861328125" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label prefHeight="21.0" prefWidth="108.0" text="Path Immagine " GridPane.rowIndex="1">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="immagineTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label layoutX="10.0" layoutY="225.0" prefHeight="21.0" prefWidth="118.0" text="Caratteristiche">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Accordion GridPane.columnIndex="1" />
-               </children>
-            </GridPane>
-            <Button fx:id="aggiungiButton" layoutX="755.0" layoutY="366.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #f27777;" text="Aggiungi">
+            <TextField fx:id="nomeTextField" layoutX="150.0" layoutY="150.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label prefHeight="50.0" prefWidth="97.0" text="Quantità nella&#10;confezione" textAlignment="CENTER" GridPane.rowIndex="4">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
-            </Button>
+            </Label>
+            <Label prefHeight="21.0" prefWidth="118.0" text="Prezzo" GridPane.rowIndex="3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="75.0" prefHeight="17.0" prefWidth="80.0" text="Reparto">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="qtSpinner" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="repartoComboBox" prefWidth="150.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
+            <TextField fx:id="marcaTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Spinner fx:id="prezzoSpinner" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="50.0" prefWidth="97.0" text="Quantità &#10;  disponibile" textAlignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="disponibileSpinner" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
-      </AnchorPane>
-  </items>
-</SplitPane>
+      </GridPane>
+      <GridPane layoutX="463.0" layoutY="23.0" prefHeight="284.0" prefWidth="282.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="41.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="117.33333333333333" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="295.5555750528971" minWidth="97.77776082356769" prefWidth="164.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="237.77771504720053" minHeight="50.0" prefHeight="237.77771504720053" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="5.5556182861328125" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="21.0" prefWidth="108.0" text="Path Immagine " GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="immagineTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="225.0" prefHeight="21.0" prefWidth="118.0" text="Caratteristiche">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Accordion GridPane.columnIndex="1" />
+            <VBox fx:id="caratteristicheVBox" prefHeight="238.0" prefWidth="150.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Button fx:id="button" layoutX="755.0" layoutY="366.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #f27777;" text="Aggiungi">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
