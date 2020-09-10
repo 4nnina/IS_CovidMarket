@@ -10,7 +10,7 @@ public class Responsabile extends Persona implements Serializable
     private Date dataDiNascita;
     private String luogoDiNascita;
     private EnumSet<Reparto> repartiGestiti;
-    private int matricola;
+    private String matricola;
     private String username;
 
     protected Responsabile(Builder builder)
@@ -54,7 +54,7 @@ public class Responsabile extends Persona implements Serializable
         private Date dataDiNascita;
         private String luogoDiNascita;
         private EnumSet<Reparto> repartiGestiti;
-        private int matricola;
+        private String matricola;
         private String username;
 
         @Override
@@ -82,7 +82,7 @@ public class Responsabile extends Persona implements Serializable
             return this;
         }
 
-        public Builder setMatricola(int matricola) {
+        public Builder setMatricola(String matricola) {
             this.matricola = matricola;
             return this;
         }

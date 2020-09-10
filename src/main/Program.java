@@ -46,8 +46,8 @@ public class Program extends Application
         Responsabile resp = new Responsabile.Builder()
                 .setDataDiNascita(Calendar.getInstance().getTime())
                 .setLuogoDiNascita("To mare")
-                .setMatricola(5236437)
-                .setRepartiGestiti(EnumSet.of(Reparto.Biscotti))
+                .setMatricola("5236437")
+                .setRepartiGestiti(EnumSet.allOf(Reparto.class))
                 .setEmail("resp@gmail.com")
                 .setIndirizzo("", "", "0")
                 .setUsername("resp")
@@ -85,10 +85,6 @@ public class Program extends Application
                 .build());
 
         StageManager stageManager = new StageManager(primaryStage);
-
-        //stageManager.setTargetUser(sis);
-        //stageManager.swap(Stages.HomeUtente);
-
         stageManager.swap(Stages.Login);
     }
 
