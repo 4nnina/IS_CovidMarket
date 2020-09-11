@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.stage.Stage;
+import main.model.CartaFedelta;
+import main.model.Citta;
 import main.model.MetodoPagamento;
 import main.model.Utente;
 import main.storage.Database;
@@ -18,7 +20,13 @@ import main.utils.StageManager;
 import main.utils.Validator;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ControllerRegistrazione extends Controller
 {
@@ -51,10 +59,7 @@ public class ControllerRegistrazione extends Controller
     private ImageView covidMarketImageView;
 
     @FXML
-    private RadioButton siRadioButton;
-
-    @FXML
-    private RadioButton noRadioButton;
+    private CheckBox attivaCheckbox;
 
     @FXML
     private Label tesseraFedeltàLabel;
@@ -62,18 +67,46 @@ public class ControllerRegistrazione extends Controller
     @FXML
     private Button salvaButton;
 
-    @FXML
-    private ChoiceBox<?> cittaChoiceBox;
+    @FXML private ChoiceBox<?> cittaChoiceBox;
+    @FXML private ChoiceBox<MetodoPagamento> pagamentoChoiceBox;
+
+    private ArrayList<Citta> cittaDisponibili;
 
     @FXML
-    private ChoiceBox<?> pagamentoChoiceBox;
-
-    @FXML
-    private void initialize(){
-        //handler
+    private void initialize()
+    {
         salvaButton.setOnAction(this::salvaButtonHandler);
         covidMarketImageView.setOnMouseClicked(this::loginHandler);
-        //TODO
+
+        pagamentoChoiceBox.getItems().addAll(MetodoPagamento.values());
+        pagamentoChoiceBox.getSelectionModel().select(MetodoPagamento.Nessuno);
+
+        // Carica citta dal file
+        cittaDisponibili = new ArrayList<>();
+        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta.txt")))
+        {
+            String line = reader.readLine();
+            while (line != null)
+            {
+                if (line.length() > 3)
+                {
+                    int separator = line.indexOf('\t');
+                    String nome = (String) line.subSequence(0, separator);
+                    String CAP = (String) line.subSequence(separator + 1, line.indexOf('\t', separator + 1));
+
+                    cittaDisponibili.add(new Citta(nome, CAP));
+                }
+                line = reader.readLine();
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void loginHandler(MouseEvent mouseEvent) {
@@ -142,16 +175,20 @@ public class ControllerRegistrazione extends Controller
 
         if (validateUserData())
         {
-            Utente user = new Utente.Builder()
+            Utente.Builder builder = new Utente.Builder()
                     .setNominativo(nomeTextField.getText(), cognomeTextField.getText())
                     .setIndirizzo(indirizzoTextField.getText(), "arzignano", "0")
                     .setTelefono(telefonoTextField.getText())
                     .setEmail(mailTextField.getText())
                     .setPassword(pswPasswordField.getText())
                     .setCartaFedelta(null)
-                    .setMetodoPagamento(MetodoPagamento.Nessuno)
-                    .build();
+                    .setMetodoPagamento(pagamentoChoiceBox.getValue());
 
+            if (attivaCheckbox.isSelected()) {
+                builder.setCartaFedelta(new CartaFedelta(LocalDate.now()));
+            }
+
+            Utente user = builder.build();
             Database database = Database.getInstance();
             if(database.getUtenti().add(user))
             {

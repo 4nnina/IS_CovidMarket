@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.206" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerTessera">
+<SplitPane dividerPositions="0.206" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerUserTessera">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
@@ -45,7 +46,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="sezioneChoicebox" layoutX="620.0" layoutY="46.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="sezioneChoicebox" layoutX="615.0" layoutY="46.0" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: transparent;" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
@@ -54,7 +55,7 @@
                   <Image url="@../img/tessera.png" />
                </image>
             </ImageView>
-            <GridPane layoutX="249.0" layoutY="110.0" prefHeight="245.0" prefWidth="401.0">
+            <GridPane fx:id="gridPane" layoutX="249.0" layoutY="110.0" prefHeight="245.0" prefWidth="401.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -99,6 +100,11 @@
                   <Label fx:id="puntiLabel" layoutX="144.0" layoutY="169.0" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: rgba(255, 255, 255, 0.3);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
+            <Button fx:id="creaButton" layoutX="745.0" layoutY="406.0" mnemonicParsing="false" onAction="#creaButtonHandler" prefHeight="35.0" prefWidth="116.0" style="-fx-background-color: #f27777;" text="Crea Tessera">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
   </items>
 </SplitPane>

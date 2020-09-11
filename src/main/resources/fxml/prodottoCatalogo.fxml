@@ -10,18 +10,17 @@
    <children>
       <ImageView fx:id="prodottoImageView" fitHeight="82.0" fitWidth="79.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="11.0" />
       <Separator layoutX="92.0" layoutY="1.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="7.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="1.0" />
-      <Label fx:id="nomeLabel" layoutX="157.0" layoutY="14.0" prefHeight="17.0" prefWidth="174.0" text="NOMEPRODOTTO">
+      <Label fx:id="nomeLabel" layoutX="157.0" layoutY="14.0" prefHeight="17.0" prefWidth="174.0" text="NOMEPRODOTTO" AnchorPane.leftAnchor="157.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="marcaLabel" layoutX="157.0" layoutY="41.0" prefHeight="17.0" prefWidth="182.0" text="MARCA">
+      <Label fx:id="marcaLabel" layoutX="157.0" layoutY="41.0" prefHeight="17.0" prefWidth="182.0" text="MARCA" AnchorPane.leftAnchor="157.0" AnchorPane.topAnchor="41.0">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label layoutX="339.0" layoutY="72.0" text="Prezzo: " />
-      <Label fx:id="prezzoLabel" layoutX="397.0" layoutY="69.0" prefHeight="17.0" prefWidth="53.0" text="SOLDI" textAlignment="RIGHT" />
-      <Label layoutX="457.0" layoutY="69.0" text="€" />
-      <Label layoutX="339.0" layoutY="50.0" prefHeight="17.0" prefWidth="53.0" text="Quantità:" textAlignment="RIGHT" AnchorPane.topAnchor="50.0" />
-      <Label fx:id="quantitaLabel" layoutX="401.0" layoutY="50.0" prefHeight="17.0" prefWidth="65.0" text="QT" textAlignment="RIGHT" AnchorPane.topAnchor="50.0" />
+      <Label layoutX="339.0" layoutY="72.0" text="Prezzo: " AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="72.0" />
+      <Label fx:id="prezzoLabel" layoutX="397.0" layoutY="69.0" prefHeight="17.0" prefWidth="53.0" text="SOLDI" textAlignment="RIGHT" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0" />
+      <Label layoutX="339.0" layoutY="50.0" prefHeight="17.0" prefWidth="53.0" text="Quantità:" textAlignment="RIGHT" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="50.0" />
+      <Label fx:id="quantitaLabel" layoutX="401.0" layoutY="50.0" prefHeight="17.0" prefWidth="65.0" text="QT" textAlignment="RIGHT" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="50.0" />
    </children>
 </AnchorPane>

@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="prodottoImageView" fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="8.0" />
       <Separator layoutX="96.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="96.0" prefWidth="16.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="-1.0" />
-      <Label fx:id="nomeLabel" layoutX="118.0" layoutY="15.0" prefHeight="17.0" prefWidth="174.0" text="NOMEPRODOTTO">
+      <Label fx:id="nomeLabel" layoutX="118.0" layoutY="15.0" prefHeight="17.0" prefWidth="174.0" text="NOMEPRODOTTO" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="marcaLabel" layoutX="118.0" layoutY="42.0" prefHeight="17.0" prefWidth="182.0" text="MARCA">
+      <Label fx:id="marcaLabel" layoutX="118.0" layoutY="42.0" prefHeight="17.0" prefWidth="182.0" text="MARCA" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="42.0">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label layoutX="338.0" layoutY="38.0" text="Costo unitario:" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="38.0" />
+      <Label layoutX="253.0" layoutY="38.0" text="Costo unitario:" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="38.0" />
       <Label fx:id="prezzoLabel" layoutX="440.0" layoutY="39.0" text="SOLDI" AnchorPane.rightAnchor="22.0" />
-      <Label layoutX="365.0" layoutY="17.0" prefHeight="17.0" prefWidth="51.0" text="Quantità:" textAlignment="RIGHT" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="17.0" />
+      <Label layoutX="280.0" layoutY="17.0" prefHeight="17.0" prefWidth="51.0" text="Quantità:" textAlignment="RIGHT" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="17.0" />
       <Label fx:id="quantitaLabel" layoutX="457.0" layoutY="17.0" text="QT" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="17.0" />
-      <Label layoutX="349.0" layoutY="61.0" text="Costo totale:" />
-      <Label fx:id="prezzoTotaleLabel" layoutX="440.0" layoutY="61.0" text="SOLDI" />
+      <Label layoutX="264.0" layoutY="61.0" text="Costo totale:" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="61.0" />
+      <Label fx:id="prezzoTotaleLabel" layoutX="438.0" layoutY="61.0" text="SOLDI" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="61.0" />
    </children>
 </AnchorPane>

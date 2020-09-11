@@ -36,7 +36,7 @@ public class Program extends Application
                 .setIndirizzo("sis sis 29", "sis", "36071")
                 .setEmail("sis@gmail.com")
                 .setTelefono("3779927407")
-                .setCartaFedelta(new CartaFedelta("", LocalDate.now()))
+                .setCartaFedelta(new CartaFedelta(LocalDate.now()))
                 .setMetodoPagamento(MetodoPagamento.PayPal)
                 .setPassword("sis")
                 .build();

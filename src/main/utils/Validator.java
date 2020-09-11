@@ -45,6 +45,4 @@ public class Validator
         Matcher matcher = patternAddressFormat.matcher(address);
         return matcher.matches();
     }
-
-
 }
