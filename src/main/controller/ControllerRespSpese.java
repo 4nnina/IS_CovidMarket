@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import main.model.*;
 import main.storage.Database;
 
@@ -28,6 +30,9 @@ public class ControllerRespSpese extends Controller implements Initializable
     @FXML private Label dataLabel;
     @FXML private Label orarioLabel;
     @FXML private Label costoLabel;
+    @FXML private Label nomeutenteLabel;
+
+    @FXML private ImageView covidMarketImageView;
 
     @FXML private ChoiceBox<String> statoChoiceBox;
     @FXML private TextField utenteTextField;
@@ -55,13 +60,18 @@ public class ControllerRespSpese extends Controller implements Initializable
         statoChoiceBox.getItems().add("---");
         for(StatoConsegna statoConsegna : StatoConsegna.values())
             statoChoiceBox.getItems().add(statoConsegna.name());
+
+        covidMarketImageView.setOnMouseClicked(this::loginHandler);
     }
+
+    private void loginHandler(MouseEvent mouseEvent) { stageManager.swap(Stages.SpesaResponsabile); }
 
     @Override
     public void onSwap(Persona target)
     {
         Database database = Database.getInstance();
         this.currentresponsabile = (Responsabile)target;
+        nomeutenteLabel.setText(currentresponsabile.getNome());
 
         // Carica tutte le spese
         spese.clear();

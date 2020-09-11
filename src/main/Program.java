@@ -25,11 +25,11 @@ public class Program extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Database database = Database.getInstance();
-        /*
+
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
-        */
+        /*
 
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
@@ -83,6 +83,8 @@ public class Program extends Application
                 .setQuantitaDisponibile(999)
                 .setQuantitaPerConfezione(30)
                 .build());
+
+         */
 
         StageManager stageManager = new StageManager(primaryStage);
         stageManager.swap(Stages.Login);

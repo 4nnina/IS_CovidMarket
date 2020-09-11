@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="711.0" style="-fx-background-color: #ddfaf7;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ControllerLoginPage">
    <children>
-      <Button fx:id="loginButton" layoutX="384.0" layoutY="166.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #f27777; -fx-background-radius: 10;" text="Login" textAlignment="CENTER" AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="76.0">
+      <Button fx:id="loginButton" defaultButton="true" layoutX="384.0" layoutY="166.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #f27777; -fx-background-radius: 10;" text="Login" textAlignment="CENTER" AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="76.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

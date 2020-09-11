@@ -1,8 +1,11 @@
 package main.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import main.storage.Database;
 import main.model.Responsabile;
@@ -62,6 +65,9 @@ public class ControllerLoginPage extends Controller {
                 {
                     // Cambia schermata
                     case Success: {
+                        nomeUtenteTextField.clear();
+                        pswPasswordField.clear();
+                        personaleCheckBox.setSelected(false);
                         stageManager.setTargetUser(user);
                         stageManager.swap(Stages.HomeResponsabile);
                         anyFound = true;
@@ -92,6 +98,9 @@ public class ControllerLoginPage extends Controller {
                 {
                     // Cambia schermata
                     case Success: {
+                        nomeUtenteTextField.clear();
+                        pswPasswordField.clear();
+                        personaleCheckBox.setSelected(false);
                         stageManager.setTargetUser(user);
                         stageManager.swap(Stages.HomeUtente);
                         anyFound = true;

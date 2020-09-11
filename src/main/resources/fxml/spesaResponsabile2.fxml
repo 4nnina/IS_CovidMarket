@@ -15,7 +15,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
+            <ImageView fx:id="covidMarketImageView" fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../img/logo.png" />
                </image>
@@ -25,16 +25,22 @@
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#homeButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Home" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
+            <Button layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#homeButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Home" AnchorPane.bottomAnchor="41.666666666666664" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="405.0" layoutY="45.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Logout">
+            <Button layoutX="405.0" layoutY="45.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Logout" AnchorPane.bottomAnchor="41.666666666666664" AnchorPane.topAnchor="43.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="nomeutenteLabel" layoutX="744.0" layoutY="50.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="744.0" layoutY="50.0" text="Ciao," textFill="#f27777" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="51.0" />
          </children></AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>

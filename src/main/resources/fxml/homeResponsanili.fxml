@@ -29,17 +29,18 @@
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="nomeutenteLabel" layoutX="662.0" layoutY="22.0" text="Ciao, NOMEUTENTE" textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="nomeutenteLabel" layoutX="662.0" layoutY="22.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="speseButton" layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#speseButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Stato spese" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
+            <Button fx:id="speseButton" layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#speseButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Stato spese" AnchorPane.bottomAnchor="43.666666666666664" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="405.0" layoutY="45.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Logout">
+            <Label layoutX="754.0" layoutY="51.0" text="Ciao," textFill="#f27777" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="51.0" />
+            <Button layoutX="393.0" layoutY="40.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Logout" AnchorPane.bottomAnchor="43.666666666666664" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="43.0">
                <font>
                   <Font size="14.0" />
                </font>
