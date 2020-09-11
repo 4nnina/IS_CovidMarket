@@ -11,4 +11,9 @@ public class Citta
         this.nome = nome;
         this.CAP = CAP;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

@@ -1,6 +1,7 @@
 package main.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -62,13 +63,11 @@ public class ControllerRegistrazione extends Controller
     private CheckBox attivaCheckbox;
 
     @FXML
-    private Label tesseraFedeltàLabel;
-
-    @FXML
     private Button salvaButton;
 
-    @FXML private ChoiceBox<?> cittaChoiceBox;
+    @FXML private ComboBox<Citta> cittaComboBox;
     @FXML private ChoiceBox<MetodoPagamento> pagamentoChoiceBox;
+
 
     private ArrayList<Citta> cittaDisponibili;
 
@@ -107,11 +106,21 @@ public class ControllerRegistrazione extends Controller
         {
             e.printStackTrace();
         }
+
+        for(Citta citta:cittaDisponibili){
+            cittaComboBox.getItems().add(citta);
+        }
+        cittaComboBox.setOnAction(foo ->{
+            capLabel.setText(cittaComboBox.getValue().CAP);
+        });
+
+
     }
 
     private void loginHandler(MouseEvent mouseEvent) {
         stageManager.swap(Stages.Login);
     }
+
 
     // Controlla se i parametri inseriti vanno bene
     private boolean validateUserData()
@@ -155,6 +164,11 @@ public class ControllerRegistrazione extends Controller
             result = false;
         }
 
+        if(capLabel.getText() == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Nessuna città selezionata");
+            alert.showAndWait();
+            result = false;
+        }
         /*
         int tmp = 0;
         try{tmp = Integer.valueOf(capLabel.getText()); } catch (NumberFormatException e)
@@ -177,7 +191,7 @@ public class ControllerRegistrazione extends Controller
         {
             Utente.Builder builder = new Utente.Builder()
                     .setNominativo(nomeTextField.getText(), cognomeTextField.getText())
-                    .setIndirizzo(indirizzoTextField.getText(), "arzignano", "0")
+                    .setIndirizzo(indirizzoTextField.getText(), cittaComboBox.getValue().nome, capLabel.getText())
                     .setTelefono(telefonoTextField.getText())
                     .setEmail(mailTextField.getText())
                     .setPassword(pswPasswordField.getText())
