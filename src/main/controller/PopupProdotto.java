@@ -9,6 +9,7 @@ import main.model.Attributo;
 import main.model.Prodotto;
 import main.model.Reparto;
 import main.model.Responsabile;
+import main.utils.Validator;
 
 import java.net.URL;
 import java.util.EnumSet;
@@ -140,7 +141,16 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
         else{
             immagineTextField.setStyle("-fx-control-inner-background:ecfbfa");
         }
+        if(!Validator.isDecimalNumber(String.valueOf(prezzoSpinner.getValue()))){
+            System.out.println(String.valueOf(prezzoSpinner));
+            prezzoSpinner.setStyle("-fx-control-inner-background:red");
+            prezzoSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.01, 1000, 0.01, 0.01));
+            result = false;
+        }
+        else
+            prezzoSpinner.setStyle("-fx-control-inner-background:white");
 
         return result;
     }
+
 }

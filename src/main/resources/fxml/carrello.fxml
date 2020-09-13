@@ -45,7 +45,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
-            <Spinner fx:id="quantitySpinner" editable="true" layoutX="797.0" layoutY="17.0" prefHeight="14.0" prefWidth="97.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="17.0" />
+            <Spinner fx:id="quantitySpinner" layoutX="797.0" layoutY="17.0" prefHeight="25.0" prefWidth="84.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="17.0" />
             <Label layoutX="725.0" layoutY="11.0" text="Modifica &#10;quantità" textAlignment="CENTER" textFill="#f27777" AnchorPane.leftAnchor="725.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="11.0">
                <font>
                   <Font size="13.0" />

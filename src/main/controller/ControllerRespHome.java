@@ -89,8 +89,9 @@ public class ControllerRespHome extends Controller implements Initializable
         // Carica tutti i reparti gestiti
         repartoComboBox.getItems().add(Reparto.Tutto);
         for (Reparto rep: Reparto.values())
-            if (currentResp.getRepartiGestiti().contains(rep))
+            if (currentResp.getRepartiGestiti().contains(rep) && !rep.equals(Reparto.Tutto))
                 repartoComboBox.getItems().add(rep);
+
 
         repartoComboBox.getSelectionModel().select(0);
 
