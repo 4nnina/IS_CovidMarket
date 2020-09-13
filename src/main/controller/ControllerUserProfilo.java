@@ -84,7 +84,14 @@ public class ControllerUserProfilo extends Controller {
             }
         });
 
+        carrelloImageView.setOnMouseClicked(this::carrelloButtonHandler);
+
     }
+
+    private void carrelloButtonHandler(MouseEvent mouseEvent) {
+        stageManager.swap(Stages.Carrello);
+    }
+
 
     @Override
     public void onSwap(Persona target)

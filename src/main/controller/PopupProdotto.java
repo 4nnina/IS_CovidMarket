@@ -24,18 +24,12 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
     @FXML private Spinner<Integer> disponibileSpinner;
 
     @FXML private VBox caratteristicheVBox;
+    @FXML private ComboBox<Reparto> repartoComboBox;
 
-    @FXML
-    private ComboBox<Reparto> repartoComboBox;
+    @FXML private TextField marcaTextField;
+    @FXML private TextField immagineTextField;
 
-    @FXML
-    private TextField marcaTextField;
-
-    @FXML
-    private TextField immagineTextField;
-
-    @FXML
-    private Button button;
+    @FXML private Button button;
 
 
     private Responsabile currentResponsabile;
@@ -115,7 +109,7 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
                         .setQuantitaDisponibile(disponibileSpinner.getValue())
                         .build();
 
-
+                System.out.println("ho confermato");
                 close(prodotto);
             }
         }
@@ -125,12 +119,11 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
         boolean result = true;
 
         if(nomeTextField.getText().isEmpty()){
-            nomeTextField.setStyle("-fx-control-inner-background:red");
+            nomeTextField.setStyle("-fx-control-inner-background:#ff0000");
             result = false;
         }
         else{
             nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
-            result = false;
         }
         if(marcaTextField.getText().isEmpty()){
             marcaTextField.setStyle("-fx-control-inner-background:red");
@@ -138,7 +131,6 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
         }
         else{
             marcaTextField.setStyle("-fx-control-inner-background:ecfbfa");
-            result = false;
         }
         if(immagineTextField.getText().isEmpty()){
             immagineTextField.setStyle("-fx-control-inner-background:red");
@@ -146,7 +138,6 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
         }
         else{
             immagineTextField.setStyle("-fx-control-inner-background:ecfbfa");
-            result = false;
         }
 
         return result;

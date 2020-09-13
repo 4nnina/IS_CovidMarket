@@ -1,16 +1,24 @@
 package main.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.model.Citta;
 import main.model.MetodoPagamento;
 import main.model.Persona;
 import main.model.Utente;
 import main.storage.Database;
 import main.utils.StageManager;
 import main.utils.Validator;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ControllerUserModifica extends Controller{
 
@@ -23,7 +31,7 @@ public class ControllerUserModifica extends Controller{
     @FXML private Label nomeLabel;
     @FXML private Label cognomeLabel;
     @FXML private Label capLabel;
-    @FXML private ComboBox<?> cittaCombobox;
+    @FXML private ComboBox<Citta> cittaCombobox;
     @FXML private TextField mailTextField;
     @FXML private PasswordField pswTextField;
     @FXML private PasswordField controllopswTextField;
@@ -31,6 +39,7 @@ public class ControllerUserModifica extends Controller{
     @FXML private Button modificaButton;
 
     private Utente currentUser;
+    private ArrayList<Citta> cittaDisponibili;
 
     @FXML
     private void initialize(){
@@ -38,6 +47,41 @@ public class ControllerUserModifica extends Controller{
         //handler
         covidMarketImageView.setOnMouseClicked(this::homeHandler);
         modificaButton.setOnMouseClicked(this::modificaHandler);
+
+        // Carica citta dal file
+        cittaDisponibili = new ArrayList<>();
+        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta.txt")))
+        {
+            String line = reader.readLine();
+            while (line != null)
+            {
+                if (line.length() > 3)
+                {
+                    int separator = line.indexOf('\t');
+                    String nome = (String) line.subSequence(0, separator);
+                    String CAP = (String) line.subSequence(separator + 1, line.indexOf('\t', separator + 1));
+
+                    cittaDisponibili.add(new Citta(nome, CAP));
+                }
+                line = reader.readLine();
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        for(Citta citta:cittaDisponibili){
+            cittaCombobox.getItems().add(citta);
+        }
+
+        cittaCombobox.setOnAction(foo ->{
+            capLabel.setText(cittaCombobox.getValue().CAP);
+        });
 
         // Cambia schermata in base alla scelta
         sezioneChoicebox.getItems().setAll("Profilo", "Tessera Fedelta", "Storico Spese", "Logout");
@@ -50,6 +94,11 @@ public class ControllerUserModifica extends Controller{
             }
         });
 
+        carrelloImageView.setOnMouseClicked(this::carrelloButtonHandler);
+
+    }
+    private void carrelloButtonHandler(MouseEvent mouseEvent) {
+        stageManager.swap(Stages.Carrello);
     }
 
     @Override
@@ -64,7 +113,15 @@ public class ControllerUserModifica extends Controller{
         nomeLabel.setText(currentUser.getNome());
         cognomeLabel.setText(currentUser.getCognome());
         indirizzoTextField.setText(currentUser.getIndirizzo());
-        //cittaCombobox.getSelectionModel().select(...);
+
+
+        String cittaUser = currentUser.getCitta();
+        int cittaIndex = 0;
+        for(Citta citta : cittaDisponibili){
+            if(citta.nome.equals(cittaUser))
+                cittaIndex = cittaDisponibili.indexOf(citta);
+        }
+        cittaCombobox.getSelectionModel().select(cittaIndex);
         capLabel.setText(String.valueOf(currentUser.getCAP()));
         telefonoTextField.setText(currentUser.getTelefono());
         mailTextField.setText(currentUser.getEmail());
@@ -84,7 +141,7 @@ public class ControllerUserModifica extends Controller{
         {
             String metodoPagamento = pagamentoComboBox.getSelectionModel().getSelectedItem();
             currentUser.setPagamento(MetodoPagamento.valueOf(metodoPagamento));
-            currentUser.setIndirizzo(indirizzoTextField.getText(), "arzignano", capLabel.getText());
+            currentUser.setIndirizzo(indirizzoTextField.getText(), cittaCombobox.getValue().nome, capLabel.getText());
             currentUser.setTelefono(telefonoTextField.getText());
             currentUser.setEmail(mailTextField.getText());
             if(!pswTextField.getText().isEmpty())

@@ -141,7 +141,7 @@ public class ControllerRegistrazione extends Controller
             result = false;
         }
         else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            cognomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
         if (!Validator.isTelephoneNumber(telefonoTextField.getText()))
         {
@@ -149,21 +149,21 @@ public class ControllerRegistrazione extends Controller
             result = false;
         }
         else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            telefonoTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
         if (!Validator.isEmail(mailTextField.getText()))
         {
             mailTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            mailTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
         if(pswPasswordField.getText().isEmpty())
         {
             pswPasswordField.setStyle("-fx-control-inner-background:red");
             result = false;
         }else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            pswPasswordField.setStyle("-fx-control-inner-background: ecfbfa");
 
         if(confermaPswPasswordField.getText().isEmpty() ||
                 !confermaPswPasswordField.getText().equals(pswPasswordField.getText()))
@@ -171,14 +171,14 @@ public class ControllerRegistrazione extends Controller
             confermaPswPasswordField.setStyle("-fx-control-inner-background:red");
             result = false;
         }else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            confermaPswPasswordField.setStyle("-fx-control-inner-background: ecfbfa");
 
         if (!Validator.isAddressFormat(indirizzoTextField.getText()))
         {
             indirizzoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }else
-            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            indirizzoTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
 
         if(capLabel.getText().isEmpty()){

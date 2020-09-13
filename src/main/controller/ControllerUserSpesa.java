@@ -8,6 +8,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import main.model.*;
 import main.storage.Database;
 
@@ -55,6 +56,12 @@ public class ControllerUserSpesa extends Controller implements Initializable {
                 case 3: stageManager.swap(Stages.Login);       break;
             }
         });
+        carrelloImageView.setOnMouseClicked(this::carrelloButtonHandler);
+
+    }
+
+    private void carrelloButtonHandler(MouseEvent mouseEvent) {
+        stageManager.swap(Stages.Carrello);
     }
 
     private Utente currentUser;

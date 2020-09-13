@@ -50,10 +50,16 @@ public class ControllerUserTessera extends Controller{
                 case 3: stageManager.swap(Stages.Login);       break;
             }
         });
+
+        carrelloImageView.setOnMouseClicked(this::carrelloButtonHandler);
+
+    }
+
+    private void carrelloButtonHandler(MouseEvent mouseEvent) {
+        stageManager.swap(Stages.Carrello);
     }
 
     @Override
-
     public void onSwap(Persona target)
     {
         // Deseleziona menu
