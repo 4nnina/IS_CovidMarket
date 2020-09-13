@@ -41,17 +41,17 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="672.0" layoutY="32.0" text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
+            <Label text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="sezioneChoicebox" layoutX="609.0" layoutY="48.0" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: transparent;" />
-            <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="126.0" text="sis" textFill="#f27777" wrapText="true" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="90.0" text="sis" textFill="#f27777" wrapText="true" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <ChoiceBox fx:id="sezioneChoicebox" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="46.0" />
          </children>
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="898.0" style="-fx-background-color: #ddfaf7;">

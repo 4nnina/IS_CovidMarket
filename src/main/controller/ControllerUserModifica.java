@@ -89,9 +89,11 @@ public class ControllerUserModifica extends Controller{
             currentUser.setEmail(mailTextField.getText());
             if(!pswTextField.getText().isEmpty())
                 currentUser.setPassword(pswTextField.getText());
+
+            stageManager.swap(Stages.Profilo);
         }
 
-        stageManager.swap(Stages.Profilo);
+
     }
 
     private boolean validateUserData() {

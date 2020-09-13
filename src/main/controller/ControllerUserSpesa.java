@@ -16,36 +16,16 @@ import java.util.ResourceBundle;
 
 public class ControllerUserSpesa extends Controller implements Initializable {
 
-    @FXML
-    private ImageView covidMarketImageView;
-
-    @FXML
-    private ImageView carrelloImageView;
-
-    @FXML
-    private Label usernameLabel;
-
-    @FXML
-    private ListView<Spesa> speseListView;
-
-    @FXML
-    private ListView<Carrello.Coppia> elementiListView;
-
-    @FXML
-    private Label statoLabel;
-
-    @FXML
-    private Label pagamentoLabel;
-
-    @FXML
-    private Label dataLabel;
-
-    @FXML
-    private Label orarioLabel;
-
-    @FXML
-    private Label costoLabel;
-
+    @FXML private ImageView covidMarketImageView;
+    @FXML private ImageView carrelloImageView;
+    @FXML private Label usernameLabel;
+    @FXML private ListView<Spesa> speseListView;
+    @FXML private ListView<Carrello.Coppia> elementiListView;
+    @FXML private Label statoLabel;
+    @FXML private Label pagamentoLabel;
+    @FXML private Label dataLabel;
+    @FXML private Label orarioLabel;
+    @FXML private Label costoLabel;
     @FXML private ChoiceBox sezioneChoicebox;
 
     @Override
@@ -86,6 +66,7 @@ public class ControllerUserSpesa extends Controller implements Initializable {
     {
         Database database = Database.getInstance();
         this.currentUser = (Utente)target;
+        usernameLabel.setText(currentUser.getNome());
 
         // Carica spese che ha questo utente
         spese.clear();
@@ -116,7 +97,7 @@ public class ControllerUserSpesa extends Controller implements Initializable {
         if (spesa != null)
         {
             statoLabel.setText(spesa.getStatoConsegna().name());
-            costoLabel.setText(String.valueOf(spesa.getCarrello().getPunti()));
+            costoLabel.setText(String.format("%.2f €",spesa.getCarrello().getCostoTot()));
 
             DatiConsegna datiConsegna = spesa.getDatiConsegna();
             pagamentoLabel.setText(datiConsegna.metodoPagamento.name());
@@ -128,7 +109,6 @@ public class ControllerUserSpesa extends Controller implements Initializable {
     private void updateElements(int selectedSpesa)
     {
         elementi.clear();
-
         Carrello carrello = spese.get(selectedSpesa).getCarrello();
         for(Carrello.Coppia coppia : carrello.getProdotti()) {
             elementi.add(coppia);

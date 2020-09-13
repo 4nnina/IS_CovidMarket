@@ -20,20 +20,12 @@ import java.util.function.Consumer;
 
 public class ControllerLoginPage extends Controller {
 
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private TextField nomeUtenteTextField;
-
-    @FXML
-    private PasswordField pswPasswordField;
-
-    @FXML
-    private Button registratiButton;
-
-    @FXML
-    private CheckBox personaleCheckBox;
+    @FXML private Button loginButton;
+    @FXML private TextField nomeUtenteTextField;
+    @FXML private PasswordField pswPasswordField;
+    @FXML private Button registratiButton;
+    @FXML private CheckBox personaleCheckBox;
+    @FXML private Label titleLabel;
 
     @FXML
     private void initialize()
@@ -41,6 +33,14 @@ public class ControllerLoginPage extends Controller {
         //handler
         loginButton.setOnAction(this::loginButtonHandler);
         registratiButton.setOnAction((this::registratiButtonHandler));
+        personaleCheckBox.setOnAction(this::personaleHandler);
+    }
+
+    private void personaleHandler(ActionEvent actionEvent) {
+        if(personaleCheckBox.isSelected())
+            titleLabel.setText("Username");
+        else
+            titleLabel.setText("Email");
     }
 
     private void registratiButtonHandler(ActionEvent actionEvent) {
@@ -59,12 +59,14 @@ public class ControllerLoginPage extends Controller {
 
         if(personaleCheckBox.isSelected())
         {
+
             boolean anyFound = false;
             for (Responsabile user : database.getResponsabili()) {
                 switch (user.validLogin(nomeUtenteTextField.getText(), pswPasswordField.getText()))
                 {
                     // Cambia schermata
                     case Success: {
+                        titleLabel.setText("Email");
                         nomeUtenteTextField.clear();
                         pswPasswordField.clear();
                         personaleCheckBox.setSelected(false);

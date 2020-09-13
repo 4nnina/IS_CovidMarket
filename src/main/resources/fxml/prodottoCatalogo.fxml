@@ -19,8 +19,8 @@
             <Font size="13.0" />
          </font></Label>
       <Label layoutX="339.0" layoutY="72.0" text="Prezzo: " AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="72.0" />
-      <Label fx:id="prezzoLabel" layoutX="397.0" layoutY="69.0" prefHeight="17.0" prefWidth="53.0" text="SOLDI" textAlignment="RIGHT" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0" />
+      <Label fx:id="prezzoLabel" layoutX="401.0" layoutY="72.0" prefHeight="17.0" prefWidth="63.0" text="SOLDI" textAlignment="RIGHT" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="72.0" />
       <Label layoutX="339.0" layoutY="50.0" prefHeight="17.0" prefWidth="53.0" text="Quantità:" textAlignment="RIGHT" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="50.0" />
-      <Label fx:id="quantitaLabel" layoutX="401.0" layoutY="50.0" prefHeight="17.0" prefWidth="65.0" text="QT" textAlignment="RIGHT" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="50.0" />
+      <Label fx:id="quantitaLabel" layoutX="401.0" layoutY="50.0" prefHeight="17.0" prefWidth="69.0" text="QT" textAlignment="RIGHT" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
    </children>
 </AnchorPane>

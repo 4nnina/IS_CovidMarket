@@ -73,7 +73,7 @@ public class PopupConsegna extends Popup<DatiConsegna> implements Initializable
         // Setta il metodo predefinito
         MetodoPagamento metodoPredefinito = currentUser.getMetodoPagamento();
         if (metodoPredefinito != MetodoPagamento.Nessuno) {
-            int i = metodoPredefinito.ordinal() + 1;
+            int i = metodoPredefinito.ordinal() - 1;
             pagamentoChoiceBox.getSelectionModel().select(i);
         }
         else

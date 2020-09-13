@@ -7,9 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Pair;
 import main.model.Carrello;
-import main.model.Prodotto;
 
 import java.io.IOException;
 
@@ -60,9 +58,9 @@ public class CellUserProdottoCarrello extends ListCell<Carrello.Coppia>
             marcaLabel.setText(bundle.prodotto.getMarca());
             quantitaLabel.setText(String.valueOf(bundle.quantita));
 
-            prezzoLabel.setText(String.valueOf(bundle.prodotto.prezzo) + " €");
-            int prezzoTotale = bundle.prodotto.getPrezzo() * bundle.quantita;
-            prezzoTotaleLabel.setText(String.valueOf(prezzoTotale) + " €");
+            prezzoLabel.setText(String.format("%.2f €", bundle.prodotto.prezzo));
+            double prezzoTotale = bundle.prodotto.getPrezzo() * bundle.quantita;
+            prezzoTotaleLabel.setText(String.format("%.2f €", prezzoTotale));
 
             prodottoImageView.setPreserveRatio(true);
             prodottoImageView.setImage(bundle.prodotto.getImage());

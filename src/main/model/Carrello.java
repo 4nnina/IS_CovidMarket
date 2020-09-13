@@ -55,12 +55,16 @@ public class Carrello implements Serializable
          return Optional.empty();
     }
 
-    public int getPunti()
+    public double getCostoTot()
     {
-        int totale = 0;
+        double totale = 0;
         for(Coppia coppia : prodotti)
             totale += coppia.prodotto.getPrezzo() * coppia.quantita;
         return totale;
+    }
+
+    public int getPunti(){
+        return (int)getCostoTot();
     }
 
     // Ottiene lista di elementi presenti

@@ -31,6 +31,7 @@ public class ControllerRespSpese extends Controller implements Initializable
     @FXML private Label orarioLabel;
     @FXML private Label costoLabel;
     @FXML private Label nomeutenteLabel;
+    @FXML private Label utenteLabel;
 
     @FXML private ImageView covidMarketImageView;
 
@@ -64,7 +65,7 @@ public class ControllerRespSpese extends Controller implements Initializable
         covidMarketImageView.setOnMouseClicked(this::loginHandler);
     }
 
-    private void loginHandler(MouseEvent mouseEvent) { stageManager.swap(Stages.SpesaResponsabile); }
+    private void loginHandler(MouseEvent mouseEvent) { stageManager.swap(Stages.HomeResponsabile); }
 
     @Override
     public void onSwap(Persona target)
@@ -98,7 +99,8 @@ public class ControllerRespSpese extends Controller implements Initializable
         if (spesa != null)
         {
             statoLabel.setText(spesa.getStatoConsegna().name());
-            costoLabel.setText(String.valueOf(spesa.getCarrello().getPunti()));
+            costoLabel.setText(String.format("%.2f €", spesa.getCarrello().getCostoTot()));
+            utenteLabel.setText(spesa.getUtente().getEmail());
 
             DatiConsegna datiConsegna = spesa.getDatiConsegna();
             pagamentoLabel.setText(datiConsegna.metodoPagamento.name());
@@ -158,9 +160,11 @@ public class ControllerRespSpese extends Controller implements Initializable
         FilteredList<Spesa> speseFiltrate = spese.filtered(spesa ->
         {
             // Controlla se il reparto va bene
-            String statoConsegna = statoChoiceBox.getSelectionModel().getSelectedItem();
-            if (!statoConsegna.equals("---") && !spesa.getStatoConsegna().name().equals(statoConsegna))
-                return false;
+            if(!statoChoiceBox.getSelectionModel().isEmpty()) {
+                String statoConsegna = statoChoiceBox.getSelectionModel().getSelectedItem();
+                if (!statoConsegna.equals("---") && !spesa.getStatoConsegna().name().equals(statoConsegna))
+                    return false;
+            }
 
             // Controlla la marca
             String mail = utenteTextField.getText();
@@ -172,6 +176,8 @@ public class ControllerRespSpese extends Controller implements Initializable
         });
 
         speseListView.setItems(speseFiltrate);
+        speseListView.getSelectionModel().select(0);
+        speseListView.refresh();
     }
 
     @FXML

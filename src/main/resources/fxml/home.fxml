@@ -90,7 +90,7 @@
                         <ListView fx:id="itemListView" layoutX="-78.0" prefHeight="460.0" prefWidth="486.0" style="-fx-background-color: #ecfbfa;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0" />
                         <Spinner fx:id="quantitySpinner" editable="true" layoutX="608.0" layoutY="22.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.rightAnchor="23.33333333333337" AnchorPane.topAnchor="22.0" />
                         <Label layoutX="507.0" layoutY="73.0" text="Prezzo quantità:" AnchorPane.rightAnchor="99.0" />
-                        <Label fx:id="costoQuantitaLabel" layoutX="624.0" layoutY="73.0" text="Label" textAlignment="RIGHT" AnchorPane.rightAnchor="39.33333333333337" />
+                        <Label fx:id="costoQuantitaLabel" layoutX="615.0" layoutY="73.0" text="-" textAlignment="RIGHT" AnchorPane.leftAnchor="615.0" />
                         <Label layoutX="878.0" layoutY="25.0" text="QUANTITA'" textFill="#f27777" AnchorPane.rightAnchor="105.99999999999999">
                            <font>
                               <Font name="System Bold" size="13.0" />

@@ -132,39 +132,56 @@ public class ControllerRegistrazione extends Controller
             nomeTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }
+        else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if (!Validator.isAlphanumeric(cognomeTextField.getText()))
         {
             cognomeTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }
+        else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if (!Validator.isTelephoneNumber(telefonoTextField.getText()))
         {
             telefonoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }
+        else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if (!Validator.isEmail(mailTextField.getText()))
         {
             mailTextField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if(pswPasswordField.getText().isEmpty())
         {
             pswPasswordField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if(confermaPswPasswordField.getText().isEmpty() ||
                 !confermaPswPasswordField.getText().equals(pswPasswordField.getText()))
         {
             confermaPswPasswordField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+
         if (!Validator.isAddressFormat(indirizzoTextField.getText()))
         {
             indirizzoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
-        if(capLabel.getText() == null){
+
+        if(capLabel.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING, "Nessuna città selezionata");
             alert.showAndWait();
             result = false;
@@ -190,7 +207,7 @@ public class ControllerRegistrazione extends Controller
         if (validateUserData())
         {
             Utente.Builder builder = new Utente.Builder()
-                    .setNominativo(nomeTextField.getText(), cognomeTextField.getText())
+                    .setNominativo(nomeTextField.getText().toUpperCase(), cognomeTextField.getText().toUpperCase())
                     .setIndirizzo(indirizzoTextField.getText(), cittaComboBox.getValue().nome, capLabel.getText())
                     .setTelefono(telefonoTextField.getText())
                     .setEmail(mailTextField.getText())
@@ -204,15 +221,35 @@ public class ControllerRegistrazione extends Controller
 
             Utente user = builder.build();
             Database database = Database.getInstance();
-            if(database.getUtenti().add(user))
+
+            if(existingUser(mailTextField.getText()))
             {
-                // Ha inserito con successo
-                stageManager.setTargetUser(user);
-                stageManager.swap(Stages.HomeUtente);
+                if(database.getUtenti().add(user)) {
+                    // Ha inserito con successo
+                    stageManager.setTargetUser(user);
+                    stageManager.swap(Stages.HomeUtente);
+                }
+                else
+                    System.out.println("non inserito in database");
+
             }
             else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Utente già esistente");
+                alert.showAndWait();
+                mailTextField.clear();
                 System.out.println("UTENTE ESISTE GIA");
             }
         }
+    }
+
+    private boolean existingUser(String mail) {
+
+        Database database = Database.getInstance();
+        for(Utente user: database.getUtenti()){
+            if(user.getEmail().equals(mail))
+                return false;
+        }
+
+        return true;
     }
 }

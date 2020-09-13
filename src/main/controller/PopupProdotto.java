@@ -19,7 +19,7 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
     @FXML
     private TextField nomeTextField;
 
-    @FXML private Spinner<Integer> prezzoSpinner;
+    @FXML private Spinner<Double> prezzoSpinner;
     @FXML private Spinner<Integer> qtSpinner;
     @FXML private Spinner<Integer> disponibileSpinner;
 
@@ -56,7 +56,7 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         qtSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
-        prezzoSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000));
+        prezzoSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.01, 1000, 0.01, 0.01));
         disponibileSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000));
 
         // Popola caratteristiche possibili
@@ -88,35 +88,67 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
     @FXML
     void buttonHandler(ActionEvent event)
     {
-        // Modifica
-        if (currentProdotto != null)
-        {
 
-        }
-        // Aggiungi
-        else
-        {
-            // Accumula caratteristiche
-            EnumSet<Attributo> attributi = EnumSet.noneOf(Attributo.class);
-            for (int i = 0; i < Attributo.values().length; ++i)
-            {
-                CheckBox checkBox = (CheckBox)caratteristicheVBox.getChildren().get(i);
-                if (checkBox.isSelected())
-                    attributi.add(Attributo.values()[i]);
+        if(productIsValid()) {
+            // Modifica
+            if (currentProdotto != null) {
+
             }
+            // Aggiungi
+            else {
+                // Accumula caratteristiche
+                EnumSet<Attributo> attributi = EnumSet.noneOf(Attributo.class);
+                for (int i = 0; i < Attributo.values().length; ++i) {
+                    CheckBox checkBox = (CheckBox) caratteristicheVBox.getChildren().get(i);
+                    if (checkBox.isSelected())
+                        attributi.add(Attributo.values()[i]);
+                }
 
-            Prodotto prodotto = new Prodotto.Builder()
-                    .setNome(nomeTextField.getText())
-                    .setPrezzo(prezzoSpinner.getValue())
-                    .setMarca(marcaTextField.getText())
-                    .setImagePath(immagineTextField.toString())
-                    .setQuantitaPerConfezione(qtSpinner.getValue())
-                    .setReparto(repartoComboBox.getValue())
-                    .setAttributi(attributi)
-                    .setQuantitaDisponibile(disponibileSpinner.getValue())
-                    .build();
+                Prodotto prodotto = new Prodotto.Builder()
+                        .setNome(nomeTextField.getText())
+                        .setPrezzo(prezzoSpinner.getValue())
+                        .setMarca(marcaTextField.getText())
+                        .setImagePath(immagineTextField.toString())
+                        .setQuantitaPerConfezione(qtSpinner.getValue())
+                        .setReparto(repartoComboBox.getValue())
+                        .setAttributi(attributi)
+                        .setQuantitaDisponibile(disponibileSpinner.getValue())
+                        .build();
 
-            close(prodotto);
+
+                close(prodotto);
+            }
         }
+    }
+
+    private boolean productIsValid() {
+        boolean result = true;
+
+        if(nomeTextField.getText().isEmpty()){
+            nomeTextField.setStyle("-fx-control-inner-background:red");
+            result = false;
+        }
+        else{
+            nomeTextField.setStyle("-fx-control-inner-background: ecfbfa");
+            result = false;
+        }
+        if(marcaTextField.getText().isEmpty()){
+            marcaTextField.setStyle("-fx-control-inner-background:red");
+            result = false;
+        }
+        else{
+            marcaTextField.setStyle("-fx-control-inner-background:ecfbfa");
+            result = false;
+        }
+        if(immagineTextField.getText().isEmpty()){
+            immagineTextField.setStyle("-fx-control-inner-background:red");
+            result = false;
+        }
+        else{
+            immagineTextField.setStyle("-fx-control-inner-background:ecfbfa");
+            result = false;
+        }
+
+        return result;
     }
 }

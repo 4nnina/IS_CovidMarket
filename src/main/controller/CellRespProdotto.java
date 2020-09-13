@@ -54,7 +54,7 @@ public class CellRespProdotto extends ListCell<Prodotto>
         } else {
             // Setta informazioni sull'item
             nomeLabel.setText(prodotto.getNome());
-            prezzoLabel.setText(String.valueOf(prodotto.prezzo));
+            prezzoLabel.setText(String.format("%.2f €", prodotto.prezzo));
             marcaLabel.setText(prodotto.getMarca());
             quantitaLabel.setText(String.valueOf(prodotto.getQuantitaDisponibile()));
             prodottoImageView.setImage(prodotto.getImage());

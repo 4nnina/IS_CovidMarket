@@ -120,7 +120,7 @@
                <children>
                   <TextField fx:id="mailTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
                   <PasswordField fx:id="pswTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <PasswordField fx:id="controllopswTextField" editable="false" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="controllopswTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label prefHeight="17.0" prefWidth="80.0" text="e-mail">
                      <font>
                         <Font size="15.0" />

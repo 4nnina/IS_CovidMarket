@@ -1,5 +1,6 @@
 package main.controller;
 
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -80,8 +81,8 @@ public class ControllerUserHome extends Controller implements Initializable
         Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
         if (prodotto != null)
         {
-            int cost = newValue * prodotto.getPrezzo();
-            costoQuantitaLabel.setText(cost + " EUR");
+            double cost = newValue * prodotto.getPrezzo();
+            costoQuantitaLabel.setText(String.format("%.2f €", cost ));
         }
         else
             costoQuantitaLabel.setText("");
@@ -101,6 +102,19 @@ public class ControllerUserHome extends Controller implements Initializable
         // Quando cambia l'elemento selezionato aggiorna il costo per quantita
         itemListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1)
                 -> updateQuantityCostLabel(quantitySpinner.getValue()));
+        itemListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) ->
+        {
+            Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
+            int maxProduct = 1;
+            if (prodotto != null)
+                maxProduct = prodotto.getQuantitaDisponibile();
+            quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, maxProduct));
+
+            updateQuantityCostLabel(quantitySpinner.getValue());
+
+        });
+
+
 
         // Carica tutti i reparti
         for (Reparto rep: Reparto.values())
@@ -195,9 +209,9 @@ public class ControllerUserHome extends Controller implements Initializable
             switch (ordinaComboBox.getSelectionModel().getSelectedItem())
             {
                 case PrezzoCrescente:
-                    return o1.getPrezzo() - o2.getPrezzo();
+                    return (int) ((o1.getPrezzo() * 100) - (o2.getPrezzo() * 100));
                 case PrezzoDecrescente:
-                    return o2.getPrezzo() - o1.getPrezzo();
+                    return (int) ((o2.getPrezzo() * 100) - (o1.getPrezzo() * 100));
                 case Marca:
                     return o1.getMarca().compareTo(o2.getMarca());
                 default:

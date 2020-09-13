@@ -71,15 +71,16 @@ public class ControllerUserCarrello extends Controller implements Initializable
         CartaFedelta cartaFedelta = currentUser.getCartaFedelta();
         if(!bundles.isEmpty())
         {
-            int totalCost = 0;
+            /*
+            double totalCost = 0;
             for (Carrello.Coppia pair : bundles)
                 totalCost += pair.quantita * pair.prodotto.getPrezzo();
-
-            costoTotaleLabel.setText(totalCost + " €");
-            puntiSpesaLabel.setText(totalCost + " p");
+*/
+            costoTotaleLabel.setText(String.format("%.2f €", currentUser.getCarrello().getCostoTot()));
+            puntiSpesaLabel.setText(String.format("%d p", currentUser.getCarrello().getPunti()));
 
             if (cartaFedelta != null)
-                saldoPuntiLabel.setText(cartaFedelta.punti + totalCost + " p");
+                saldoPuntiLabel.setText(cartaFedelta.punti + currentUser.getCarrello().getPunti() + " p");
         }
         else {
             costoTotaleLabel.setText("0 €");
@@ -161,7 +162,7 @@ public class ControllerUserCarrello extends Controller implements Initializable
                 success = false;
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Il prodotto " + coppia.prodotto.getNome()
-                        + "non è più disponibile nella quantità richiesta ("+ coppia.quantita +"/"+ quantitaDisponibile + ")."
+                        + " non è più disponibile nella quantità richiesta ("+ coppia.quantita +"/"+ quantitaDisponibile + ")."
                         + "L'elemento verrà rimosso dal carrello.");
 
                 alert.show();
@@ -200,8 +201,10 @@ public class ControllerUserCarrello extends Controller implements Initializable
             }
         }
         else{
+            carrelloListView.getItems().clear();
             carrelloListView.getItems().setAll(currentUser.getCarrello().getProdotti());
             carrelloListView.refresh();
+            updateInfoSpesa();
         }
     }
 }

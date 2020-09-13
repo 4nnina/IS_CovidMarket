@@ -152,9 +152,9 @@ public class ControllerRespHome extends Controller implements Initializable
             switch (ordinaComboBox.getSelectionModel().getSelectedItem())
             {
                 case PrezzoCrescente:
-                    return o1.getPrezzo() - o2.getPrezzo();
+                    return (int)((o1.getPrezzo() * 100) - (o2.getPrezzo() * 100));
                 case PrezzoDecrescente:
-                    return o2.getPrezzo() - o1.getPrezzo();
+                    return (int)((o2.getPrezzo() * 100) - (o1.getPrezzo() * 100));
                 case Marca:
                     return o1.getMarca().compareTo(o2.getMarca());
                 default:

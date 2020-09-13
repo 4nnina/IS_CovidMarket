@@ -3,6 +3,7 @@ package main.model;
 import javafx.scene.image.Image;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.EnumSet;
 
 public class Prodotto implements Serializable
@@ -12,7 +13,7 @@ public class Prodotto implements Serializable
     private int quantitaPerConfezione;
     private int quantitaDisponibile;
     private EnumSet<Attributo> attributi;
-    public int prezzo;
+    public double prezzo;
 
     private transient Image image = null;
     private String imagePath;
@@ -47,9 +48,7 @@ public class Prodotto implements Serializable
     public EnumSet<Attributo> getAttributi() {
         return attributi;
     }
-    public int getPrezzo() {
-        return prezzo;
-    }
+    public double getPrezzo() { return prezzo; }
     public String getImagePath() {
         return imagePath;
     }
@@ -110,7 +109,7 @@ public class Prodotto implements Serializable
         private String imagePath = "";
         private int quantitaDisponibile = 0;
         private EnumSet<Attributo> attributi = EnumSet.noneOf(Attributo.class);
-        private int prezzo = 0;
+        private double prezzo = 0.00;
 
         public Builder setReparto(Reparto reparto) {
             this.reparto = reparto;
@@ -152,7 +151,7 @@ public class Prodotto implements Serializable
             return this;
         }
 
-        public Builder setPrezzo(int prezzo) {
+        public Builder setPrezzo(double prezzo) {
             this.prezzo = prezzo;
             return this;
         }

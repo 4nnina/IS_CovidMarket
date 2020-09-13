@@ -1,15 +1,14 @@
 package main.controller;
 
+import com.sun.javafx.binding.StringFormatter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import main.model.Prodotto;
-import main.model.Utente;
 
 import java.io.IOException;
 
@@ -55,7 +54,7 @@ public class CellUserProdotto extends ListCell<Prodotto>
         } else {
             // Setta informazioni sull'item
             nomeLabel.setText(prodotto.getNome());
-            prezzoLabel.setText(String.valueOf(prodotto.prezzo));
+            prezzoLabel.setText(String.format("%.2f €", prodotto.prezzo));
             marcaLabel.setText(prodotto.getMarca());
             quantitaLabel.setText(String.valueOf(prodotto.getQuantitaPerConfezione()));
             prodottoImageView.setImage(prodotto.getImage());

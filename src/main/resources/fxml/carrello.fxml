@@ -26,22 +26,22 @@
                   <Image url="@../img/carrello.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="550.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="301.0" AnchorPane.topAnchor="46.0">
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="550.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
                <image>
                   <Image url="@../img/utente.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="usernameLabel" layoutX="639.0" layoutY="61.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="639.0" AnchorPane.topAnchor="61.0">
+            <Label fx:id="usernameLabel" layoutX="639.0" layoutY="61.0" prefHeight="17.0" prefWidth="108.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="609.0" layoutY="61.0" text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="609.0" AnchorPane.topAnchor="61.0">
+            <Label layoutX="609.0" layoutY="61.0" text="Ciao, " textFill="#f27777" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="sezioneChoicebox" layoutX="609.0" layoutY="57.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="sezioneChoicebox" layoutX="609.0" layoutY="57.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="46.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
