@@ -55,16 +55,16 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Spinner fx:id="qtSpinner" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Spinner fx:id="qtSpinner" editable="true" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ComboBox fx:id="repartoComboBox" prefWidth="150.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" />
             <TextField fx:id="marcaTextField" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Spinner fx:id="prezzoSpinner" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="prezzoSpinner" editable="true" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label prefHeight="50.0" prefWidth="97.0" text="Quantità &#10;  disponibile" textAlignment="CENTER" GridPane.rowIndex="5">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Spinner fx:id="disponibileSpinner" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Spinner fx:id="disponibileSpinner" editable="true" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: ecfbfa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <GridPane layoutX="463.0" layoutY="23.0" prefHeight="284.0" prefWidth="282.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="41.0">

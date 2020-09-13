@@ -77,6 +77,7 @@ public class ControllerUserHome extends Controller implements Initializable
     // Aggiorna costoQuantitaLabel
     private void updateQuantityCostLabel(int newValue)
     {
+        compraButton.setDisable(false);
         // Cambia costo della quantità
         Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
         if (prodotto != null)
@@ -93,6 +94,7 @@ public class ControllerUserHome extends Controller implements Initializable
     {
         prodottoObservableList = FXCollections.observableArrayList();
 
+        compraButton.setDisable(true);
         // Spinner quantita
         quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
         quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -152,15 +154,19 @@ public class ControllerUserHome extends Controller implements Initializable
     private void onCompraButton(ActionEvent e)
     {
         Prodotto prodotto = itemListView.getSelectionModel().getSelectedItem();
+        Integer buyValue = 0;
         if (prodotto != null)
         {
-            Integer buyValue = quantitySpinner.getValue().intValue();
+            buyValue = quantitySpinner.getValue().intValue();
             currentUser.getCarrello().addProdotto(prodotto, buyValue);
 
             // Setta numero di elementi nel carrello
             int count = currentUser.getCarrello().getProdotti().size();
             carrelloCountLabel.setText(String.valueOf(count));
         }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,String.format("Aggiunto %d quantità di %s al carrello",buyValue, prodotto.nome));
+        alert.showAndWait();
     }
 
     /**
@@ -191,7 +197,7 @@ public class ControllerUserHome extends Controller implements Initializable
                 return false;
 
             // Controlla la marca
-            String marca = marcaTextField.getText();
+            String marca = marcaTextField.getText().toLowerCase();
             boolean subset = prodotto.getMarca().toLowerCase().contains(marca.toLowerCase());
             if (!marca.isEmpty() && !subset)
                 return false;

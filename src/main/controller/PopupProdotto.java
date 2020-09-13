@@ -98,11 +98,12 @@ public class PopupProdotto extends Popup<Prodotto> implements Initializable
                         attributi.add(Attributo.values()[i]);
                 }
 
+                String pathImage = "main/resources/images/";
                 Prodotto prodotto = new Prodotto.Builder()
                         .setNome(nomeTextField.getText())
                         .setPrezzo(prezzoSpinner.getValue())
                         .setMarca(marcaTextField.getText())
-                        .setImagePath(immagineTextField.toString())
+                        .setImagePath(pathImage + immagineTextField.getText())
                         .setQuantitaPerConfezione(qtSpinner.getValue())
                         .setReparto(repartoComboBox.getValue())
                         .setAttributi(attributi)

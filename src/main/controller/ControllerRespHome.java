@@ -134,7 +134,7 @@ public class ControllerRespHome extends Controller implements Initializable
                 return false;
 
             // Controlla la marca
-            String marca = marcaTextField.getText();
+            String marca = marcaTextField.getText().toLowerCase();
             boolean subset = prodotto.getMarca().toLowerCase().contains(marca.toLowerCase());
             if (!marca.isEmpty() && !subset)
                 return false;

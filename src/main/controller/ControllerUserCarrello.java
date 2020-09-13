@@ -43,6 +43,9 @@ public class ControllerUserCarrello extends Controller implements Initializable
         quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue)
                 -> onQuantityChangeHandler(oldValue, newValue));
 
+        quantitySpinner.setDisable(true);
+        eliminaButton.setDisable(true);
+
         bundles = FXCollections.observableArrayList();
         carrelloListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue)
                 -> onSelectedItemChangeHandler());
@@ -50,7 +53,6 @@ public class ControllerUserCarrello extends Controller implements Initializable
         covidMarketImageView.setOnMouseClicked(this::homeButtonHandler);
         eliminaButton.setOnMouseClicked(foo -> onQuantityChangeHandler(0, 0));
         confermaOrdinaButton.setOnMouseClicked(foo -> confermaSpesaHandler());
-        carrelloImageView.setOnMouseClicked(foo -> stageManager.swap(Stages.SpesaUtente));
 
         saldoPuntiLabel.setText("");
 
@@ -111,6 +113,7 @@ public class ControllerUserCarrello extends Controller implements Initializable
 
     private void onQuantityChangeHandler(Integer oldValue, Integer newValue)
     {
+        quantitySpinner.setDisable(false);
         Carrello.Coppia bundle = carrelloListView.getSelectionModel().getSelectedItem();
         if (bundle != null && !invalidChange)
         {
@@ -129,6 +132,7 @@ public class ControllerUserCarrello extends Controller implements Initializable
 
     private void onSelectedItemChangeHandler()
     {
+        eliminaButton.setDisable(false);
         Carrello.Coppia bundle = carrelloListView.getSelectionModel().getSelectedItem();
         if (bundle != null)
         {

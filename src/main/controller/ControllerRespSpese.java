@@ -166,8 +166,8 @@ public class ControllerRespSpese extends Controller implements Initializable
                     return false;
             }
 
-            // Controlla la marca
-            String mail = utenteTextField.getText();
+            // Controlla l'utente
+            String mail = utenteTextField.getText().toLowerCase();
             boolean subset = spesa.getUtente().getEmail().toLowerCase().contains(mail);
             if (!mail.isEmpty() && !subset)
                 return false;

@@ -56,8 +56,21 @@ public class ControllerLoginPage extends Controller {
         Database database = Database.getInstance();
         System.out.println("login");
 
-
-        if(personaleCheckBox.isSelected())
+        if(nomeUtenteTextField.getText().isEmpty()){
+            if(pswPasswordField.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Inserire nome utente e password");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Campo email/nome utente vuoto");
+                alert.showAndWait();
+            }
+        }
+        else if(pswPasswordField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Inserire la password");
+            alert.showAndWait();
+        }
+        else if(personaleCheckBox.isSelected())
         {
 
             boolean anyFound = false;
