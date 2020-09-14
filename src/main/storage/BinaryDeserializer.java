@@ -4,14 +4,13 @@ import java.io.*;
 
 public class BinaryDeserializer implements IDeserializer, AutoCloseable
 {
-    private FileInputStream stream;
     private ObjectInputStream objectStream;
 
     public BinaryDeserializer(String filename)
     {
         try
         {
-            stream = new FileInputStream(filename);
+            FileInputStream stream = new FileInputStream(filename);
             objectStream = new ObjectInputStream(stream);
         }
         catch (FileNotFoundException e)

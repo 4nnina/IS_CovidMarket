@@ -11,6 +11,7 @@ import main.model.MetodoPagamento;
 import main.model.Persona;
 import main.model.Utente;
 import main.storage.Database;
+import main.utils.CityHelper;
 import main.utils.StageManager;
 import main.utils.Validator;
 
@@ -31,7 +32,7 @@ public class ControllerUserModifica extends Controller{
     @FXML private Label nomeLabel;
     @FXML private Label cognomeLabel;
     @FXML private Label capLabel;
-    @FXML private ComboBox<Citta> cittaCombobox;
+    @FXML private ComboBox<String> cittaCombobox;
     @FXML private TextField mailTextField;
     @FXML private PasswordField pswTextField;
     @FXML private PasswordField controllopswTextField;
@@ -39,7 +40,6 @@ public class ControllerUserModifica extends Controller{
     @FXML private Button modificaButton;
 
     private Utente currentUser;
-    private ArrayList<Citta> cittaDisponibili;
 
     @FXML
     private void initialize(){
@@ -48,39 +48,15 @@ public class ControllerUserModifica extends Controller{
         covidMarketImageView.setOnMouseClicked(this::homeHandler);
         modificaButton.setOnMouseClicked(this::modificaHandler);
 
-        // Carica citta dal file
-        cittaDisponibili = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta.txt")))
-        {
-            String line = reader.readLine();
-            while (line != null)
-            {
-                if (line.length() > 3)
-                {
-                    int separator = line.indexOf('\t');
-                    String nome = (String) line.subSequence(0, separator);
-                    String CAP = (String) line.subSequence(separator + 1, line.indexOf('\t', separator + 1));
 
-                    cittaDisponibili.add(new Citta(nome, CAP));
-                }
-                line = reader.readLine();
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        CityHelper cityHelper = CityHelper.getInstance();
+        cittaCombobox.getItems().addAll(cityHelper.getCities());
 
-        for(Citta citta:cittaDisponibili){
-            cittaCombobox.getItems().add(citta);
-        }
-
-        cittaCombobox.setOnAction(foo ->{
-            capLabel.setText(cittaCombobox.getValue().CAP);
+        cittaCombobox.setOnAction(foo ->
+        {
+            String citta = cittaCombobox.getValue();
+            //cittaTextField.setText(citta); TODO
+            capLabel.setText(cityHelper.getCap(citta));
         });
 
         // Cambia schermata in base alla scelta
@@ -115,13 +91,17 @@ public class ControllerUserModifica extends Controller{
         indirizzoTextField.setText(currentUser.getIndirizzo());
 
 
+        /*
         String cittaUser = currentUser.getCitta();
         int cittaIndex = 0;
         for(Citta citta : cittaDisponibili){
             if(citta.nome.equals(cittaUser))
                 cittaIndex = cittaDisponibili.indexOf(citta);
         }
-        cittaCombobox.getSelectionModel().select(cittaIndex);
+         */
+
+
+        //cittaCombobox.getSelectionModel().select(cittaIndex);
         capLabel.setText(String.valueOf(currentUser.getCAP()));
         telefonoTextField.setText(currentUser.getTelefono());
         mailTextField.setText(currentUser.getEmail());
@@ -141,7 +121,7 @@ public class ControllerUserModifica extends Controller{
         {
             String metodoPagamento = pagamentoComboBox.getSelectionModel().getSelectedItem();
             currentUser.setPagamento(MetodoPagamento.valueOf(metodoPagamento));
-            currentUser.setIndirizzo(indirizzoTextField.getText(), cittaCombobox.getValue().nome, capLabel.getText());
+            currentUser.setIndirizzo(indirizzoTextField.getText(), cittaCombobox.getValue(), capLabel.getText());
             currentUser.setTelefono(telefonoTextField.getText());
             currentUser.setEmail(mailTextField.getText());
             if(!pswTextField.getText().isEmpty())

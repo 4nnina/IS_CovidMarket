@@ -4,7 +4,7 @@ import main.model.*;
 
 import java.util.HashSet;
 
-public class Database
+public class Database implements IDatabase
 {
     private HashSet<Utente> utenti = new HashSet<>();;
     private HashSet<Responsabile> responsabili = new HashSet<>();;
@@ -29,6 +29,7 @@ public class Database
      * @param ser Serializer da usare per il caricamento
      * @return Il database, per questioni ergonomiche
      */
+    @Override
     public Database load(IDeserializer ser)
     {
         utenti = (HashSet<Utente>) ser.deserialize();
@@ -43,6 +44,7 @@ public class Database
      * Salva su memoria secondaria il database
      * @param ser Serializer da usare per il salvataggio
      */
+    @Override
     public void save(ISerializer ser)
     {
         ser.serialize(utenti);

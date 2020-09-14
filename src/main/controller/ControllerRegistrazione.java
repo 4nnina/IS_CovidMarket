@@ -1,5 +1,9 @@
 package main.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.stage.Stage;
@@ -17,9 +22,12 @@ import main.model.Citta;
 import main.model.MetodoPagamento;
 import main.model.Utente;
 import main.storage.Database;
+import main.utils.CityHelper;
 import main.utils.StageManager;
 import main.utils.Validator;
+import main.view.AutoCompleteBox;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -49,6 +57,7 @@ public class ControllerRegistrazione extends Controller
 
     @FXML
     private TextField mailTextField;
+    @FXML private TextField cittaTextField;
 
     @FXML
     private PasswordField pswPasswordField;
@@ -65,11 +74,10 @@ public class ControllerRegistrazione extends Controller
     @FXML
     private Button salvaButton;
 
-    @FXML private ComboBox<Citta> cittaComboBox;
+    @FXML private ComboBox<String> cittaComboBox;
+    private AutoCompleteBox cittaAutoBox;
+
     @FXML private ChoiceBox<MetodoPagamento> pagamentoChoiceBox;
-
-
-    private ArrayList<Citta> cittaDisponibili;
 
     @FXML
     private void initialize()
@@ -81,46 +89,39 @@ public class ControllerRegistrazione extends Controller
         pagamentoChoiceBox.getSelectionModel().select(MetodoPagamento.Nessuno);
 
         // Carica citta dal file
-        cittaDisponibili = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta.txt")))
-        {
-            String line = reader.readLine();
-            while (line != null)
-            {
-                if (line.length() > 3)
-                {
-                    int separator = line.indexOf('\t');
-                    String nome = (String) line.subSequence(0, separator);
-                    String CAP = (String) line.subSequence(separator + 1, line.indexOf('\t', separator + 1));
+        CityHelper cityHelper = CityHelper.getInstance();
+        cittaComboBox.getItems().addAll(FXCollections.observableArrayList(cityHelper.getCities()));
+        cittaAutoBox = new AutoCompleteBox(cittaComboBox);
 
-                    cittaDisponibili.add(new Citta(nome, CAP));
-                }
-                line = reader.readLine();
-            }
-        }
-        catch (FileNotFoundException e)
+        /*
+        cittaComboBox.setOnAction(foo ->
         {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        for(Citta citta:cittaDisponibili){
-            cittaComboBox.getItems().add(citta);
-        }
-        cittaComboBox.setOnAction(foo ->{
-            capLabel.setText(cittaComboBox.getValue().CAP);
+            String citta = cittaComboBox.getValue();
+            cittaTextField.setText(citta);
+            capLabel.setText(cityHelper.getCap(citta));
         });
+        */
 
-
+/*
+        cittaTextField.focusedProperty().addListener((observableValue, aBoolean, t1) ->
+        {
+            if (t1) {
+                cittaComboBox.getSelectionModel().select(null);
+                cittaComboBox.setVisible(true);
+                cittaComboBox.show();
+            }
+            else {
+                cittaComboBox.getSelectionModel().select(null);
+                cittaComboBox.setVisible(false);
+                cittaComboBox.hide();
+            }
+        });
+*/
     }
 
     private void loginHandler(MouseEvent mouseEvent) {
         stageManager.swap(Stages.Login);
     }
-
 
     // Controlla se i parametri inseriti vanno bene
     private boolean validateUserData()
@@ -208,7 +209,7 @@ public class ControllerRegistrazione extends Controller
         {
             Utente.Builder builder = new Utente.Builder()
                     .setNominativo(nomeTextField.getText().toUpperCase(), cognomeTextField.getText().toUpperCase())
-                    .setIndirizzo(indirizzoTextField.getText(), cittaComboBox.getValue().nome, capLabel.getText())
+                    .setIndirizzo(indirizzoTextField.getText(), cittaComboBox.getValue(), capLabel.getText())
                     .setTelefono(telefonoTextField.getText())
                     .setEmail(mailTextField.getText())
                     .setPassword(pswPasswordField.getText())

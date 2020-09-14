@@ -17,7 +17,6 @@ public abstract class Popup<T> implements IPopup<T>
     {
         dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
-        //dialog.initStyle(StageStyle.UNDECORATED);
 
         result = Optional.empty();
 

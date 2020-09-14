@@ -7,14 +7,13 @@ import java.io.ObjectOutputStream;
 
 public class BinarySerializer implements ISerializer, AutoCloseable
 {
-    private FileOutputStream stream;
     private ObjectOutputStream objectStream;
 
     public BinarySerializer(String filename)
     {
         try
         {
-            stream = new FileOutputStream(filename);
+            FileOutputStream stream = new FileOutputStream(filename);
             objectStream = new ObjectOutputStream(stream);
         }
         catch (IOException e)
