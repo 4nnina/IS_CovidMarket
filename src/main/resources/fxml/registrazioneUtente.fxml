@@ -114,7 +114,7 @@
       </Label>
       <ImageView fx:id="covidMarketImageView" accessibleRole="BUTTON" fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/logo.png" />
+            <Image url="@../icons/logo.png" />
          </image>
       </ImageView>
       <Label layoutX="430.0" layoutY="421.0" prefHeight="51.0" prefWidth="160.0" text="Desidera l'attivazione &#10;della tessera fedeltà?" wrapText="true" AnchorPane.leftAnchor="430.0">

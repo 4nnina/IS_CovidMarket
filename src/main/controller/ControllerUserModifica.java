@@ -137,8 +137,10 @@ public class ControllerUserModifica extends Controller {
 
             stageManager.swap(Stages.Profilo);
         }
+    }
 
-
+    private boolean passwordEquals() {
+        return controllopswTextField.getText().equals(pswTextField.getText());
     }
 
     private boolean validateUserData() {
@@ -160,7 +162,7 @@ public class ControllerUserModifica extends Controller {
             indirizzoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
         }
-        if(!controllopswTextField.getText().equals(pswTextField.getText()))
+        if(!passwordEquals())
         {
             controllopswTextField.setStyle("-fx-control-inner-background:red");
             result = false;

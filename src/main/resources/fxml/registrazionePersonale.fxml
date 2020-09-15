@@ -19,7 +19,7 @@
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/logo.png" />
+            <Image url="@../icons/logo.png" />
          </image>
       </ImageView>
       <Label layoutX="230.0" layoutY="74.0" prefHeight="34.0" prefWidth="331.0" text="REGISTRAZIONE PERSONALE" textFill="#f27777" AnchorPane.topAnchor="69.0">

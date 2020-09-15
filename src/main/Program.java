@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 
 public class Program extends Application
 {
-    private static final String PATH_DATABASE = "database.bin";
+    private static final String PATH_DATABASE = "src/main/resources/database.bin";
 
     @Override
     public void start(Stage primaryStage) throws Exception

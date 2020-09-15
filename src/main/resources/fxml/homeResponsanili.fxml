@@ -21,12 +21,12 @@
          <children>
             <ImageView fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
                <image>
-                  <Image url="@../img/logo.png" />
+                  <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="36.5">
                <image>
-                  <Image url="@../img/utente.jpg" />
+                  <Image url="@../icons/utente.jpg" />
                </image>
             </ImageView>
             <Label fx:id="nomeutenteLabel" layoutX="662.0" layoutY="22.0" text="NOMEUTENTE" textFill="#f27777" AnchorPane.bottomAnchor="51.66666666666667" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">

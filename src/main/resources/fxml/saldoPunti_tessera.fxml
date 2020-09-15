@@ -18,17 +18,17 @@
          <children>
             <ImageView fx:id="covidMarketImageView" fitHeight="116.0" fitWidth="181.0" layoutX="18.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="2.0">
                <image>
-                  <Image url="@../img/logo.png" />
+                  <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
             <ImageView fx:id="carrelloImageView" fitHeight="70.0" fitWidth="70.0" layoutX="480.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
                <image>
-                  <Image url="@../img/carrello.jpg" />
+                  <Image url="@../icons/carrello.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="603.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.5" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="36.5">
                <image>
-                  <Image url="@../img/utente.jpg" />
+                  <Image url="@../icons/utente.jpg" />
                </image>
             </ImageView>
             <Label layoutX="186.0" layoutY="41.0" prefHeight="34.0" prefWidth="332.0" text="TESSERA FEDELTA'" textFill="#f27777" underline="true" AnchorPane.leftAnchor="169.0">
@@ -52,7 +52,7 @@
          <children>
             <ImageView fitHeight="313.0" fitWidth="511.0" layoutX="205.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/tessera.png" />
+                  <Image url="@../icons/tessera.png" />
                </image>
             </ImageView>
             <GridPane fx:id="gridPane" layoutX="249.0" layoutY="110.0" prefHeight="245.0" prefWidth="401.0">
