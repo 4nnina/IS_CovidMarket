@@ -145,10 +145,10 @@ public class ControllerRegistrazione extends Controller
 
 
         if(capLabel.getText().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Nessuna città selezionata");
-            alert.showAndWait();
+            cittaComboBox.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            cittaComboBox.setStyle("-fx-control-inner-background: ecfbfa");
         /*
         int tmp = 0;
         try{tmp = Integer.valueOf(capLabel.getText()); } catch (NumberFormatException e)

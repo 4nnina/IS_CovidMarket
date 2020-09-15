@@ -111,7 +111,11 @@ public class ControllerRespSpese extends Controller implements Initializable
 
     private void updateElements(Spesa spesa)
     {
-        elementi.clear();
+
+        // Aggiorna la vista
+        try {  elementi.clear(); }
+        catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
+
         if (spesa != null)
         {
             Carrello carrello = spesa.getCarrello();

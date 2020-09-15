@@ -43,9 +43,6 @@ public class ControllerUserCarrello extends Controller implements Initializable
         quantitySpinner.valueProperty().addListener((observableValue, oldValue, newValue)
                 -> onQuantityChangeHandler(oldValue, newValue));
 
-        quantitySpinner.setDisable(true);
-        eliminaButton.setDisable(true);
-
         bundles = FXCollections.observableArrayList();
         carrelloListView.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldValue, newValue)
                 -> onSelectedItemChangeHandler());
@@ -99,6 +96,9 @@ public class ControllerUserCarrello extends Controller implements Initializable
         this.currentUser = (Utente)target;
         usernameLabel.setText(currentUser.getNome());
 
+        quantitySpinner.setDisable(true);
+        eliminaButton.setDisable(true);
+
         bundles.setAll(currentUser.getCarrello().getProdotti());
 
         carrelloListView.setItems(bundles);
@@ -134,9 +134,14 @@ public class ControllerUserCarrello extends Controller implements Initializable
     {
         eliminaButton.setDisable(false);
         Carrello.Coppia bundle = carrelloListView.getSelectionModel().getSelectedItem();
+        int maxProduct = 1;
+        if (bundle != null)
+            maxProduct = bundle.prodotto.getQuantitaDisponibile();
+
         if (bundle != null)
         {
             invalidChange = true;
+            quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, maxProduct));
             quantitySpinner.getValueFactory().setValue(bundle.quantita);
             invalidChange = false;
         }

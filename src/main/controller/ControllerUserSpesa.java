@@ -76,7 +76,9 @@ public class ControllerUserSpesa extends Controller implements Initializable {
         usernameLabel.setText(currentUser.getNome());
 
         // Carica spese che ha questo utente
-        spese.clear();
+        try {  elementi.clear(); }
+        catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
+
         for(Spesa spesa : database.getSpese()) {
             if (spesa.getUtente() == currentUser)
                 spese.add(spesa);
