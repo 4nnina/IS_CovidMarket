@@ -29,8 +29,8 @@ public class ControllerUserModifica extends Controller {
 
     @FXML private TextField indirizzoTextField;
     @FXML private TextField telefonoTextField;
-    @FXML private TextField mailTextField;
 
+    @FXML private Label mailLabel;
     @FXML private Label usernameLabel;
     @FXML private Label nomeLabel;
     @FXML private Label cognomeLabel;
@@ -112,7 +112,7 @@ public class ControllerUserModifica extends Controller {
         capLabel.setText(String.valueOf(currentUser.getCAP()));
 
         telefonoTextField.setText(currentUser.getTelefono());
-        mailTextField.setText(currentUser.getEmail());
+        mailLabel.setText(currentUser.getEmail());
 
         pagamentoComboBox.getItems();
         for(MetodoPagamento pagamento : MetodoPagamento.values())
@@ -131,7 +131,6 @@ public class ControllerUserModifica extends Controller {
             currentUser.setPagamento(MetodoPagamento.valueOf(metodoPagamento));
             currentUser.setIndirizzo(indirizzoTextField.getText(), cittaCombobox.getValue(), capLabel.getText());
             currentUser.setTelefono(telefonoTextField.getText());
-            currentUser.setEmail(mailTextField.getText());
             if(!pswTextField.getText().isEmpty())
                 currentUser.setPassword(pswTextField.getText());
 
@@ -150,23 +149,28 @@ public class ControllerUserModifica extends Controller {
         {
             telefonoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
-        if (!Validator.isEmail(mailTextField.getText()))
-        {
-            mailTextField.setStyle("-fx-control-inner-background:red");
-            result = false;
-        }
+        }else
+            telefonoTextField.setStyle("-fx-control-inner-background:ecfbfa");
 
         if (!Validator.isAddressFormat(indirizzoTextField.getText()))
         {
             indirizzoTextField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            indirizzoTextField.setStyle("-fx-control-inner-background:ecfbfa");
+
         if(!passwordEquals())
         {
             controllopswTextField.setStyle("-fx-control-inner-background:red");
             result = false;
-        }
+        }else
+            controllopswTextField.setStyle("-fx-control-inner-background:ecfbfa");
+
+        if(capLabel.getText() == null){
+            cittaCombobox.setStyle("-fx-control-inner-background:red");
+            result = false;
+        }else
+            cittaCombobox.setStyle("-fx-control-inner-background: ecfbfa");
 
         return result;
     }

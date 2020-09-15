@@ -144,7 +144,7 @@ public class ControllerRegistrazione extends Controller
             indirizzoTextField.setStyle("-fx-control-inner-background: ecfbfa");
 
 
-        if(capLabel.getText().isEmpty()){
+        if(capLabel.getText().isEmpty() || capLabel.getText() == null){
             cittaComboBox.setStyle("-fx-control-inner-background:red");
             result = false;
         }else
@@ -189,6 +189,7 @@ public class ControllerRegistrazione extends Controller
             {
                 if(database.getUtenti().add(user)) {
                     // Ha inserito con successo
+                    resetTextField();
                     stageManager.setTargetUser(user);
                     stageManager.swap(Stages.HomeUtente);
                 }
@@ -214,5 +215,18 @@ public class ControllerRegistrazione extends Controller
         }
 
         return true;
+    }
+
+    private void resetTextField(){
+        nomeTextField.clear();
+        cognomeTextField.clear();
+        indirizzoTextField.clear();
+        cittaComboBox.cancelEdit();
+        capLabel.setText("");
+        pswPasswordField.clear();
+        confermaPswPasswordField.clear();
+        mailTextField.clear();
+        pagamentoChoiceBox.getSelectionModel().select(0);
+        telefonoTextField.clear();
     }
 }
