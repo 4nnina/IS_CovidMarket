@@ -14,6 +14,7 @@ import main.storage.Database;
 import main.utils.CityHelper;
 import main.utils.StageManager;
 import main.utils.Validator;
+import main.view.AutoCompleteBox;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,22 +22,29 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ControllerUserModifica extends Controller{
+public class ControllerUserModifica extends Controller {
 
     @FXML private ImageView covidMarketImageView;
     @FXML private ImageView carrelloImageView;
-    @FXML private Label usernameLabel;
-    @FXML private ChoiceBox<String> sezioneChoicebox;
+
     @FXML private TextField indirizzoTextField;
     @FXML private TextField telefonoTextField;
+    @FXML private TextField mailTextField;
+
+    @FXML private Label usernameLabel;
     @FXML private Label nomeLabel;
     @FXML private Label cognomeLabel;
     @FXML private Label capLabel;
-    @FXML private ComboBox<String> cittaCombobox;
-    @FXML private TextField mailTextField;
+
     @FXML private PasswordField pswTextField;
     @FXML private PasswordField controllopswTextField;
+
     @FXML private ComboBox<String> pagamentoComboBox;
+    @FXML private ChoiceBox<String> sezioneChoicebox;
+
+    @FXML private ComboBox<String> cittaCombobox;
+    private AutoCompleteBox autoCittaBox;
+
     @FXML private Button modificaButton;
 
     private Utente currentUser;
@@ -48,14 +56,13 @@ public class ControllerUserModifica extends Controller{
         covidMarketImageView.setOnMouseClicked(this::homeHandler);
         modificaButton.setOnMouseClicked(this::modificaHandler);
 
-
         CityHelper cityHelper = CityHelper.getInstance();
         cittaCombobox.getItems().addAll(cityHelper.getCities());
+        autoCittaBox = new AutoCompleteBox(cittaCombobox);
 
         cittaCombobox.setOnAction(foo ->
         {
             String citta = cittaCombobox.getValue();
-            //cittaTextField.setText(citta); TODO
             capLabel.setText(cityHelper.getCap(citta));
         });
 
@@ -101,8 +108,9 @@ public class ControllerUserModifica extends Controller{
          */
 
 
-        //cittaCombobox.getSelectionModel().select(cittaIndex);
+        cittaCombobox.getSelectionModel().select(currentUser.getCitta());
         capLabel.setText(String.valueOf(currentUser.getCAP()));
+
         telefonoTextField.setText(currentUser.getTelefono());
         mailTextField.setText(currentUser.getEmail());
 

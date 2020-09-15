@@ -3,10 +3,13 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import main.controller.Stages;
+import main.model.Utente;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
 import main.utils.StageManager;
+
+import java.util.function.Predicate;
 
 public class Program extends Application
 {
@@ -20,6 +23,13 @@ public class Program extends Application
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
+
+        database.getUtenti().removeIf(new Predicate<Utente>() {
+            @Override
+            public boolean test(Utente utente) {
+                return utente.getNome().equals("sis");
+            }
+        });
 /*
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")

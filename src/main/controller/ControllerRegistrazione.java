@@ -40,44 +40,25 @@ import java.util.HashSet;
 public class ControllerRegistrazione extends Controller
 {
 
-    @FXML
-    private TextField nomeTextField;
+    @FXML private TextField nomeTextField;
+    @FXML private TextField cognomeTextField;
+    @FXML private TextField indirizzoTextField;
+    @FXML private TextField telefonoTextField;
+    @FXML private TextField mailTextField;
 
-    @FXML
-    private TextField cognomeTextField;
+    @FXML private PasswordField pswPasswordField;
+    @FXML private PasswordField confermaPswPasswordField;
 
-    @FXML
-    private TextField indirizzoTextField;
+    @FXML private Label capLabel;
 
-    @FXML
-    private TextField telefonoTextField;
+    @FXML private ImageView covidMarketImageView;
+    @FXML private Button salvaButton;
 
-    @FXML
-    private Label capLabel;
-
-    @FXML
-    private TextField mailTextField;
-    @FXML private TextField cittaTextField;
-
-    @FXML
-    private PasswordField pswPasswordField;
-
-    @FXML
-    private PasswordField confermaPswPasswordField;
-
-    @FXML
-    private ImageView covidMarketImageView;
-
-    @FXML
-    private CheckBox attivaCheckbox;
-
-    @FXML
-    private Button salvaButton;
+    @FXML private ChoiceBox<MetodoPagamento> pagamentoChoiceBox;
+    @FXML private CheckBox attivaCheckbox;
 
     @FXML private ComboBox<String> cittaComboBox;
     private AutoCompleteBox cittaAutoBox;
-
-    @FXML private ChoiceBox<MetodoPagamento> pagamentoChoiceBox;
 
     @FXML
     private void initialize()
@@ -93,30 +74,11 @@ public class ControllerRegistrazione extends Controller
         cittaComboBox.getItems().addAll(FXCollections.observableArrayList(cityHelper.getCities()));
         cittaAutoBox = new AutoCompleteBox(cittaComboBox);
 
-        /*
         cittaComboBox.setOnAction(foo ->
         {
             String citta = cittaComboBox.getValue();
-            cittaTextField.setText(citta);
             capLabel.setText(cityHelper.getCap(citta));
         });
-        */
-
-/*
-        cittaTextField.focusedProperty().addListener((observableValue, aBoolean, t1) ->
-        {
-            if (t1) {
-                cittaComboBox.getSelectionModel().select(null);
-                cittaComboBox.setVisible(true);
-                cittaComboBox.show();
-            }
-            else {
-                cittaComboBox.getSelectionModel().select(null);
-                cittaComboBox.setVisible(false);
-                cittaComboBox.hide();
-            }
-        });
-*/
     }
 
     private void loginHandler(MouseEvent mouseEvent) {

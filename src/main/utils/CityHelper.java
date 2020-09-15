@@ -14,22 +14,18 @@ public class CityHelper
 
     public CityHelper()
     {
-        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta.txt")))
+        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/citta_output.txt")))
         {
             String line = reader.readLine();
             while (line != null)
             {
-                if (line.length() > 3)
-                {
-                    int separator = line.indexOf('\t');
-                    int begin = firstValidChar(line);
+                int separator = line.indexOf(':');
+                String nome = (String) line.subSequence(0, separator);
+                String CAP = (String) line.subSequence(separator + 1, line.length());
 
-                    String nome = (String) line.subSequence(begin, separator);
-                    String CAP = (String) line.subSequence(separator + 1, line.lastIndexOf('\t'));
+                citta.add(nome);
+                cap.put(nome, CAP);
 
-                    citta.add(nome);
-                    cap.put(nome, CAP);
-                }
                 line = reader.readLine();
             }
         }
@@ -41,13 +37,6 @@ public class CityHelper
         {
             e.printStackTrace();
         }
-    }
-
-    private int firstValidChar(String value) {
-        int result = 0;
-        while(!Character.isLetter(value.charAt(result)))
-            result += 1;
-        return result;
     }
 
     public ArrayList<String> getCities() {

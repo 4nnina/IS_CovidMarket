@@ -144,7 +144,7 @@
                   <ComboBox fx:id="pagamentoComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button fx:id="modificaButton" layoutX="624.0" layoutY="347.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #f27777; -fx-background-radius: 10;" text="Modifica" textAlignment="CENTER" AnchorPane.rightAnchor="140.0">
+            <Button fx:id="modificaButton" layoutX="624.0" layoutY="347.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #f27777; -fx-background-radius: 10;" text="Salva" textAlignment="CENTER" AnchorPane.rightAnchor="140.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

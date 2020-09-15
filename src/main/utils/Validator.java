@@ -8,7 +8,7 @@ public class Validator
     private static final Pattern patternEmail = Pattern.compile("^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$");
     private static final Pattern patternAlphabetic = Pattern.compile("^[A-Za-z ]{3,30}$");
     private static final Pattern patternTelephone = Pattern.compile("\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}");
-    private static final Pattern patternAddressFormat = Pattern.compile("([a-z ]{2,}\\s?)(\\d{0,3})(\\s?\\S{2,})?");
+    private static final Pattern patternAddressFormat = Pattern.compile("([a-zA-Z ]{2,}\\s?)(\\d{0,3})(\\s?\\S{2,})?");
     private static final Pattern patternDecimalSpinner = Pattern.compile("^\\d{1,5}(\\.\\d{1,2})?$");
 
     /**

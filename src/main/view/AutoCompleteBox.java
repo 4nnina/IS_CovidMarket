@@ -16,14 +16,16 @@ public class AutoCompleteBox implements EventHandler<KeyEvent>
     final private ObservableList data;
     private Integer sid;
 
-    public AutoCompleteBox(final ComboBox comboBox) {
+    public AutoCompleteBox(final ComboBox comboBox)
+    {
         this.comboBox = comboBox;
         this.data = comboBox.getItems();
 
         this.doAutoCompleteBox();
     }
 
-    public AutoCompleteBox(final ComboBox comboBox, Integer sid) {
+    public AutoCompleteBox(final ComboBox comboBox, Integer sid)
+    {
         this.comboBox = comboBox;
         this.data = comboBox.getItems();
         this.sid = sid;
@@ -31,7 +33,8 @@ public class AutoCompleteBox implements EventHandler<KeyEvent>
         this.doAutoCompleteBox();
     }
 
-    private void doAutoCompleteBox() {
+    private void doAutoCompleteBox()
+    {
         this.comboBox.setEditable(true);
         this.comboBox.getEditor().focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){//mean onfocus
@@ -61,7 +64,8 @@ public class AutoCompleteBox implements EventHandler<KeyEvent>
     }
 
     @Override
-    public void handle(KeyEvent event) {
+    public void handle(KeyEvent event)
+    {
         if ( event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN
                 || event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT
                 || event.getCode() == KeyCode.HOME
@@ -93,12 +97,13 @@ public class AutoCompleteBox implements EventHandler<KeyEvent>
 
         for (Object datum : this.data) {
             String s = this.comboBox.getEditor().getText().toLowerCase();
-            if (datum.toString().toLowerCase().contains(s.toLowerCase())) {
+            if (datum.toString().toLowerCase().startsWith(s.toLowerCase())) {
                 list.add(datum.toString());
             }
         }
 
-        if(list.isEmpty()) this.comboBox.hide();
+        if(list.isEmpty())
+            this.comboBox.hide();
 
         this.comboBox.setItems(list);
         this.comboBox.show();
