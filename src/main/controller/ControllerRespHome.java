@@ -26,6 +26,7 @@ public class ControllerRespHome extends Controller implements Initializable
         Marca
     }
 
+    @FXML private ChoiceBox<String> sezioneChoicebox;
     @FXML private Button speseButton;
     @FXML private Button filtraButton1;
     @FXML private TextField marcaTextField;
@@ -76,6 +77,14 @@ public class ControllerRespHome extends Controller implements Initializable
 
         ordinaComboBox.getItems().addAll(Ordinamento.values());
         ordinaComboBox.getSelectionModel().select(0);
+
+        sezioneChoicebox.getItems().setAll("Profilo","Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.ProfiloResponsabile);       break;
+                case 1: stageManager.swap(Stages.Login);       break;
+            }
+        });
     }
 
     private Responsabile currentResp;
@@ -97,6 +106,7 @@ public class ControllerRespHome extends Controller implements Initializable
 
         // Setta solo gli elementi che questo responsabile può modificiare
         updateAllowedProducts(currentResp);
+        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     private void updateAllowedProducts(Responsabile responsabile)
@@ -183,10 +193,5 @@ public class ControllerRespHome extends Controller implements Initializable
     @FXML
     void speseButtonHandler(ActionEvent event) {
         stageManager.swap(Stages.SpesaResponsabile);
-    }
-
-    @FXML
-    void logoutButtonHandler(ActionEvent event) {
-        stageManager.swap(Stages.Login);
     }
 }

@@ -17,8 +17,6 @@ import java.util.ResourceBundle;
 
 public class ControllerRespSpese extends Controller implements Initializable
 {
-
-    @FXML private Button speseButton;
     @FXML private Button consegnaButton;
     @FXML private Button preparaButton;
 
@@ -36,6 +34,7 @@ public class ControllerRespSpese extends Controller implements Initializable
     @FXML private ImageView covidMarketImageView;
 
     @FXML private ChoiceBox<String> statoChoiceBox;
+    @FXML private ChoiceBox<String> sezioneChoicebox;
     @FXML private TextField utenteTextField;
 
     private ObservableList<Spesa> spese;
@@ -62,10 +61,18 @@ public class ControllerRespSpese extends Controller implements Initializable
         for(StatoConsegna statoConsegna : StatoConsegna.values())
             statoChoiceBox.getItems().add(statoConsegna.name());
 
-        covidMarketImageView.setOnMouseClicked(this::loginHandler);
+        covidMarketImageView.setOnMouseClicked(this::homeHandler);
+
+        sezioneChoicebox.getItems().setAll("Profilo","Logout");
+        sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
+            switch (t1.intValue()) {
+                case 0: stageManager.swap(Stages.ProfiloResponsabile);       break;
+                case 1: stageManager.swap(Stages.Login);       break;
+            }
+        });
     }
 
-    private void loginHandler(MouseEvent mouseEvent) { stageManager.swap(Stages.HomeResponsabile); }
+    private void homeHandler(MouseEvent mouseEvent) { stageManager.swap(Stages.HomeResponsabile); }
 
     @Override
     public void onSwap(Persona target)
@@ -92,6 +99,8 @@ public class ControllerRespSpese extends Controller implements Initializable
 
         elementiListView.setItems(elementi);
         elementiListView.refresh();
+
+        sezioneChoicebox.getSelectionModel().select(null);
     }
 
     private void updateSpesa(Spesa spesa)
@@ -182,11 +191,6 @@ public class ControllerRespSpese extends Controller implements Initializable
         speseListView.setItems(speseFiltrate);
         speseListView.getSelectionModel().select(0);
         speseListView.refresh();
-    }
-
-    @FXML
-    void logoutButtonHandler(ActionEvent event) {
-        stageManager.swap(Stages.Login);
     }
 
     @FXML

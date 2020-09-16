@@ -47,6 +47,7 @@ public class StageManager
         initStage(Stages.Carrello, "Covid Market - Carrello", PATH_FXML + "carrello.fxml");
         initStage(Stages.SpesaUtente, "Codiv Market - Storico Spesa", PATH_FXML + "speseUtente.fxml");
         initStage(Stages.SpesaResponsabile, "Codiv Market - Spese", PATH_FXML + "spesaResponsabile2.fxml");
+        initStage(Stages.ProfiloResponsabile, "Codiv Market - Profilo", PATH_FXML + "profiloResp.fxml");
     }
 
     public void initStage(Stages target, String title, String filename)

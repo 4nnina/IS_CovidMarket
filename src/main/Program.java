@@ -3,7 +3,7 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import main.controller.Stages;
-import main.model.Utente;
+import main.model.*;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
@@ -30,6 +30,7 @@ public class Program extends Application
                 return utente.getNome().equals("sis");
             }
         });
+
 /*
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
@@ -44,7 +45,7 @@ public class Program extends Application
         database.getUtenti().add(sis);
 
         Responsabile resp = new Responsabile.Builder()
-                .setDataDiNascita(Calendar.getInstance().getTime())
+                .setDataDiNascita(LocalDate.now())
                 .setLuogoDiNascita("Arzignano")
                 .setMatricola("5236437")
                 .setRepartiGestiti(EnumSet.allOf(Reparto.class))

@@ -26,12 +26,7 @@
                   <Image url="@../icons/utente.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#homeButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Home" AnchorPane.bottomAnchor="41.666666666666664" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="405.0" layoutY="45.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Logout" AnchorPane.bottomAnchor="41.666666666666664" AnchorPane.topAnchor="43.0">
+            <Button layoutX="548.0" layoutY="43.0" mnemonicParsing="false" onAction="#homeButtonHandler" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #f27777;" text="Home" AnchorPane.bottomAnchor="43.666666666666664" AnchorPane.leftAnchor="548.0" AnchorPane.topAnchor="43.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -42,6 +37,7 @@
                </font>
             </Label>
             <Label layoutX="744.0" layoutY="50.0" text="Ciao," textFill="#f27777" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="51.0" />
+            <ChoiceBox fx:id="sezioneChoicebox" layoutX="752.0" layoutY="48.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
          </children></AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ddfaf7;">
          <children>
