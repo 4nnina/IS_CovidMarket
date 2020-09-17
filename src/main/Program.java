@@ -9,6 +9,8 @@ import main.storage.BinarySerializer;
 import main.storage.Database;
 import main.utils.StageManager;
 
+import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.function.Predicate;
 
 public class Program extends Application
@@ -20,18 +22,12 @@ public class Program extends Application
     {
         Database database = Database.getInstance();
 
+        /*
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
+        */
 
-        database.getUtenti().removeIf(new Predicate<Utente>() {
-            @Override
-            public boolean test(Utente utente) {
-                return utente.getNome().equals("sis");
-            }
-        });
-
-/*
         Utente sis = new Utente.Builder()
                 .setNominativo("sis", "sis")
                 .setIndirizzo("sis sis 29", "sis", "36071")
@@ -96,8 +92,6 @@ public class Program extends Application
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
-
-*/
 
         StageManager stageManager = new StageManager(primaryStage);
         stageManager.swap(Stages.Login);
