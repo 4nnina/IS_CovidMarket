@@ -15,5 +15,7 @@ public enum Stages
     Profilo,
     Tessera,
 
+    ProfiloResponsabile,
+
     Carrello
 }

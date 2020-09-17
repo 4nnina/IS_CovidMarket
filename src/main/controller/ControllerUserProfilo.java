@@ -70,17 +70,13 @@ public class ControllerUserProfilo extends Controller {
         sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
             switch (t1.intValue()) {
                 case 0:
-                    stageManager.swap(Stages.Profilo);
-                    break;
+                    stageManager.swap(Stages.Profilo);  break;
                 case 1:
-                    stageManager.swap(Stages.Tessera);
-                    break;
+                    stageManager.swap(Stages.Tessera);  break;
                 case 2:
-                    stageManager.swap(Stages.SpesaUtente);
-                    break;
+                    stageManager.swap(Stages.SpesaUtente);  break;
                 case 3:
-                    stageManager.swap(Stages.Login);
-                    break;
+                    stageManager.swap(Stages.Login);    break;
             }
         });
 

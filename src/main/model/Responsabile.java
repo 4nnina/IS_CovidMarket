@@ -1,13 +1,14 @@
 package main.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.EnumSet;
 
 
 public class Responsabile extends Persona implements Serializable
 {
-    private Date dataDiNascita;
+    private LocalDate dataDiNascita;
     private String luogoDiNascita;
     private EnumSet<Reparto> repartiGestiti;
     private String matricola;
@@ -51,7 +52,7 @@ public class Responsabile extends Persona implements Serializable
      */
     public static class Builder extends Persona.Builder<Responsabile.Builder>
     {
-        private Date dataDiNascita;
+        private LocalDate dataDiNascita;
         private String luogoDiNascita;
         private EnumSet<Reparto> repartiGestiti;
         private String matricola;
@@ -67,7 +68,7 @@ public class Responsabile extends Persona implements Serializable
             return this;
         }
 
-        public Builder setDataDiNascita(Date dataDiNascita) {
+        public Builder setDataDiNascita(LocalDate dataDiNascita) {
             this.dataDiNascita = dataDiNascita;
             return this;
         }
@@ -92,4 +93,8 @@ public class Responsabile extends Persona implements Serializable
             return this;
         }
     }
+
+    public String getUsername(){return this.username;}
+    public String getMatricola(){return this.matricola;}
+    public LocalDate getDataDiNascita(){return this.dataDiNascita;}
 }
