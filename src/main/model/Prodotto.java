@@ -9,7 +9,7 @@ import java.util.EnumSet;
 public class Prodotto implements Serializable
 {
     private Reparto reparto;
-    public String nome, marca;
+    private String nome, marca;
     private int quantitaPerConfezione;
     private int quantitaDisponibile;
     private EnumSet<Attributo> attributi;
@@ -160,4 +160,5 @@ public class Prodotto implements Serializable
             return new Prodotto(this);
         }
     }
+
 }

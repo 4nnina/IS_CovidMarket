@@ -165,7 +165,7 @@ public class ControllerUserHome extends Controller implements Initializable
             carrelloCountLabel.setText(String.valueOf(count));
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,String.format("Aggiunto %d quantità di %s al carrello",buyValue, prodotto.nome));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,String.format("Aggiunto %d quantità di %s al carrello",buyValue, prodotto.getNome()));
         alert.showAndWait();
     }
 
