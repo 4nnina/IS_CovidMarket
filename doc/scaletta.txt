@@ -1,0 +1,51 @@
+
+DOCUMENTAZIONE
+
+SCELTE PROGETTUALI:
+    - Come gestire il database (serializer etc)
+    - Come rappresentare gli attributi dei prodotti (tipo)
+    - Il controllo sulla quantià acquistata avviene solo 
+      quando confermiamo l'ordine
+    - Come è strutturato lo StageManager
+    - Se un prodotto non è disponibile allora non viene visualizzato
+      invece di far apparire una scritta "NON DISPONIBILE"
+    - Carta fedeltà usa un numnero casuale in questa demo
+    - Stati come enumerazioni
+    - Controller per schermate distinti dai Popup
+    - Il CAP viene inserito automaticamente in base alla città
+    - Regex per i controlli vari
+
+STRUTTURA FILE PROGETTO
+    - Database.bin che è binario
+    - resources/... 
+
+TEST
+    - Test fatti da noi direttamente durante il PROGETTO
+    - Programma rilasciato a terzi per testarlo
+
+
+USE CASES:
+    ATTORI:
+        - Cliente
+        - Responsabile
+        - Cliente non resistrato
+    
+    CASES:
+        - Accedere al Programma
+        - Inserire prodotti al carrello
+        - Modificare carrello
+        - Confermare carrello
+        - Visualizzare profilo e modificarlo
+        - Visualizzare tessera
+        - Visualizzare storico spese
+        - Filtrare prodotti catalogo
+        - Logout
+
+        - Inserire prodotti nel catalogo
+        - Filtrare prodotti catalogo
+        - Modificare quantita prodotto
+        - Modificare stato spese
+        - Visualizzare lista spese
+        - Logout
+
+        - Registrazione

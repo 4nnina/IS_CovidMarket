@@ -3,17 +3,10 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import main.controller.Stages;
-import main.model.*;
-import main.resources.PopulateData;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
 import main.utils.StageManager;
-
-import java.time.LocalDate;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.function.Predicate;
 
 public class Program extends Application
 {

@@ -6,9 +6,9 @@ import java.util.HashSet;
 
 public class Database implements IDatabase
 {
-    private HashSet<Utente> utenti = new HashSet<>();;
-    private HashSet<Responsabile> responsabili = new HashSet<>();;
-    private HashSet<Prodotto> prodotti = new HashSet<>();;
+    private HashSet<Utente> utenti = new HashSet<>();
+    private HashSet<Responsabile> responsabili = new HashSet<>();
+    private HashSet<Prodotto> prodotti = new HashSet<>();
     private HashSet<Spesa> spese = new HashSet<>();
 
     public HashSet<Utente> getUtenti() {
