@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.controller</OriginalElement>
+  <nodes>
+    <node x="1816.0" y="381.0">main.controller.ControllerUserProfilo</node>
+    <node x="817.0" y="1189.0">main.controller.CellUserProdottoCarrello</node>
+    <node x="912.0" y="381.0">main.controller.ControllerUserSpesa</node>
+    <node x="59.0" y="1002.0">main.controller.ControllerRespHome.Ordinamento</node>
+    <node x="1668.0" y="1189.0">main.controller.CellSpesa</node>
+    <node x="1541.5" y="0.0">main.controller.IController</node>
+    <node x="605.0" y="1189.0">main.controller.Stages</node>
+    <node x="1194.0" y="414.0">main.controller.ControllerUserTessera</node>
+    <node x="0.0" y="381.0">main.controller.ControllerRespHome</node>
+    <node x="340.0" y="337.0">main.controller.ControllerUserModifica</node>
+    <node x="1535.0" y="1002.0">main.controller.ControllerUserHome.Ordinamento</node>
+    <node x="3079.0" y="282.0">main.controller.ControllerRespSpese</node>
+    <node x="292.0" y="1529.0">main.controller.PopupProdotto</node>
+    <node x="640.0" y="414.0">main.controller.ControllerRespProfilo</node>
+    <node x="203.5" y="1189.0">main.controller.IPopup</node>
+    <node x="2467.0" y="359.0">main.controller.ControllerUserCarrello</node>
+    <node x="1476.0" y="359.0">main.controller.ControllerUserHome</node>
+    <node x="1541.5" y="126.0">main.controller.Controller</node>
+    <node x="203.5" y="1292.0">main.controller.Popup</node>
+    <node x="1094.0" y="1189.0">main.controller.CellRespProdotto</node>
+    <node x="1381.0" y="1189.0">main.controller.CellUserProdotto</node>
+    <node x="2104.0" y="381.0">main.controller.ControllerRegistrazione</node>
+    <node x="0.0" y="1606.0">main.controller.PopupConsegna</node>
+    <node x="2791.0" y="491.0">main.controller.ControllerLoginPage</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.controller.Controller" target="main.controller.IController">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerRespSpese" target="main.controller.Controller">
+      <point x="0.0" y="-335.0" />
+      <point x="3215.5" y="222.0" />
+      <point x="1721.909090909091" y="222.0" />
+      <point x="85.90909090909099" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerRespHome" target="main.controller.Controller">
+      <point x="0.0" y="-236.0" />
+      <point x="160.0" y="222.0" />
+      <point x="1550.090909090909" y="222.0" />
+      <point x="-85.90909090909099" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserTessera" target="main.controller.Controller">
+      <point x="0.0" y="-203.0" />
+      <point x="1325.0" y="262.0" />
+      <point x="1618.8181818181818" y="262.0" />
+      <point x="-17.181818181818244" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserSpesa" target="main.controller.Controller">
+      <point x="0.0" y="-236.0" />
+      <point x="1043.0" y="252.0" />
+      <point x="1601.6363636363637" y="252.0" />
+      <point x="-34.36363636363626" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserCarrello" target="main.controller.Controller">
+      <point x="0.0" y="-258.0" />
+      <point x="2619.0" y="242.0" />
+      <point x="1687.5454545454545" y="242.0" />
+      <point x="51.545454545454504" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerRespHome.Ordinamento" target="main.controller.ControllerRespHome">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="236.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserProfilo" target="main.controller.Controller">
+      <point x="0.0" y="-236.0" />
+      <point x="1950.0" y="262.0" />
+      <point x="1653.1818181818182" y="262.0" />
+      <point x="17.181818181818244" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerRespProfilo" target="main.controller.Controller">
+      <point x="0.0" y="-203.0" />
+      <point x="766.0" y="242.0" />
+      <point x="1584.4545454545455" y="242.0" />
+      <point x="-51.545454545454504" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerLoginPage" target="main.controller.Controller">
+      <point x="0.0" y="-126.0" />
+      <point x="2925.0" y="232.0" />
+      <point x="1704.7272727272727" y="232.0" />
+      <point x="68.72727272727275" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserModifica" target="main.controller.Controller">
+      <point x="0.0" y="-280.0" />
+      <point x="480.0" y="232.0" />
+      <point x="1567.2727272727273" y="232.0" />
+      <point x="-68.72727272727275" y="38.0" />
+    </edge>
+    <edge source="main.controller.PopupConsegna" target="main.controller.Popup">
+      <point x="0.0" y="-126.5" />
+      <point x="136.0" y="1504.0" />
+      <point x="242.25" y="1504.0" />
+      <point x="-38.75" y="93.5" />
+    </edge>
+    <edge source="main.controller.ControllerUserHome.Ordinamento" target="main.controller.ControllerUserHome">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="258.0" />
+    </edge>
+    <edge source="main.controller.ControllerRegistrazione" target="main.controller.Controller">
+      <point x="0.0" y="-236.0" />
+      <point x="2275.5" y="252.0" />
+      <point x="1670.3636363636365" y="252.0" />
+      <point x="34.36363636363649" y="38.0" />
+    </edge>
+    <edge source="main.controller.ControllerUserHome" target="main.controller.Controller">
+      <point x="0.0" y="-258.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="main.controller.PopupProdotto" target="main.controller.Popup">
+      <point x="0.0" y="-203.5" />
+      <point x="426.0" y="1504.0" />
+      <point x="319.75" y="1504.0" />
+      <point x="38.75" y="93.5" />
+    </edge>
+    <edge source="main.controller.Popup" target="main.controller.IPopup">
+      <point x="0.0" y="-93.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.41037103263299063" x="1108.5" y="945.0675381263617" />
+  <SelectedNodes>
+    <node>main.controller.ControllerLoginPage</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
