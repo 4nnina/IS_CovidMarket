@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import main.controller.Stages;
 import main.model.*;
+import main.resources.PopulateData;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
@@ -26,6 +27,8 @@ public class Program extends Application
         try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
             database.load(ser);
         }
+
+        //PopulateData.populate();
 
 
         StageManager stageManager = new StageManager(primaryStage);

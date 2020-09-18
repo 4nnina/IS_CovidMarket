@@ -58,7 +58,7 @@ public class CellUserProdottoCarrello extends ListCell<Carrello.Coppia>
             marcaLabel.setText(bundle.prodotto.getMarca());
             quantitaLabel.setText(String.valueOf(bundle.quantita));
 
-            prezzoLabel.setText(String.format("%.2f €", bundle.prodotto.prezzo));
+            prezzoLabel.setText(String.format("%.2f €", bundle.prodotto.getPrezzo()));
             double prezzoTotale = bundle.prodotto.getPrezzo() * bundle.quantita;
             prezzoTotaleLabel.setText(String.format("%.2f €", prezzoTotale));
 

@@ -13,7 +13,7 @@ public class Prodotto implements Serializable
     private int quantitaPerConfezione;
     private int quantitaDisponibile;
     private EnumSet<Attributo> attributi;
-    public double prezzo;
+    private double prezzo;
 
     private transient Image image = null;
     private String imagePath;
