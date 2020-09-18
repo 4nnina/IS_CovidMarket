@@ -6,6 +6,7 @@ import main.controller.Stages;
 import main.storage.BinaryDeserializer;
 import main.storage.BinarySerializer;
 import main.storage.Database;
+import main.utils.PopulateData;
 import main.utils.StageManager;
 
 public class Program extends Application
@@ -17,11 +18,11 @@ public class Program extends Application
     {
         Database database = Database.getInstance();
 
-        try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
-            database.load(ser);
-        }
+        //try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
+        //    database.load(ser);
+        //}
 
-        //PopulateData.populate();
+        PopulateData.populate();
 
 
         StageManager stageManager = new StageManager(primaryStage);
