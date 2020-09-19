@@ -207,7 +207,12 @@ public class ControllerUserCarrello extends Controller implements Initializable
                 try { bundles.clear(); }
                 catch (IndexOutOfBoundsException e) { /* Errore stupido di JavaFX */ };
                 updateInfoSpesa();
+
+                quantitySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+                saldoPuntiLabel.setText("0");
             }
+
+
         }
         else{
             carrelloListView.getItems().clear();

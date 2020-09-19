@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="216.0" style="-fx-background-color: #ddfaf7;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <DatePicker fx:id="datePicked" layoutX="22.0" layoutY="96.0" />
+      <DatePicker fx:id="datePicked" editable="false" layoutX="22.0" layoutY="96.0" />
       <ChoiceBox fx:id="orarioChoiceBox" layoutX="22.0" layoutY="151.0" prefHeight="25.0" prefWidth="174.0" />
       <ChoiceBox fx:id="pagamentoChoiceBox" layoutX="22.0" layoutY="209.0" prefHeight="25.0" prefWidth="174.0" />
       <Label layoutX="22.0" layoutY="73.0" text="Data di consegna" />
