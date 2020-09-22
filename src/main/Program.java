@@ -18,11 +18,11 @@ public class Program extends Application
     {
         Database database = Database.getInstance();
 
-        //try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
-        //    database.load(ser);
-        //}
+        try(BinaryDeserializer ser = new BinaryDeserializer(PATH_DATABASE)) {
+            database.load(ser);
+        }
 
-        PopulateData.populate();
+        //PopulateData.populate();
 
 
         StageManager stageManager = new StageManager(primaryStage);

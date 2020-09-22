@@ -37,7 +37,7 @@ public class ControllerRespProfilo extends Controller {
         sezioneChoicebox.getItems().setAll("Logout");
         sezioneChoicebox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
             switch (t1.intValue()) {
-                case 1: stageManager.swap(Stages.Login);       break;
+                case 0: stageManager.swap(Stages.Login);       break;
             }
         });
 

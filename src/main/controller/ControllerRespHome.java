@@ -96,6 +96,7 @@ public class ControllerRespHome extends Controller implements Initializable
         this.currentResp = (Responsabile) target;
         nomeutenteLabel.setText(currentResp.getNome());
 
+        repartoComboBox.getItems().clear();
         // Carica tutti i reparti gestiti
         repartoComboBox.getItems().add(Reparto.Tutto);
         for (Reparto rep: Reparto.values())

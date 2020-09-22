@@ -23,8 +23,21 @@ public class PopulateData {
 
         database.getUtenti().add(sis);
 
-        Responsabile resp = new Responsabile.Builder()
-                .setDataDiNascita(LocalDate.now())
+        Utente anna = new Utente.Builder()
+                .setNominativo("Anna", "Dalla Vecchia")
+                .setIndirizzo("via Callesella 15", "Montecchio Maggiore", "36075")
+                .setEmail("anna@gmail.com")
+                .setTelefono("3779927407")
+                .setCartaFedelta(new CartaFedelta(LocalDate.now()))
+                .setMetodoPagamento(MetodoPagamento.CartaDiCredito)
+                .setPassword("anna")
+                .build();
+
+        database.getUtenti().add(anna);
+
+
+        Responsabile resp1 = new Responsabile.Builder()
+                .setDataDiNascita(LocalDate.of(1980,6,19))
                 .setLuogoDiNascita("Arzignano")
                 .setMatricola("5236437")
                 .setRepartiGestiti(EnumSet.allOf(Reparto.class))
@@ -36,7 +49,21 @@ public class PopulateData {
                 .setTelefono("3779927407")
                 .build();
 
-        database.getResponsabili().add(resp);
+        Responsabile resp2 = new Responsabile.Builder()
+                .setDataDiNascita(LocalDate.of(1976,2,27))
+                .setLuogoDiNascita("Vicenza")
+                .setMatricola("5236440")
+                .setRepartiGestiti(EnumSet.of(Reparto.Verdura,Reparto.Frutta))
+                .setEmail("respFV@gmail.com")
+                .setIndirizzo("", "", "0")
+                .setUsername("respFV")
+                .setNominativo("resp Frutta Verdura", "frutta e verdura")
+                .setPassword("respFV")
+                .setTelefono("3779920401")
+                .build();
+
+        database.getResponsabili().add(resp1);
+        database.getResponsabili().add(resp2);
 
         database.getProdotti().add(new Prodotto.Builder()
                 .setNome("Banane")
@@ -394,7 +421,7 @@ public class PopulateData {
                 .addAttributo(Attributo.SenzaUova)
                 .setImagePath("main/resources/images/penneSG.png")
                 .setPrezzo(1.88)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Pasta)
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
@@ -409,7 +436,7 @@ public class PopulateData {
                 .addAttributo(Attributo.SenzaUova)
                 .setImagePath("main/resources/images/riso.png")
                 .setPrezzo(4.38)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Pasta)
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
@@ -423,7 +450,7 @@ public class PopulateData {
                 .addAttributo(Attributo.SenzaUova)
                 .setImagePath("main/resources/images/penne.png")
                 .setPrezzo(0.88)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Pasta)
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
@@ -437,7 +464,7 @@ public class PopulateData {
                 .addAttributo(Attributo.SenzaUova)
                 .setImagePath("main/resources/images/fusilli.png")
                 .setPrezzo(0.88)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Pasta)
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
@@ -451,7 +478,7 @@ public class PopulateData {
                 .addAttributo(Attributo.SenzaUova)
                 .setImagePath("main/resources/images/spaghetti.png")
                 .setPrezzo(1.15)
-                .setReparto(Reparto.Alimentari)
+                .setReparto(Reparto.Pasta)
                 .setQuantitaDisponibile(30)
                 .setQuantitaPerConfezione(1)
                 .build());
