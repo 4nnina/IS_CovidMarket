@@ -18,7 +18,7 @@ To try out the software, you'll need to set up:
 - JavaFX
 
 ## Installing
-Clone or download the repository, then import it in your IDE of choice (the root folder for the project is IS_CovidMarket). The main class is 'Program.java', you may need it to setup a new configuration.
+Clone or download the repository, then import it in your IDE of choice (the root folder for the project is IngSW_CovidMarket). The main class is 'Program.java', you may need it to setup a new configuration.
 
 There are already users ready to be used and tested:
 
